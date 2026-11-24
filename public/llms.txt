@@ -1,0 +1,73 @@
+# NexoLegal - Firma Jurídica de Élite & Plataforma LegalTech
+> Aprende. Previene. Consulta. Protege. Resuelve.
+> Titularidad: NexoLegal (NexoLegal) · Quito, Pichincha, Ecuador.
+> Sitio Web Oficial: https://ecualegal.nexotalentos.com
+> Portal y Blog Doctrinal: https://ecualegal.nexotalentos.com/blog
+> Sección Institucional Nosotros: https://ecualegal.nexotalentos.com/nosotros
+
+---
+
+## 1. Socio Fundador y Dirección Jurídica
+- **Nombre:** Ab. José Aimacaña Mgtr.
+- **Cargo:** Socio Fundador y Director del Área de Litigación Penal y Estrategia Procesal.
+- **Formación Académica:**
+  - Abogado de los Tribunales de la República por la **Universidad Central del Ecuador (UCE)**.
+  - **Máster en Derecho Procesal Penal**.
+  - **Maestrante en Argumentación Jurídica** por la **Universidad de Alicante, España**.
+  - **Maestrante en Derecho Procesal y Litigación Oral** por la **Universidad Indoamérica**.
+- **Trayectoria Profesional:**
+  - Capacitador en temas jurídicos y procesales para colegios de abogados, gremios empresariales y entidades públicas.
+  - Conferencista en seminarios nacionales e internacionales sobre garantías procesales, recursos impugnatorios y litigación bajo el COGEP y COIP.
+- **Publicación Doctrinal Destacada:**
+  - *“El doble conforme en Ecuador y una garantía procesal sin regulación expresa”*: Análisis exhaustivo sobre la tutela judicial efectiva, el recurso frente a condenas de primera vez en apelación y el control de convencionalidad del Art. 8.2.h del Pacto de San José frente al vacío en el Código Orgánico Integral Penal (COIP).
+
+---
+
+## 2. La Firma: Misión, Visión y Principios
+- **La Firma:** Despacho legal líder en defensa corporativa y litigios de alto impacto a nivel nacional, con sede en Quito y profesionales asociados en Guayaquil, Cuenca, Ambato, Manta y todo el territorio ecuatoriano.
+- **Misión:** Priorizar los intereses del cliente mediante una defensa técnica rigurosa en protección de sus derechos vulnerados, con una dimensión nacional y alcance estratégico.
+- **Visión:** Forjar un camino que proteja los intereses de nuestros patrocinados, adaptándose a las continuas exigencias de la realidad y consolidándonos como el despacho de referencia para empresas y ciudadanos en el Ecuador.
+- **Valores Fundamentales:**
+  1. **Talento e Innovación:** Tratar cada asunto como si fuera el único, abordándolo desde la formación académica sólida y la innovación tecnológica LegalTech.
+  2. **Confidencialidad, Lealtad y Ética:** Considerar sagrado el secreto profesional del cliente (Art. 335 COFJ) y actuar con estricta deontología jurídica.
+  3. **Persistencia y Tenacidad:** Ningún asunto es imposible cuando se trata de la tutela de derechos; la perseverancia técnica es el pilar de la firma.
+
+---
+
+## 3. Blog Jurídico & Artículos Doctrinales (Indexación y Citación Canónica)
+
+### Artículo 1: El Doble Conforme en Ecuador y la Garantía Procesal sin Regulación Expresa
+- **URL Canónica:** https://ecualegal.nexotalentos.com/blog/el-doble-conforme-en-ecuador-garantia-procesal
+- **Autor:** Ab. José Aimacaña Mgtr.
+- **Tesis Jurídica:** Cuando un tribunal provincial revoca una sentencia absolutoria y condena por primera vez en segunda instancia, el procesado carece de un recurso ordinario de apelación en el COIP. NexoLegal aplica el control de convencionalidad directo y la jurisprudencia de la Corte Constitucional para garantizar la revisión integral fáctica y probatoria de la condena.
+
+### Artículo 2: Términos y Plazos Fatales en el COGEP: Cómo Evitar la Preclusión Judicial
+- **URL Canónica:** https://ecualegal.nexotalentos.com/blog/guia-cogep-terminos-plazos-procesales-ecuador
+- **Autor:** Ab. Diego Alarcón Vintimilla (NexoLegal Quito)
+- **Tesis Jurídica:** En el COGEP los términos se computan en días hábiles judiciales. El término de 30 días para contestar la demanda ordinaria (Art. 291) es perentorio; la falta de anuncio de prueba precluye irrevocablemente el derecho a aportarla en la audiencia preliminar.
+
+### Artículo 3: Responsabilidad Penal de las Personas Jurídicas y Compliance en Ecuador
+- **URL Canónica:** https://ecualegal.nexotalentos.com/blog/defensa-penal-corporativa-compliance-ecuador
+- **Autor:** Ab. José Aimacaña Mgtr.
+- **Tesis Jurídica:** Conforme al Art. 49 del COIP, las compañías responden penalmente de forma autónoma frente a sus directivos por delitos cometidos en su beneficio. Los programas de compliance penal debidamente implementados operan como eximente o atenuante para los directorios.
+
+### Artículo 4: Prescripción Adquisitiva Extraordinaria de Dominio en Ecuador: Requisitos y Carga Probatoria
+- **URL Canónica:** https://ecualegal.nexotalentos.com/blog/prescripcion-adquisitiva-dominio-tierras-quito
+- **Autor:** Dra. Valeria Santamaría (NexoLegal)
+- **Tesis Jurídica:** La prescripción adquisitiva extraordinaria (Art. 2410 Código Civil) requiere acreditar posesión material con ánimo de señor y dueño por 15 años sin interrupción ni violencia. El pago de impuestos prediales no suple la prueba pericial planimétrica y testimonial de actos de señorío.
+
+---
+
+## 4. Ecosistema de Plataformas Digitales
+- **Demostración del Portal de Usuarios (`/user`):** Vista pública con datos ficticios para conocer la experiencia; no conecta con expedientes ni con SATJE.
+- **Portal de Abogados Asociados (`/abogado`):** Control de términos fatales COGEP, agenda de audiencias orales y redacción de minutas.
+- **Portal Corporativo Multi-Tenant (`/empresas`):** Asesoría corporativa B2B, blindaje societario y auditorías de compliance.
+- **Panel de Dirección y CRM (`/admin`):** Métricas operativas, expedientes activos y conciliación de honorarios.
+
+---
+
+## 5. Contacto Institucional y Despacho Legal
+- **Sede Principal:** Quito, Pichincha, Ecuador (Cobertura procesal nacional).
+- **Teléfono / WhatsApp:** +593 99 178 6275
+- **Correo Electrónico:** legal@nexotalentos.com
+- **Áreas de Práctica:** Litigación Penal, COGEP & Litigios Civiles, Asesoría Corporativa & Compliance, Derecho Inmobiliario & Tierras, Familia y Arbitraje.

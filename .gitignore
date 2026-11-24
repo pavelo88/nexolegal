@@ -1,0 +1,14 @@
+node_modules/
+.next/
+.env
+.env.*
+!.env.example
+*.docx
+*.log
+
+# TypeScript build cache
+tsconfig.tsbuildinfo
+
+# Media and video render outputs
+brag-output/
+scratch/

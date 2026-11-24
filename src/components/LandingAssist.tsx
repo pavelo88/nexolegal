@@ -1,0 +1,53 @@
+"use client";
+
+import { FormEvent, useEffect, useState } from "react";
+import { Bot, MessageCircle, Send, X } from "lucide-react";
+
+export default function LandingAssist() {
+  const [open, setOpen] = useState(false);
+  const [query, setQuery] = useState("");
+  const [answer, setAnswer] = useState("Hola. Puedo orientarte de forma informativa sobre trámites y áreas legales en Ecuador.");
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const handleOpen = () => setOpen(true);
+    window.addEventListener("open-legal-assistant", handleOpen);
+    return () => window.removeEventListener("open-legal-assistant", handleOpen);
+  }, []);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [open]);
+
+  async function ask(event: FormEvent) {
+    event.preventDefault();
+    if (!query.trim() || loading) return;
+    setLoading(true);
+    try {
+      const response = await fetch("/api/ai/legal-query", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ query }) });
+      const data = await response.json().catch(() => null);
+      setAnswer(data?.answer ?? "No pude procesar la consulta. Escríbenos por WhatsApp para coordinar una revisión.");
+      setQuery("");
+    } catch {
+      setAnswer("El asistente no está disponible ahora. Puedes escribirnos directamente por WhatsApp.");
+    } finally { setLoading(false); }
+  }
+
+  return <>
+    <div className="landing-float-actions hidden md:flex" aria-label="Contacto NexoLegal">
+      <a className="whatsapp-float" href="https://wa.me/593991786275?text=Hola%20NexoLegal,%20quiero%20una%20orientación" target="_blank" rel="noreferrer" aria-label="Escribir por WhatsApp"><MessageCircle size={22}/><span>WhatsApp</span></a>
+      <button className="ai-float" onClick={() => setOpen(true)} aria-label="Abrir asistente jurídico" aria-expanded={open} aria-haspopup="dialog"><Bot size={20}/><span>Asistente IA</span></button>
+    </div>
+    {open && <div className="assistant-panel !bottom-20 md:!bottom-[7rem]" role="dialog" aria-label="Asistente informativo NexoLegal">
+      <div className="assistant-head"><div><strong>Asistente NexoLegal</strong><small>Orientación informativa · Ecuador</small></div><button onClick={() => setOpen(false)} aria-label="Cerrar"><X size={18}/></button></div>
+      <div className="assistant-answer">{answer}</div>
+      <form onSubmit={ask} className="assistant-form"><input autoFocus value={query} onChange={e => setQuery(e.target.value)} placeholder="¿Qué necesitas saber?" aria-label="Consulta jurídica"/><button disabled={loading} aria-label="Enviar consulta"><Send size={16}/></button></form>
+      <small className="assistant-disclaimer">No reemplaza asesoría profesional ni calcula vencimientos procesales.</small>
+    </div>}
+  </>;
+}

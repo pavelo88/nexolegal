@@ -1,0 +1,96 @@
+# robots.txt - NexoLegal (ecualegal.nexotalentos.com)
+# Politica: me pueden ENCONTRAR y CITAR (buscadores tradicionales y asistentes/buscadores de IA).
+# NO se permite copiar: se prohiben los rastreadores de entrenamiento de IA y los clonadores de sitios.
+# Nota: robots.txt es una convencion voluntaria; el bloqueo real (403) se aplica en el servidor.
+
+# 1) Buscadores tradicionales y buscadores/asistentes de IA que citan la fuente: PERMITIDOS
+User-agent: Googlebot
+User-agent: Googlebot-Image
+User-agent: Bingbot
+User-agent: msnbot
+User-agent: Applebot
+User-agent: DuckDuckBot
+User-agent: YandexBot
+User-agent: Baiduspider
+User-agent: Slurp
+User-agent: BraveBot
+User-agent: Bravebot
+User-agent: Qwantify
+User-agent: Ecosia
+User-agent: SeznamBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: DuckAssistBot
+User-agent: MistralAI-User
+User-agent: YouBot
+User-agent: PhindBot
+User-agent: Meta-ExternalFetcher
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /abogado/
+Disallow: /cliente/
+Disallow: /user/
+Disallow: /app/
+Disallow: /ingresar
+
+# 2) Rastreadores de ENTRENAMIENTO de IA y clonadores de sitios: PROHIBIDO TODO
+User-agent: GPTBot
+User-agent: ClaudeBot
+User-agent: Claude-Web
+User-agent: anthropic-ai
+User-agent: Google-Extended
+User-agent: Google-CloudVertexBot
+User-agent: Applebot-Extended
+User-agent: Meta-ExternalAgent
+User-agent: FacebookBot
+User-agent: Amazonbot
+User-agent: Bytespider
+User-agent: CCBot
+User-agent: DeepSeekBot
+User-agent: GrokBot
+User-agent: xAI-Bot
+User-agent: KimiBot
+User-agent: MoonshotBot
+User-agent: cohere-ai
+User-agent: cohere-training-data-crawler
+User-agent: Diffbot
+User-agent: Omgilibot
+User-agent: Omgili
+User-agent: ImagesiftBot
+User-agent: Timpibot
+User-agent: VelenPublicWebCrawler
+User-agent: AI2Bot
+User-agent: img2dataset
+User-agent: HTTrack
+User-agent: WebCopier
+User-agent: WebReaper
+User-agent: WebZIP
+User-agent: SiteSnagger
+User-agent: Teleport
+User-agent: TeleportPro
+User-agent: Offline Explorer
+User-agent: SiteSucker
+User-agent: Wget
+User-agent: Scrapy
+User-agent: MJ12bot
+User-agent: Zao
+User-agent: Cyotek WebCopy
+Disallow: /
+
+# 3) Resto de agentes
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /abogado/
+Disallow: /cliente/
+Disallow: /user/
+Disallow: /app/
+Disallow: /ingresar
+
+Sitemap: https://ecualegal.nexotalentos.com/sitemap.xml

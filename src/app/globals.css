@@ -1,0 +1,1057 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── BLOQUEO ESTRICTO DE ZOOM & EXPERIENCIA APP NATIVA FLUIDA ──────── */
+html {
+  touch-action: manipulation;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
+}
+
+body {
+  touch-action: manipulation;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Evitar zoom automático del viewport en iOS/Android al tocar inputs */
+@media screen and (max-width: 768px) {
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* Contacto visible y asistente informativo del landing */
+.landing-float-actions { position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 60; display: flex; flex-direction: column; align-items: flex-end; gap: .6rem; }
+.whatsapp-float, .ai-float { display: inline-flex; align-items: center; gap: .55rem; border-radius: 999px; padding: .8rem 1rem; font-size: .78rem; font-weight: 700; color: #fff; box-shadow: 0 12px 30px rgba(8,32,65,.18); transition: transform .2s var(--ease-out), box-shadow .2s var(--ease-out); }
+.whatsapp-float { background: #1fae62; }
+.ai-float { border: 1px solid rgba(0,169,163,.35); background: #082041; cursor: pointer; }
+.whatsapp-float:hover, .ai-float:hover { transform: translateY(-2px); box-shadow: 0 16px 34px rgba(8,32,65,.24); }
+.assistant-panel { position: fixed; right: 1.25rem; bottom: 7rem; z-index: 61; width: min(23rem, calc(100vw - 2rem)); overflow: hidden; border: 1px solid #ded7ce; border-radius: 1.35rem; background: #fffdfa; color: #082041; box-shadow: 0 24px 70px rgba(8,32,65,.22); }
+.assistant-head { display: flex; justify-content: space-between; gap: 1rem; padding: 1rem 1.1rem; background: #082041; color: #F8FAFC; }
+.assistant-head strong, .assistant-head small { display: block; }
+.assistant-head small { margin-top: .2rem; color: #CBD5E1; font-size: .68rem; }
+.assistant-head button { color: #38DFD8; background: transparent; border: 0; cursor: pointer; }
+.assistant-answer { max-height: 15rem; overflow: auto; white-space: pre-line; padding: 1rem 1.1rem; font-size: .78rem; line-height: 1.65; }
+.assistant-form { display: flex; gap: .5rem; padding: .75rem; border-top: 1px solid #eee8df; }
+.assistant-form input { min-width: 0; flex: 1; border: 1px solid #dcd5ca; border-radius: .9rem; padding: .72rem .8rem; outline: 0; font-size: .8rem; }
+.assistant-form input:focus { border-color: #00A9A3; box-shadow: 0 0 0 3px rgba(0,169,163,.12); }
+.assistant-form button { display: grid; place-items: center; width: 2.65rem; border: 0; border-radius: .9rem; color: #fff; background: #00A9A3; cursor: pointer; }
+.assistant-disclaimer { display: block; padding: 0 1rem 1rem; color: #7b857f; font-size: .65rem; line-height: 1.4; }
+.credentials-section { display: grid; gap: 2.5rem; padding: 6rem clamp(1.25rem, 6vw, 6rem); background: #082041; color: #F8FAFC; }
+.credentials-section h2 { max-width: 34rem; font-family: var(--font-playfair), Georgia, serif; font-size: clamp(2.3rem, 5vw, 4.4rem); line-height: .98; }
+.credentials-grid { display: grid; gap: 1rem; grid-template-columns: repeat(3, minmax(0,1fr)); }
+.credentials-grid article { border: 1px solid rgba(255,255,255,.16); border-radius: 1.2rem; padding: 1.3rem; background: rgba(255,255,255,.06); }
+.credentials-grid strong { color: #38DFD8; }
+.credentials-grid p { margin-top: .7rem; color: #CBD5E1; font-size: .88rem; line-height: 1.7; }
+@media (max-width: 768px) {
+  .landing-float-actions { display: none !important; }
+  .whatsapp-float, .ai-float { display: none !important; }
+  .assistant-panel { right: .75rem; left: .75rem; width: auto !important; max-width: 24rem; margin: 0 auto; bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px)) !important; z-index: 70 !important; }
+  .credentials-grid { grid-template-columns: 1fr; }
+}
+
+/* Navegación unificada del ecosistema de aplicaciones (Apple Luxury Dock). */
+.with-app-experience-dock { padding-bottom: calc(6.5rem + env(safe-area-inset-bottom, 0px)); }
+.app-experience-dock { position: fixed; inset-inline: 0; bottom: calc(.5rem + env(safe-area-inset-bottom, 0px)); z-index: 80; display: none; padding: 0 1rem; pointer-events: none; }
+.app-experience-dock__surface { width: min(34rem, 100%); margin-inline: auto; padding: .32rem; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: .25rem; border: 1px solid rgba(0,169,163,.4); border-radius: 9999px; background: rgba(5,22,46,.94); box-shadow: 0 16px 45px rgba(0,0,0,.6), inset 0 1px rgba(255,255,255,.18); -webkit-backdrop-filter: blur(28px) saturate(180%); backdrop-filter: blur(28px) saturate(180%); pointer-events: auto; }
+.app-experience-dock__item { min-width: 0; min-height: 3.1rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .15rem; border-radius: 9999px; color: rgba(255,255,255,.75); transition: color .18s var(--ease-out), background .18s var(--ease-out), transform .18s var(--ease-spring); }
+.app-experience-dock__item svg { width: 1.15rem; height: 1.15rem; }
+.app-experience-dock__item span { max-width: 100%; overflow: hidden; text-overflow: ellipsis; font-size: .62rem; font-weight: 700; letter-spacing: -.01em; }
+.app-experience-dock__item:active { transform: scale(.90); }
+.app-experience-dock__item.is-active { color: #fff; background: linear-gradient(135deg, rgba(0,169,163,.95), rgba(0,169,163,.92)); box-shadow: 0 6px 20px rgba(0,169,163,.4), inset 0 1px rgba(255,255,255,.4); }
+.app-demo-badge { position: fixed; top: .75rem; left: 50%; z-index: 75; transform: translateX(-50%); display: flex; align-items: center; gap: .42rem; max-width: calc(100vw - 8rem); padding: .48rem .72rem; border: 1px solid rgba(0,169,163,.35); border-radius: 999px; background: rgba(8,32,65,.88); color: #fff; box-shadow: 0 10px 30px rgba(0,0,0,.2); -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px); font-size: .65rem; font-weight: 800; white-space: nowrap; }
+.app-demo-badge__dot { width: .42rem; height: .42rem; border-radius: 50%; background: #38DFD8; box-shadow: 0 0 0 .2rem rgba(56,223,216,.16); }
+.app-demo-badge__detail { color: rgba(255,255,255,.66); font-weight: 600; }
+.public-mobile-dock { left: 1rem !important; right: 1rem !important; max-width: 26rem !important; margin: 0 auto !important; bottom: calc(.65rem + env(safe-area-inset-bottom, 0px)) !important; border: 1px solid rgba(0,169,163,.42) !important; border-radius: 9999px !important; padding: .35rem .6rem !important; background: rgba(5,22,46,.94) !important; box-shadow: 0 18px 50px rgba(0,0,0,.65), inset 0 1px rgba(255,255,255,.2) !important; -webkit-backdrop-filter: blur(28px) saturate(180%); backdrop-filter: blur(28px) saturate(180%); }
+
+@media (max-width: 1023px) {
+  .app-experience-dock { display: block; }
+  .app-demo-badge { top: .55rem; }
+}
+@media (max-width: 520px) {
+  .app-demo-badge__detail { display: none; }
+  .app-experience-dock__surface { border-radius: 9999px; }
+  .app-experience-dock__item { min-height: 2.95rem; border-radius: 9999px; }
+}
+
+/* App privada: modo claro como estado inicial, con contraste y superficies iOS. */
+.light .app-private { --bg: #f2f2f7; --fg: #111827; --border: rgba(0,0,0,.1); }
+.light .app-private [class*="bg-slate-950"], .light .app-private [class*="bg-neutral-950"], .light .app-private [class*="bg-black"] { background-color: #f2f2f7 !important; }
+.light .app-private [class*="bg-slate-900"], .light .app-private [class*="bg-slate-800"], .light .app-private [class*="bg-neutral-900"] { background-color: #ffffff !important; }
+.light .app-private [class*="text-slate-100"], .light .app-private [class*="text-slate-200"], .light .app-private [class*="text-white"] { color: #17211f !important; }
+.light .app-private [class*="text-slate-300"], .light .app-private [class*="text-slate-400"] { color: #5d6b67 !important; }
+.light .app-private [class*="border-slate-700"], .light .app-private [class*="border-slate-800"] { border-color: rgba(0,0,0,.1) !important; }
+.light .app-private .app-topbar { background: rgba(255,255,255,.92); }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   NexoLegal — Design System
+   Inspirado en: Apple iOS 18, Linear, Vercel y Notion
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ─── EASING (Apple WWDC + Emil Kowalski) ──────────────────────────────── */
+:root {
+  --ease-out:    cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+  --vis-green: #082041;
+  --vis-green-deep: #05162E;
+  --vis-gold: #00A9A3;
+  --vis-gold-soft: #38DFD8;
+  --vis-ivory: #F8FAFC;
+}
+
+/* ─── DARK MODE (DEFAULT) — iOS obsidiana ─────────────────────────────── */
+:root, .dark {
+  --bg:           #000000;        /* iOS black puro */
+  --bg-1:         #0A0A0A;        /* page bg */
+  --bg-2:         #141414;        /* card */
+  --bg-3:         #1C1C1E;        /* elevated card - iOS systemGray6 */
+  --bg-4:         #2C2C2E;        /* hover / pressed */
+
+  --fg:           #FFFFFF;        /* primary text */
+  --fg-1:         rgba(255,255,255,0.85);  /* secondary */
+  --fg-2:         rgba(255,255,255,0.50);  /* tertiary */
+  --fg-3:         rgba(255,255,255,0.28);  /* placeholder */
+
+  --border:       rgba(255,255,255,0.08);
+  --border-2:     rgba(255,255,255,0.14);
+
+  /* iOS system accents */
+  --blue:         #0A84FF;  /* iOS blue */
+  --blue-bg:      rgba(10,132,255,0.15);
+  --blue-border:  rgba(10,132,255,0.3);
+  --green:        #30D158;
+  --green-bg:     rgba(48,209,88,0.12);
+  --orange:       #FF9F0A;
+  --orange-bg:    rgba(255,159,10,0.12);
+  --red:          #FF453A;
+  --red-bg:       rgba(255,69,58,0.12);
+  --purple:       #BF5AF2;
+  --purple-bg:    rgba(191,90,242,0.12);
+  --teal:         #5AC8F5;
+  --teal-bg:      rgba(90,200,245,0.12);
+  --indigo:       #5E5CE6;
+  --indigo-bg:    rgba(94,92,230,0.12);
+
+  --shadow-sm:    0 1px 3px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.4);
+  --shadow-md:    0 4px 16px rgba(0,0,0,0.5), 0 1px 4px rgba(0,0,0,0.4);
+  --shadow-lg:    0 12px 40px rgba(0,0,0,0.6), 0 4px 12px rgba(0,0,0,0.4);
+  --shadow-card:  0 0 0 0.5px rgba(255,255,255,0.06), 0 2px 12px rgba(0,0,0,0.4);
+
+  color-scheme: dark;
+}
+
+/* ─── LIGHT MODE — iOS blanco puro ────────────────────────────────────── */
+.light {
+  --bg:           #F2F2F7;        /* iOS systemGroupedBackground */
+  --bg-1:         #F2F2F7;
+  --bg-2:         #FFFFFF;        /* iOS secondarySystemGroupedBackground */
+  --bg-3:         #FFFFFF;
+  --bg-4:         rgba(0,0,0,0.06);
+
+  --fg:           #000000;
+  --fg-1:         rgba(0,0,0,0.75);
+  --fg-2:         rgba(0,0,0,0.45);
+  --fg-3:         rgba(0,0,0,0.25);
+
+  --border:       rgba(0,0,0,0.08);
+  --border-2:     rgba(0,0,0,0.14);
+
+  --blue:         #007AFF;  /* iOS light blue */
+  --blue-bg:      rgba(0,122,255,0.1);
+  --blue-border:  rgba(0,122,255,0.2);
+  --green:        #34C759;
+  --green-bg:     rgba(52,199,89,0.1);
+  --orange:       #FF9500;
+  --orange-bg:    rgba(255,149,0,0.1);
+  --red:          #FF3B30;
+  --red-bg:       rgba(255,59,48,0.1);
+  --purple:       #AF52DE;
+  --purple-bg:    rgba(175,82,222,0.1);
+  --teal:         #32ADE6;
+  --teal-bg:      rgba(50,173,230,0.1);
+  --indigo:       #5856D6;
+  --indigo-bg:    rgba(88,86,214,0.1);
+
+  --shadow-sm:    0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md:    0 4px 16px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.06);
+  --shadow-lg:    0 12px 40px rgba(0,0,0,0.12), 0 4px 12px rgba(0,0,0,0.06);
+  --shadow-card:  0 0 0 0.5px rgba(0,0,0,0.08), 0 2px 12px rgba(0,0,0,0.06);
+
+  color-scheme: light;
+}
+
+/* ─── BASE ──────────────────────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "ss01", "ss02", "cv01", "cv09";
+}
+
+/* ─── NexoLegal APP SHELL — premium mobile surface ────────────────────── */
+.app-shell {
+  background:
+    radial-gradient(circle at 88% -8%, rgba(0,169,163,.13), transparent 30rem),
+    var(--bg);
+}
+.app-shell main {
+  padding-bottom: max(5.75rem, calc(5rem + env(safe-area-inset-bottom)));
+}
+.app-topbar {
+  background: color-mix(in srgb, var(--vis-green-deep) 88%, transparent);
+  border-color: rgba(0,169,163,.18) !important;
+  box-shadow: 0 12px 30px rgba(0,0,0,.16);
+}
+.app-bottom-nav {
+  background: color-mix(in srgb, var(--vis-green-deep) 94%, transparent);
+  border-top: 1px solid rgba(0,169,163,.24);
+  box-shadow: 0 -12px 35px rgba(0,0,0,.24), inset 0 1px rgba(255,255,255,.05);
+  backdrop-filter: blur(26px) saturate(150%);
+  -webkit-backdrop-filter: blur(26px) saturate(150%);
+}
+.app-bottom-nav-item {
+  min-width: 3.7rem;
+  color: rgba(247,244,238,.58);
+  letter-spacing: -.01em;
+}
+.app-bottom-nav-item:hover { color: var(--vis-ivory); }
+.app-bottom-nav-item:active { transform: scale(.94); }
+.app-bottom-nav-item.text-blue-400,
+.app-bottom-nav-item.text-amber-400,
+.app-bottom-nav-item.text-purple-400,
+.app-bottom-nav-item.text-[#38DFD8] {
+  color: var(--vis-gold-soft) !important;
+  background: rgba(0,169,163,.13);
+  box-shadow: inset 0 0 0 1px rgba(0,169,163,.16);
+}
+.app-bottom-nav-item.text-blue-400 svg,
+.app-bottom-nav-item.text-amber-400 svg,
+.app-bottom-nav-item.text-purple-400 svg,
+.app-bottom-nav-item.text-[#38DFD8] svg { filter: drop-shadow(0 0 8px rgba(0,169,163,.4)); }
+
+/* ─── SMOOTH THEME TRANSITIONS ──────────────────────────────────────────── */
+body, aside, header, nav, main, div[class*="bg-"] {
+  transition: background-color 0.25s var(--ease-out), color 0.2s var(--ease-out), border-color 0.2s var(--ease-out);
+}
+
+/* ─── SCROLLBAR ─────────────────────────────────────────────────────────── */
+::-webkit-scrollbar          { width: 4px; height: 4px; }
+::-webkit-scrollbar-track    { background: transparent; }
+::-webkit-scrollbar-thumb    { background: var(--border-2); border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: var(--fg-2); }
+
+/* ─── iOS GLASS MATERIAL (vibrancy) ────────────────────────────────────── */
+/* Apple: "translucent layer that brings structure without stealing focus" */
+.glass {
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+.dark .glass, :root .glass {
+  background: rgba(10, 10, 10, 0.85);
+  border: 0.5px solid rgba(255,255,255,0.09);
+}
+.light .glass {
+  background: rgba(242,242,247,0.88);
+  border: 0.5px solid rgba(0,0,0,0.08);
+}
+
+/* ─── iOS CARD ──────────────────────────────────────────────────────────── */
+/* Inspired by iOS grouped table view + Linear's card system */
+.ios-card {
+  background: var(--bg-2);
+  border: 0.5px solid var(--border);
+  border-radius: 16px;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.15s var(--ease-out), box-shadow 0.15s var(--ease-out);
+}
+.ios-card:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ─── iOS PRESS FEEDBACK (Emil Kowalski: "buttons must respond on press") ─ */
+.press {
+  transition: transform 120ms var(--ease-out), opacity 120ms var(--ease-out);
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.press:active {
+  transform: scale(0.97);
+  opacity: 0.85;
+}
+
+/* ─── FOCUS RING ────────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* ─── AMBIENT GLOW (dark mode) ──────────────────────────────────────────── */
+.dark .ambient-top, :root .ambient-top {
+  background: radial-gradient(
+    ellipse 90% 50% at 50% -5%,
+    rgba(10, 132, 255, 0.12) 0%,
+    transparent 65%
+  );
+}
+.light .ambient-top {
+  background: radial-gradient(
+    ellipse 90% 50% at 50% -5%,
+    rgba(0, 122, 255, 0.05) 0%,
+    transparent 65%
+  );
+}
+
+/* ─── SIDEBAR NAV ITEM ──────────────────────────────────────────────────── */
+.nav-item {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 13.5px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--fg-2);
+  transition:
+    background-color 120ms var(--ease-out),
+    color 120ms var(--ease-out),
+    transform 120ms var(--ease-out);
+}
+.nav-item:hover { color: var(--fg); background: var(--bg-4); }
+.nav-item:active { transform: scale(0.98); }
+.nav-item.active {
+  background: var(--bg-3);
+  color: var(--fg);
+  font-weight: 600;
+}
+
+/* ─── TEXT GRADIENT ──────────────────────────────────────────────────────── */
+.text-blue-ios { color: var(--blue); }
+.text-green-ios { color: var(--green); }
+.text-orange-ios { color: var(--orange); }
+.text-red-ios { color: var(--red); }
+.text-purple-ios { color: var(--purple); }
+
+/* ─── BADGE ──────────────────────────────────────────────────────────────── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 7px;
+  border-radius: 999px;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+/* ─── MODAL OVERLAY ──────────────────────────────────────────────────────── */
+.modal-backdrop {
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(8px) saturate(120%);
+  -webkit-backdrop-filter: blur(8px) saturate(120%);
+}
+.light .modal-backdrop {
+  background: rgba(0,0,0,0.25);
+}
+
+/* ─── ANIMATIONS ─────────────────────────────────────────────────────────── */
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.6; transform: scale(0.8); }
+}
+
+.animate-slide-up  { animation: slide-up  0.22s var(--ease-out) both; }
+.animate-fade-in   { animation: fade-in   0.18s var(--ease-out) both; }
+.animate-scale-in  { animation: scale-in  0.16s var(--ease-out) both; }
+.animate-pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
+/* ─── NexoLegal LUXURY LANDING (INSPIRADO EN HOASESOR) ───────────────────── */
+.site-shell {
+  background-color: #faf8f5;
+  color: #17211f;
+  min-height: 100vh;
+  font-family: var(--font-plus-jakarta), sans-serif;
+  overflow-x: hidden;
+}
+
+/* Navbar flotante inteligente */
+.vis-navbar-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  transition: background 0.35s cubic-bezier(0.23, 1, 0.32, 1),
+              box-shadow 0.35s cubic-bezier(0.23, 1, 0.32, 1),
+              border-color 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Estado inicial: totalmente transparente sobre el hero oscuro */
+.vis-navbar-transparent {
+  background: linear-gradient(180deg, rgba(8, 22, 20, 0.80) 0%, rgba(8, 22, 20, 0.30) 70%, transparent 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 1.1rem 2rem;
+}
+
+/* Estado al hacer scroll: BLANCO con backdrop-blur (estilo Stripe/Linear) */
+.vis-navbar-scrolled {
+  background: rgba(255, 253, 250, 0.96);
+  backdrop-filter: blur(24px) saturate(200%);
+  -webkit-backdrop-filter: blur(24px) saturate(200%);
+  border-bottom: 1px solid rgba(201, 154, 91, 0.20);
+  box-shadow: 0 4px 24px rgba(16, 45, 41, 0.10), 0 1px 4px rgba(0,0,0,0.05);
+  padding: 0.75rem 2rem;
+}
+
+/* Cuando scrolled, los links del navbar deben ser oscuros */
+.vis-navbar-scrolled .vis-nav-link {
+  color: #17211f !important;
+}
+.vis-navbar-scrolled .vis-nav-link:hover {
+  color: #00A9A3 !important;
+}
+.vis-navbar-scrolled .vis-brand-title {
+  color: #17211f !important;
+}
+.vis-navbar-scrolled .vis-brand-sub {
+  color: #6e7771 !important;
+}
+.vis-mobile-menu-btn,
+.vis-navbar-scrolled .vis-mobile-menu-btn {
+  color: #10b981 !important;
+}
+
+.vis-hero-image-mobile { display: none; }
+
+/* El velo de contraste protege únicamente la lectura del lado izquierdo. */
+.vis-hero-overlay {
+  background: linear-gradient(
+    90deg,
+    rgba(7, 25, 22, 0.98) 0%,
+    rgba(7, 25, 22, 0.93) 28%,
+    rgba(7, 25, 22, 0.66) 48%,
+    rgba(7, 25, 22, 0.20) 67%,
+    rgba(7, 25, 22, 0) 82%
+  );
+  pointer-events: none;
+}
+
+@media (max-width: 767px) {
+  .vis-hero-image-desktop { display: none; }
+  .vis-hero-image-mobile {
+    display: block;
+    object-position: 54% center;
+    filter: saturate(.92) contrast(1.03) brightness(.88);
+  }
+
+  .vis-hero-overlay {
+    background: linear-gradient(
+      90deg,
+      rgba(7, 25, 22, 0.97) 0%,
+      rgba(7, 25, 22, 0.89) 40%,
+      rgba(7, 25, 22, 0.50) 68%,
+      rgba(7, 25, 22, 0) 100%
+    );
+  }
+}
+
+/* Hero Carousel */
+.vis-hero-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1.1s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.vis-hero-slide.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Gold decorative divider */
+.vis-gold-divider {
+  width: 48px;
+  height: 2px;
+  background: linear-gradient(90deg, #00A9A3, #38DFD8);
+  border-radius: 999px;
+}
+
+/* Interactive Card Glow & Hover */
+.vis-card-luxury {
+  background: #ffffff;
+  border: 1px solid rgba(27, 58, 53, 0.09);
+  border-radius: 1rem;
+  transition: transform 0.28s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.28s cubic-bezier(0.23, 1, 0.32, 1), border-color 0.28s ease;
+}
+
+.vis-card-luxury:hover {
+  transform: translateY(-6px);
+  border-color: rgba(201, 154, 91, 0.45);
+  box-shadow: 0 20px 40px -15px rgba(27, 58, 53, 0.12);
+}
+
+/* Micro-interactions */
+.vis-interactive-btn {
+  transition: transform 0.16s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.16s ease, background-color 0.16s ease;
+}
+
+.vis-interactive-btn:active {
+  transform: scale(0.96);
+}
+
+/* Keyframes */
+@keyframes visFadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.vis-animate-fade {
+  animation: visFadeIn 0.65s cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+
+/* ─── LA FIRMA: FOTO, ÓRBITA E INTERACCIÓN ───────────────────────────────── */
+.firm-photo-card {
+  position: relative;
+  min-height: 31rem;
+  overflow: hidden;
+  border-radius: 2rem;
+  border: 1px solid rgba(201, 154, 91, 0.34);
+  background: #05162E;
+  box-shadow: 0 30px 70px -38px rgba(13, 40, 36, 0.56);
+}
+
+.firm-photo-card img {
+  transition: transform 1.1s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.firm-photo-card:hover img {
+  transform: scale(1.035);
+}
+
+.firm-photo-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(9, 30, 27, 0.02) 32%, rgba(9, 30, 27, 0.92) 100%);
+}
+
+.firm-photo-caption {
+  position: absolute;
+  z-index: 2;
+  left: clamp(1.5rem, 4vw, 2.25rem);
+  right: clamp(1.5rem, 4vw, 2.25rem);
+  bottom: clamp(1.5rem, 4vw, 2.25rem);
+  display: grid;
+  gap: 0.45rem;
+  color: white;
+}
+
+.firm-photo-caption span {
+  color: #38DFD8;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.firm-photo-caption strong {
+  max-width: 19rem;
+  font-family: var(--font-playfair), Georgia, serif;
+  font-size: clamp(1.55rem, 3vw, 2.15rem);
+  line-height: 1.12;
+}
+
+.firm-principles-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(22rem, 0.95fr);
+  align-items: center;
+  gap: clamp(3rem, 7vw, 7rem);
+  min-height: 39rem;
+}
+
+.firm-orbit-wrap {
+  --orbit-radius: 14.6rem;
+  position: relative;
+  width: min(100%, 36rem);
+  aspect-ratio: 1;
+  margin-inline: auto;
+  isolation: isolate;
+}
+
+.firm-orbit-ring {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border-radius: 999px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.firm-orbit-ring-outer {
+  width: 88%;
+  height: 88%;
+  border: 1px solid rgba(168, 117, 53, 0.40);
+  box-shadow: 0 0 0 2.5rem rgba(201, 154, 91, 0.035);
+}
+
+.firm-orbit-ring-outer::before,
+.firm-orbit-ring-outer::after {
+  content: "";
+  position: absolute;
+  inset: -3.4rem;
+  border-radius: inherit;
+  border: 1px dashed rgba(23, 61, 54, 0.15);
+}
+
+.firm-orbit-ring-outer::after {
+  inset: 4.8rem;
+  border-style: solid;
+  border-color: rgba(23, 61, 54, 0.10);
+}
+
+.firm-orbit-ring-inner {
+  width: 48%;
+  height: 48%;
+  border: 1px solid rgba(23, 61, 54, 0.17);
+  background: radial-gradient(circle, rgba(201, 154, 91, 0.08), transparent 69%);
+}
+
+.firm-orbit-tracer {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+  width: 0.65rem;
+  height: 0.65rem;
+  margin: -0.325rem;
+  border-radius: 50%;
+  background: #00A9A3;
+  box-shadow: 0 0 0 0.45rem rgba(201, 154, 91, 0.13), 0 0 1.4rem rgba(201, 154, 91, 0.62);
+  animation: firm-orbit-spin 16s linear infinite;
+}
+
+.firm-orbit-core {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 3;
+  width: 13.5rem;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border: 0.7rem solid rgba(255, 255, 255, 0.92);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 1.6rem 3.5rem rgba(18, 47, 42, 0.24), 0 0 0 1px rgba(201, 154, 91, 0.42);
+}
+
+.firm-orbit-core-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(145deg, rgba(10, 35, 31, 0.02) 30%, rgba(10, 35, 31, 0.58) 100%);
+}
+
+.firm-orbit-core-mark {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  width: 2.55rem;
+  height: 2.55rem;
+  padding: 0.62rem;
+  color: #f2d69f;
+  border: 1px solid rgba(242, 214, 159, 0.44);
+  border-radius: 50%;
+  background: rgba(12, 46, 40, 0.82);
+  backdrop-filter: blur(8px);
+}
+
+.firm-orbit-node {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 5;
+  display: grid;
+  place-items: center;
+  gap: 0.35rem;
+  width: 6.3rem;
+  padding: 0;
+  color: #5f6863;
+  background: transparent;
+  border: 0;
+  transform: translate(-50%, -50%) rotate(var(--node-angle)) translateX(var(--orbit-radius)) rotate(var(--node-angle-negative));
+  cursor: pointer;
+}
+
+.firm-orbit-node-icon {
+  display: grid;
+  place-items: center;
+  width: 4.35rem;
+  aspect-ratio: 1;
+  color: #082041;
+  border: 1px solid rgba(23, 61, 54, 0.18);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 1rem 2.1rem rgba(28, 49, 44, 0.13);
+  transition: color 0.28s ease, background 0.28s ease, border-color 0.28s ease, transform 0.28s ease, box-shadow 0.28s ease;
+}
+
+.firm-orbit-node-icon svg {
+  width: 1.45rem;
+  height: 1.45rem;
+}
+
+.firm-orbit-node-label {
+  font-size: 0.69rem;
+  font-weight: 800;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.firm-orbit-node:hover .firm-orbit-node-icon,
+.firm-orbit-node:focus-visible .firm-orbit-node-icon {
+  transform: translateY(-4px);
+  border-color: rgba(201, 154, 91, 0.74);
+  box-shadow: 0 1.15rem 2.4rem rgba(28, 49, 44, 0.18);
+}
+
+.firm-orbit-node:focus-visible {
+  outline: 2px solid #00A9A3;
+  outline-offset: 0.45rem;
+  border-radius: 1rem;
+}
+
+.firm-orbit-node.is-active {
+  color: #082041;
+}
+
+.firm-orbit-node.is-active .firm-orbit-node-icon {
+  color: #fff;
+  border-color: #00A9A3;
+  background: linear-gradient(145deg, #d4a765, #a96f29);
+  box-shadow: 0 0 0 0.42rem rgba(201, 154, 91, 0.14), 0 1.2rem 2.4rem rgba(125, 82, 31, 0.28);
+  transform: scale(1.1);
+}
+
+.firm-principle-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-height: 29rem;
+  padding: clamp(2rem, 4vw, 3.25rem);
+  border: 1px solid rgba(23, 61, 54, 0.12);
+  border-radius: 2rem;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(246, 242, 235, 0.96));
+  box-shadow: 0 2rem 4rem -2.7rem rgba(15, 45, 40, 0.34);
+  animation: firm-panel-in 0.46s cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+
+.firm-principle-panel::after {
+  content: "";
+  position: absolute;
+  right: -4rem;
+  top: -5rem;
+  width: 15rem;
+  aspect-ratio: 1;
+  border: 1px solid rgba(201, 154, 91, 0.18);
+  border-radius: 50%;
+  box-shadow: 0 0 0 2.8rem rgba(201, 154, 91, 0.04);
+}
+
+.firm-principle-kicker {
+  display: inline-flex;
+  padding: 0.42rem 0.78rem;
+  color: #8a5d27;
+  border: 1px solid rgba(168, 117, 53, 0.24);
+  border-radius: 999px;
+  background: rgba(201, 154, 91, 0.08);
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.firm-principle-heading {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.firm-principle-icon {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 4.2rem;
+  aspect-ratio: 1;
+  color: #f3d89f;
+  border-radius: 1.25rem;
+  background: #082041;
+  box-shadow: 0 1rem 2rem rgba(23, 61, 54, 0.18);
+}
+
+.firm-principle-icon svg {
+  width: 1.65rem;
+  height: 1.65rem;
+}
+
+.firm-principle-heading span {
+  display: block;
+  color: #00A9A3;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.firm-principle-heading h3 {
+  margin-top: 0.18rem;
+  color: #17211f;
+  font-family: var(--font-playfair), Georgia, serif;
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.firm-principle-panel > p {
+  position: relative;
+  z-index: 1;
+  margin-top: 2rem;
+  color: #5b6560;
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
+  line-height: 1.82;
+}
+
+.firm-principle-links {
+  position: relative;
+  z-index: 2;
+  margin-top: auto;
+  padding-top: 1.15rem;
+  border-top: 1px solid rgba(23, 61, 54, 0.10);
+}
+
+.firm-principle-links > span {
+  color: #737c77;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.firm-principle-links > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 0.75rem;
+}
+
+.firm-principle-links button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.62rem 0.8rem;
+  color: #082041;
+  border: 1px solid rgba(23, 61, 54, 0.13);
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.72);
+  font-size: 0.76rem;
+  font-weight: 800;
+  transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+}
+
+.firm-principle-links button:hover,
+.firm-principle-links button:focus-visible {
+  color: #8a5d27;
+  border-color: rgba(201, 154, 91, 0.62);
+  background: #fff;
+  transform: translateY(-2px);
+}
+
+.firm-principle-links button svg {
+  width: 0.9rem;
+  height: 0.9rem;
+}
+
+@keyframes firm-orbit-spin {
+  from { transform: rotate(0deg) translateX(var(--orbit-radius)) rotate(0deg); }
+  to { transform: rotate(360deg) translateX(var(--orbit-radius)) rotate(-360deg); }
+}
+
+@keyframes firm-panel-in {
+  from { opacity: 0; transform: translateY(0.75rem); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 1023px) {
+  .firm-principles-grid {
+    grid-template-columns: 1fr;
+    gap: 4.5rem;
+    padding-top: 2rem;
+  }
+
+  .firm-principle-panel {
+    min-height: 26rem;
+  }
+}
+
+@media (max-width: 639px) {
+  .firm-photo-card {
+    min-height: 25rem;
+    border-radius: 1.5rem;
+  }
+
+  .firm-principles-grid {
+    gap: 3rem;
+  }
+
+  .firm-orbit-wrap {
+    --orbit-radius: 9.2rem;
+    width: min(100%, 23.5rem);
+  }
+
+  .firm-orbit-ring-outer {
+    width: 87%;
+    height: 87%;
+  }
+
+  .firm-orbit-ring-outer::before {
+    inset: -1.2rem;
+  }
+
+  .firm-orbit-ring-outer::after {
+    inset: 3rem;
+  }
+
+  .firm-orbit-core {
+    width: 8.6rem;
+    border-width: 0.45rem;
+  }
+
+  .firm-orbit-core-mark {
+    right: 0.45rem;
+    bottom: 0.45rem;
+    width: 2rem;
+    height: 2rem;
+    padding: 0.48rem;
+  }
+
+  .firm-orbit-node {
+    width: 4.6rem;
+  }
+
+  .firm-orbit-node-icon {
+    width: 3.15rem;
+  }
+
+  .firm-orbit-node-icon svg {
+    width: 1.1rem;
+    height: 1.1rem;
+  }
+
+  .firm-orbit-node-label {
+    font-size: 0.56rem;
+    letter-spacing: 0.06em;
+  }
+
+  .firm-principle-panel {
+    min-height: 31rem;
+    padding: 1.5rem;
+    border-radius: 1.5rem;
+  }
+
+  .firm-principle-icon {
+    width: 3.5rem;
+    border-radius: 1rem;
+  }
+
+  .firm-principle-links {
+    margin-top: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .firm-photo-card img,
+  .firm-orbit-node-icon,
+  .firm-principle-links button {
+    transition: none;
+  }
+
+  .firm-orbit-tracer,
+  .firm-principle-panel {
+    animation: none;
+  }
+}
+/* Portal: superficie clara, jerarquía de app y navegación iOS */
+.light .app-private.app-shell{background:#f2f2f7!important;color:#17211f!important;}
+.light .app-private .app-topbar{background:rgba(255,255,255,.94)!important;border-color:#d9d9df!important;box-shadow:0 6px 20px rgba(22,31,42,.08)!important;}
+.light .app-private .app-bottom-nav{background:rgba(255,255,255,.96)!important;border-top-color:#d9d9df!important;box-shadow:0 -8px 24px rgba(22,31,42,.1)!important;}
+.light .app-private .app-bottom-nav-item{color:#6b7280;}
+.light .app-private .app-bottom-nav-item.text-blue-400,.light .app-private .app-bottom-nav-item.text-amber-400,.light .app-private .app-bottom-nav-item.text-purple-400,.light .app-private .app-bottom-nav-item.text-[#38DFD8]{color:#9a6b2f!important;background:#f6ead7;}
+.light .app-private aside{background:rgba(255,255,255,.92)!important;border-color:#dedee5!important;box-shadow:8px 0 24px rgba(22,31,42,.05);}
+.light .app-private main{background:#f2f2f7;}
+.light .app-private .luxury-glass,.light .app-private .luxury-glass-gold{background:#fff!important;border-color:#dedee5!important;box-shadow:0 8px 24px rgba(22,31,42,.08)!important;color:#17211f;}
+.app-private aside{border-right:1px solid rgba(27,58,53,.12)!important;}
+.app-private aside nav button{border-radius:14px!important;transition:background .2s ease,color .2s ease,transform .2s ease!important;}
+.app-private aside nav button:hover{transform:translateX(3px);}
+.app-private .app-bottom-nav-item{transition:transform .18s ease,background .18s ease!important;}
+.app-private .app-bottom-nav-item:active{transform:scale(.94);}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.app-private aside nav button{animation:none!important;transition:none!important}}
+/* App shell: mobile follows an operational-app pattern with one stable workspace header. */
+@media(max-width:1023px){
+  .app-private .app-topbar{position:relative!important;top:auto!important;}
+  .app-private .app-workspace-header{position:sticky!important;top:0!important;}
+  .app-private main{padding-bottom:5rem;}
+}
+
+/* ─── MARQUESINA HALLOWEEN / PROMO CONTINUA ─────────────────────────── */
+@keyframes marquee-slide {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee-slide 68s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
