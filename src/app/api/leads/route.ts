@@ -36,8 +36,10 @@ export async function POST(request: Request) {
     `Fuente: ${text(attribution.utm_source, 80) || "direct"}`,
     `Medio: ${text(attribution.utm_medium, 80) || "none"}`,
     `Campaña: ${text(attribution.utm_campaign, 120) || "none"}`,
+    attribution.gclid ? `GCLID: ${text(attribution.gclid, 120)}` : "",
+    attribution.fbclid ? `FBCLID: ${text(attribution.fbclid, 120)}` : "",
     `Landing: ${text(attribution.landing_page, 200) || "/"}`,
-  ].join(" | ");
+  ].filter(Boolean).join(" | ");
   if (!fullName || !phone || !email || !legalArea || !caseDescription || !emailPattern.test(email)) {
     return NextResponse.json({ error: "Completa los campos requeridos con datos válidos." }, { status: 422 });
   }

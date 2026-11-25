@@ -32,18 +32,37 @@ export default function NexoLogo({
 
   return (
     <div className={`flex items-center gap-2.5 sm:gap-3 select-none ${className}`} id="nexolegal-brand-logo">
-      {/* Official Nexo Icon */}
-      <div
-        className={`relative ${iconSizes[size]} rounded-2xl overflow-hidden border border-[#00A9A3]/50 shadow-md bg-[#05162E] flex items-center justify-center shrink-0 p-1 group-hover:border-[#00A9A3] transition-colors`}
-      >
-        <Image
-          src="/favicon.svg"
-          alt="NexoLegal"
-          width={40}
-          height={40}
-          className="w-full h-full object-contain"
-          priority
-        />
+      {/* Official NT Monogram / Isotipo Mark - Free without bubble wrapper */}
+      <div className={`relative ${iconSizes[size]} flex items-center justify-center shrink-0`}>
+        {isDark ? (
+          <Image
+            src="/icon-dark.png"
+            alt="Nexo Talento Logo"
+            width={48}
+            height={48}
+            className="w-full h-full object-contain"
+            priority
+          />
+        ) : (
+          <>
+            <Image
+              src="/icon-light.png"
+              alt="Nexo Talento Logo"
+              width={48}
+              height={48}
+              className="w-full h-full object-contain dark:hidden"
+              priority
+            />
+            <Image
+              src="/icon-dark.png"
+              alt="Nexo Talento Logo"
+              width={48}
+              height={48}
+              className="w-full h-full object-contain hidden dark:block"
+              priority
+            />
+          </>
+        )}
       </div>
 
       {/* Typography */}

@@ -47,11 +47,11 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
-      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.svg?v=2", type: "image/svg+xml" },
+      { url: "/favicon.ico?v=2", sizes: "any" },
     ],
     apple: [
-      { url: "/icon-dark.png", sizes: "180x180", type: "image/png" },
+      { url: "/icon-dark.png?v=2", sizes: "180x180", type: "image/png" },
     ],
   },
   appleWebApp: {
@@ -74,9 +74,9 @@ export default function RootLayout({
         <meta name="HandheldFriendly" content="true" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="mobile-web-app-capable" content="yes" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <link rel="alternate icon" href="/favicon.ico" sizes="any" />
-        <link rel="apple-touch-icon" href="/icon-dark.png" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2" />
+        <link rel="alternate icon" href="/favicon.ico?v=2" sizes="any" />
+        <link rel="apple-touch-icon" href="/icon-dark.png?v=2" />
         <meta name="theme-color" content="#05162E" media="(prefers-color-scheme: dark)" />
         <meta name="theme-color" content="#F2F2F7" media="(prefers-color-scheme: light)" />
         {/* Inline script to prevent flash of wrong theme */}

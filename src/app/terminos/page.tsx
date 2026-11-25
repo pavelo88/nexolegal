@@ -107,15 +107,28 @@ const termSections = [
     ),
   },
   {
-    title: "9. Canales de Notificación y Modificaciones",
+    title: "9. Política de Cancelación, Desistimiento y Reembolsos",
+    content: (
+      <>
+        En cumplimiento de los estándares de protección al consumidor y las directrices de plataformas de pago y redes publicitarias (Google Ads, Meta Ads):
+        <ul className="mt-2 list-disc pl-5 space-y-1">
+          <li><strong>Consultas Preliminares:</strong> El cliente podrá cancelar o reprogramar una consulta agendada con al menos 4 horas de anticipación sin penalidad, recibiendo el reembolso íntegro o la reasignación de turno.</li>
+          <li><strong>Igualas Jurídicas y Retainers Corporativos:</strong> Los planes mensuales pueden cancelarse en cualquier momento con un preaviso de 15 días calendario antes del siguiente ciclo de facturación, sin cláusulas de permanencia abusivas.</li>
+          <li><strong>Patrocinio y Procesos en Curso:</strong> En caso de revocatoria de mandato o terminación anticipada por voluntad del cliente, se liquidarán exclusivamente los honorarios proporcionales a las fases procesales efectivamente ejecutadas y documentadas en el expediente, reembolsando los saldos no devengados conforme a la hoja de encargo.</li>
+        </ul>
+      </>
+    ),
+  },
+  {
+    title: "10. Canales de Notificación y Modificaciones",
     content: (
       <>
         NexoLegal podrá actualizar estos términos conforme a evoluciones normativas del ordenamiento jurídico ecuatoriano. Toda modificación
         se publicará en esta sección.
         <br />
         <br />
-        Para comunicaciones formales o notificaciones legales:{" "}
-        <strong className="text-[#00A9A3]">legal@nexotalentos.com</strong> · Quito, Ecuador.
+        Para comunicaciones formales o solicitudes de reembolso/cancelación:{" "}
+        <strong className="text-[#00A9A3]">legal@nexotalentos.com</strong> · WhatsApp: <strong>+593 99 722 4453</strong> · Quito, Ecuador.
       </>
     ),
   },

@@ -41,34 +41,34 @@ import Footer from "@/components/Footer";
 import NexoLogo from "@/components/NexoLogo";
 import { getAttribution, trackEvent } from "@/lib/analytics";
 
-// ─── SLIDES DATA (ESTILO HOASESOR CON ESTÉTICA LUXURY NexoLegal) ─────────────
+// ─── SLIDES DATA (GANCHOS DE ALTA CONVERSIÓN PUBLICITARIA NEXOLEGAL) ────────
 const slides = [
   {
-    tag: "ASESORÍA JURÍDICA COMPLEMENTARIA DE NEXO TALENTO · ECUADOR",
-    title: "Defensa Legal & Litigios de Alto Impacto",
+    tag: "DEFENSA JUDICIAL INMEDIATA · COBERTURA NACIONAL ECUADOR",
+    title: "Defensa Jurídica & Litigios de Alto Impacto",
     subtitle:
-      "Respaldo jurídico integral para empresas, talento y familias de la red Nexo Talento. Estrategia procesal rigurosa y plataforma LegalTech 24/7.",
-    primaryCta: { text: "Hablar con un Abogado", href: "#contacto" },
+      "Protección inmediata ante demandas, litigios judiciales y procesos fiscales en Ecuador. Diagnóstico estratégico en menos de 24 horas y seguimiento digital en tiempo real.",
+    primaryCta: { text: "Solicitar Diagnóstico en 24h", href: "#contacto" },
     secondaryCta: { text: "Conocer Áreas de Litigio", href: "#servicios" },
-    badge: "Representación Nacional",
+    badge: "Respaldo Colegiado",
   },
   {
-    tag: "DERECHO CORPORATIVO & MERCANTIL",
-    title: "Asesoría Mercantil & Blindaje Empresarial",
+    tag: "DERECHO CORPORATIVO & COMPLIANCE EMPRESARIAL",
+    title: "Blindaje Societario, Laboral & Tributario",
     subtitle:
-      "Constitución, contratos de alta complejidad, cumplimiento normativo y consultoría societaria estratégica para empresas y directorios.",
-    primaryCta: { text: "Asesoría Corporativa", href: "#contacto" },
+      "Prevención de contingencias, contratos blindados, reestructuración y defensa laboral para empresas de la red Nexo Talento. Tarifa fija mensual transparente sin sorpresas.",
+    primaryCta: { text: "Plan Retainer Empresas", href: "#contacto" },
     secondaryCta: { text: "Ver Servicios de Empresa", href: "#servicios" },
-    badge: "Soluciones a Medida",
+    badge: "Sin Costes Ocultos",
   },
   {
-    tag: "DERECHO DE FAMILIA & PATRIMONIO",
+    tag: "DERECHO CIVIL, FAMILIA & PATRIMONIO",
     title: "Protección Familiar, Herencias & Sucesiones",
     subtitle:
-      "Resolución pacífica de acuerdos familiares, división patrimonial, testamentos y sucesiones con discreción, respaldo ético y trato humano.",
+      "Resolución pacífica de acuerdos familiares, división de bienes, testamentos y sucesiones con absoluta reserva ética, empatía y patrocinio letrado riguroso.",
     primaryCta: { text: "Consultar Caso Familiar", href: "#contacto" },
     secondaryCta: { text: "Guía de Sucesiones", href: "#servicios" },
-    badge: "Reserva Profesional",
+    badge: "Secreto Profesional",
   },
 ];
 
@@ -576,6 +576,7 @@ export default function Home() {
                 <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-start gap-4 max-w-xl">
                   <a
                     href={slide.primaryCta.href}
+                    onClick={() => trackEvent("contact_click", { cta: slide.primaryCta.text, slide: slide.title })}
                     className="vis-interactive-btn w-full sm:w-auto px-7 py-3.5 rounded-lg bg-gradient-to-r from-[#00A9A3] to-[#00A9A3] text-white font-bold text-sm shadow-xl shadow-[#00A9A3]/30 hover:brightness-110 active:scale-95 flex items-center justify-center gap-2"
                   >
                     <span>{slide.primaryCta.text}</span>
@@ -584,6 +585,7 @@ export default function Home() {
 
                   <a
                     href={slide.secondaryCta.href}
+                    onClick={() => trackEvent("service_explore_click", { cta: slide.secondaryCta.text, slide: slide.title })}
                     className="vis-interactive-btn w-full sm:w-auto px-7 py-3.5 rounded-lg bg-white/10 hover:bg-white/15 border border-white/20 text-white font-semibold text-sm backdrop-blur-md active:scale-95 flex items-center justify-center gap-2"
                   >
                     <span>{slide.secondaryCta.text}</span>

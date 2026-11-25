@@ -261,6 +261,10 @@ export default function Footer() {
               Términos y Condiciones
             </Link>
             <span>•</span>
+            <Link href="/terminos" className="hover:text-white transition-colors">
+              Cancelación &amp; Reembolsos
+            </Link>
+            <span>•</span>
             <Link href="/privacidad" className="hover:text-white transition-colors">
               Privacidad &amp; LOPDP
             </Link>
