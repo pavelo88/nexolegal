@@ -84,7 +84,7 @@ export default function RootLayout({
           __html: `(function(){try{var t=localStorage.getItem('theme')||'light';document.documentElement.classList.add(t==='dark'?'dark':'light')}catch(e){document.documentElement.classList.add('light')}})();`
         }} />
       </head>
-      <body className="min-h-screen font-sans antialiased">
+      <body className="min-h-screen font-sans antialiased bg-[#F8FAFC] text-slate-900 dark:bg-[#05162E] dark:text-slate-100 transition-colors duration-200">
         <ThemeProvider>
           {children}
           <ConsentAnalytics />

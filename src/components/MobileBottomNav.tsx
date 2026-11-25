@@ -13,7 +13,16 @@ interface MobileBottomNavProps {
 export default function MobileBottomNav({ onOpenAssistant }: MobileBottomNavProps) {
   const pathname = usePathname();
 
+  const triggerHaptic = (ms = 15) => {
+    if (typeof window !== "undefined" && "vibrate" in navigator) {
+      try {
+        navigator.vibrate(ms);
+      } catch {}
+    }
+  };
+
   const handleOpenAI = () => {
+    triggerHaptic(12);
     if (onOpenAssistant) {
       onOpenAssistant();
     } else {
@@ -22,78 +31,113 @@ export default function MobileBottomNav({ onOpenAssistant }: MobileBottomNavProp
   };
 
   const handleWhatsApp = () => {
+    triggerHaptic(15);
     const text = encodeURIComponent(
-      "Hola NexoLegal, me contacto desde la app móvil para consultar con un abogado."
+      "Hola NexoLegal, me contacto desde la web móvil para consultar con un abogado."
     );
     trackEvent("whatsapp_click", { placement: "mobile_bottom_nav" });
-    window.open(`https://wa.me/593997224453?text=${text}`, "_blank");
+    window.open(`https://wa.me/593997224453?text=${text}`, "_blank", "noopener,noreferrer");
   };
 
   return (
     <nav
-      role="navigation"
-      aria-label="Navegación móvil inferior"
-      className="public-mobile-dock fixed z-50 md:hidden"
+      aria-label="Barra de navegación móvil NexoLegal"
+      className="fixed inset-x-0 bottom-0 z-50 md:hidden select-none pointer-events-auto"
     >
-      <div className="flex items-center justify-between gap-1 relative px-1">
-        {/* 1. Áreas de Litigio / Servicios */}
-        <Link
-          href="/#servicios"
-          className="flex flex-col items-center justify-center gap-0.5 text-white/80 hover:text-white active:scale-90 transition-all flex-1 min-h-11 py-1"
-        >
-          <Scale className="w-4 h-4 text-[#38DFD8]" />
-          <span className="text-[10px] font-bold tracking-tight text-white/95">Servicios</span>
-        </Link>
+      <div className="relative">
+        {/* Apple iOS Drop Shadow */}
+        <div aria-hidden className="pointer-events-none absolute inset-0 drop-shadow-[0_-8px_24px_rgba(0,0,0,0.5)]">
+          <div className="h-full w-full rounded-t-[50%_1.75rem] bg-[#05162E]/80 ios-notch-mask" />
+        </div>
 
-        {/* 2. Asistente IA Legal */}
-        <button
-          type="button"
-          onClick={handleOpenAI}
-          className="flex flex-col items-center justify-center gap-0.5 active:scale-90 transition-all flex-1 min-h-11 py-1 text-white/85 hover:text-[#38DFD8] group"
-          aria-label="Abrir Asistente IA Legal"
-        >
-          <div className="relative">
-            <Sparkles className="w-4 h-4 text-[#38DFD8] group-hover:scale-110 transition-transform" />
-            <span className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 rounded-full bg-emerald-400 ring-1 ring-black animate-pulse" />
-          </div>
-          <span className="text-[10px] font-bold tracking-tight text-[#38DFD8]">Asistente IA</span>
-        </button>
+        {/* Apple Frosted Glass Background with Elliptic Arch & Center Notch */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 rounded-t-[50%_1.75rem] border-t border-white/[0.12] bg-[#05162E]/95 backdrop-blur-2xl ios-notch-mask"
+        />
 
-        {/* 3. BOTÓN CENTRAL FLOTANTE (ESTILO APPLE LUXURY CON GLOW) */}
-        <Link
-          href="/app"
-          className="flex flex-col items-center justify-center -mt-5 group active:scale-90 transition-all px-1.5"
-        >
-          <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#05162E] via-[#1b433b] to-[#00A9A3] text-white flex items-center justify-center shadow-[0_8px_25px_rgba(0,169,163,0.45)] border-2 border-white/90 ring-2 ring-[#00A9A3]/60 group-hover:scale-105 group-hover:brightness-110 transition-transform">
-            <Lock className="w-5 h-5 text-[#fef9f0]" />
-          </div>
-          <span className="text-[10px] font-extrabold text-[#38DFD8] tracking-wider mt-0.5 drop-shadow">
-            Tu app
-          </span>
-        </Link>
+        {/* 5-Column Grid */}
+        <ul className="relative grid grid-cols-5 items-end px-2 pb-[max(0.6rem,env(safe-area-inset-bottom))]">
+          {/* Item 1: Servicios */}
+          <li className="flex h-14 items-end justify-center">
+            <Link
+              href="/#servicios"
+              onClick={() => triggerHaptic(12)}
+              className="flex min-h-12 min-w-11 flex-col items-center justify-end gap-1 rounded-xl px-1 pb-1 transition-all duration-150 active:scale-90 text-slate-300 hover:text-white"
+            >
+              <Scale className="h-5 w-5 text-[#38DFD8]" />
+              <span className="text-[10px] font-semibold leading-none tracking-tight text-white/95">Servicios</span>
+            </Link>
+          </li>
 
-        {/* 4. Blog Jurídico */}
-        <Link
-          href="/blog"
-          className={`flex flex-col items-center justify-center gap-0.5 active:scale-90 transition-all flex-1 min-h-11 py-1 ${
-            pathname === "/blog" ? "text-[#38DFD8]" : "text-white/80 hover:text-white"
-          }`}
-        >
-          <BookOpen className={`w-4 h-4 ${pathname === "/blog" ? "text-[#38DFD8]" : "text-white/70"}`} />
-          <span className="text-[10px] font-bold tracking-tight text-white/95">Blog</span>
-        </Link>
+          {/* Item 2: Asistente IA */}
+          <li className="flex h-14 items-end justify-center">
+            <button
+              type="button"
+              onClick={handleOpenAI}
+              className="flex min-h-12 min-w-11 flex-col items-center justify-end gap-1 rounded-xl px-1 pb-1 transition-all duration-150 active:scale-90 text-slate-300 hover:text-white cursor-pointer"
+            >
+              <div className="relative">
+                <Sparkles className="h-5 w-5 text-[#38DFD8]" />
+                <span className="absolute -top-1 -right-1 flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00A9A3]" />
+                </span>
+              </div>
+              <span className="text-[10px] font-semibold leading-none tracking-tight text-[#38DFD8]">Asistente IA</span>
+            </button>
+          </li>
 
-        {/* 5. WhatsApp Directo */}
-        <button
-          type="button"
-          onClick={handleWhatsApp}
-          className="flex flex-col items-center justify-center gap-0.5 text-white/80 hover:text-emerald-300 active:scale-90 transition-all flex-1 min-h-11 py-1"
-        >
-          <div className="w-5 h-5 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-sm">
-            <MessageCircle className="w-3.5 h-3.5 fill-white text-[#25D366]" />
-          </div>
-          <span className="text-[10px] font-bold tracking-tight text-[#38DFD8]">WhatsApp</span>
-        </button>
+          {/* Center Column: Notch Floating Tu app Button */}
+          <li className="relative flex h-14 justify-center">
+            <Link
+              href="/app"
+              onClick={() => triggerHaptic(25)}
+              aria-label="Acceder a Tu app NexoLegal"
+              className="group absolute -top-[28px] bottom-0 flex flex-col items-center justify-between pb-1"
+            >
+              <span className="relative grid h-[58px] w-[58px] place-items-center rounded-full bg-gradient-to-br from-cyan-400 via-[#00A9A3] to-blue-600 text-slate-950 shadow-[0_4px_20px_rgba(0,169,163,0.5)] ring-2 ring-white/30 transition-transform duration-150 group-active:scale-90">
+                <span className="absolute inset-0 rounded-full animate-ping bg-[#00A9A3]/30 pointer-events-none" />
+                <Lock className="h-6 w-6 text-slate-950" aria-hidden />
+              </span>
+              <span className="whitespace-nowrap text-[10px] font-black leading-none tracking-wider text-cyan-400 uppercase drop-shadow">
+                Tu app
+              </span>
+            </Link>
+          </li>
+
+          {/* Item 4: Blog */}
+          <li className="flex h-14 items-end justify-center">
+            <Link
+              href="/blog"
+              onClick={() => triggerHaptic(12)}
+              className={`flex min-h-12 min-w-11 flex-col items-center justify-end gap-1 rounded-xl px-1 pb-1 transition-all duration-150 active:scale-90 ${
+                pathname === "/blog" ? "text-cyan-400 font-bold" : "text-slate-300 hover:text-white"
+              }`}
+            >
+              <BookOpen className={`h-5 w-5 ${pathname === "/blog" ? "text-cyan-400" : "text-slate-300"}`} />
+              <span className="text-[10px] font-semibold leading-none tracking-tight">Blog</span>
+            </Link>
+          </li>
+
+          {/* Item 5: WhatsApp */}
+          <li className="flex h-14 items-end justify-center">
+            <button
+              type="button"
+              onClick={handleWhatsApp}
+              className="flex min-h-12 min-w-11 flex-col items-center justify-end gap-1 rounded-xl px-1 pb-1 transition-all duration-150 active:scale-90 text-slate-300 hover:text-white cursor-pointer"
+            >
+              <div className="relative">
+                <MessageCircle className="h-5 w-5 text-[#25D366] fill-[#25D366]" />
+                <span className="absolute -top-1 -right-1 flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+                </span>
+              </div>
+              <span className="text-[10px] font-semibold leading-none tracking-tight text-emerald-400">WhatsApp</span>
+            </button>
+          </li>
+        </ul>
       </div>
     </nav>
   );

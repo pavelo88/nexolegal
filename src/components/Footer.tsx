@@ -63,19 +63,6 @@ export default function Footer() {
               <NexoLogo size="md" variant="dark" showSubtitle={true} />
             </Link>
 
-            <p className="text-slate-300 leading-relaxed text-xs max-w-md">
-              División jurídica y plataforma LegalTech complementaria de{" "}
-              <a
-                href="https://nexotalentos.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[#38DFD8] hover:underline font-semibold"
-              >
-                Nexo Talento
-              </a>
-              . Asesoría estratégica para familias, empresas y profesionales con trazabilidad procesal en tiempo real.
-            </p>
-
             <div className="space-y-2 pt-2 text-slate-300 text-xs">
               <div className="flex items-start gap-2.5">
                 <Building2 className="w-4 h-4 text-[#00A9A3] shrink-0 mt-0.5" />
@@ -86,7 +73,7 @@ export default function Footer() {
               <div className="flex items-center gap-2.5">
                 <Globe2 className="w-4 h-4 text-[#00A9A3] shrink-0" />
                 <span>
-                  <strong>Alcance:</strong> Cobertura procesal nacional en Ecuador y enlace internacional en España &amp; Latam vía Nexo Talento.
+                  <strong>Alcance:</strong> Cobertura procesal nacional en Ecuador y enlace internacional en España &amp; Latam.
                 </span>
               </div>
               <div className="flex items-center gap-2.5">
@@ -205,38 +192,27 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Col 4 (2 cols): Nexo Talento & Enlaces */}
+          {/* Col 4 (2 cols): SinergIA Tech & Enlaces */}
           <div className="lg:col-span-2 space-y-3">
             <h3 className="text-white font-bold text-sm border-b border-slate-800 pb-2 md:border-b-0 md:pb-0">
-              Ecosistema Nexo
+              SinergIA Tech
             </h3>
             <p className="text-slate-400 text-[11px] leading-relaxed">
-              Plataforma vinculada a{" "}
-              <a
-                href="https://nexotalentos.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white font-bold hover:text-[#38DFD8]"
-              >
-                nexotalentos.com
-              </a>
-              , líder en selección ejecutiva, headhunting y servicios corporativos en Ecuador, España y Latinoamérica.
+              Infraestructura tecnológica e inteligencia aplicada para la práctica legal y corporativa en Ecuador, España y Latinoamérica.
             </p>
             <div className="pt-2 flex flex-col gap-1.5">
-              <a
-                href="https://nexotalentos.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs text-[#38DFD8] hover:underline font-semibold inline-flex items-center gap-1"
-              >
-                <span>Visitar Nexo Talento</span>
-                <ChevronRight className="w-3 h-3" />
-              </a>
               <Link
                 href="/#contacto"
-                className="text-xs text-slate-300 hover:text-white inline-flex items-center gap-1"
+                className="text-xs text-[#38DFD8] hover:underline font-semibold inline-flex items-center gap-1"
               >
                 <span>Solicitar Consulta Inmediata</span>
+                <ChevronRight className="w-3 h-3" />
+              </Link>
+              <Link
+                href="/privacidad"
+                className="text-xs text-slate-300 hover:text-white inline-flex items-center gap-1"
+              >
+                <span>Políticas de Privacidad</span>
               </Link>
             </div>
           </div>
@@ -245,16 +221,7 @@ export default function Footer() {
         {/* ─── 3. BARRA INFERIOR DE COPYRIGHT Y LEGALES ─────────────────── */}
         <div className="mt-12 pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-400 gap-4">
           <p className="text-center sm:text-left">
-            © <CopyrightYear /> NexoLegal. Plataforma jurídica de{" "}
-            <a
-              href="https://nexotalentos.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-slate-300 hover:text-white underline font-semibold"
-            >
-              Nexo Talento
-            </a>
-            . Todos los derechos reservados.
+            © <CopyrightYear /> SinergIA Tech. Todos los derechos reservados.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 text-slate-400">
             <Link href="/terminos" className="hover:text-white transition-colors">

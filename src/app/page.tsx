@@ -37,6 +37,7 @@ import AnimatedCounter from "@/components/AnimatedCounter";
 import PromoMarquee from "@/components/PromoMarquee";
 import MobileBottomNav from "@/components/MobileBottomNav";
 import ThemeToggle from "@/components/ThemeToggle";
+import { useTheme } from "@/components/ThemeProvider";
 import Footer from "@/components/Footer";
 import NexoLogo from "@/components/NexoLogo";
 import { getAttribution, trackEvent } from "@/lib/analytics";
@@ -156,6 +157,8 @@ const faqs = [
 ];
 
 export default function Home() {
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
   const [scrolled, setScrolled] = useState(false);
   const [navVisible, setNavVisible] = useState(true);
   const lastScrollY = useRef(0);
@@ -239,7 +242,7 @@ export default function Home() {
   };
 
   return (
-    <div className="site-shell relative min-h-screen pb-16 md:pb-0">
+    <div className="site-shell relative min-h-screen pb-0">
       {/* ────────────────────────────────────────────────────────────────────────
           0 & 1. BARRA FLOTANTE CON SMART HIDE AL BAJAR Y REVEAL AL SUBIR
           ──────────────────────────────────────────────────────────────────────── */}
@@ -249,14 +252,16 @@ export default function Home() {
         <header
           className={`transition-all duration-300 ${
             scrolled
-              ? "bg-white/95 backdrop-blur-xl border-b border-[#e6e0d6] shadow-[0_4px_24px_rgba(0,0,0,0.06)] py-2 sm:py-2.5 px-3 sm:px-6 lg:px-8"
+              ? isDark
+                ? "bg-[#05162E]/95 backdrop-blur-xl border-b border-slate-800 shadow-[0_4px_24px_rgba(0,0,0,0.4)] py-2 sm:py-2.5 px-3 sm:px-6 lg:px-8"
+                : "bg-white/95 backdrop-blur-xl border-b border-[#e6e0d6] shadow-[0_4px_24px_rgba(0,0,0,0.06)] py-2 sm:py-2.5 px-3 sm:px-6 lg:px-8"
               : "bg-transparent border-b border-transparent py-2.5 sm:py-3 px-3 sm:px-6 lg:px-8"
           }`}
         >
           <div className="max-w-7xl mx-auto flex items-center justify-between">
             {/* Logo Brand Oficial */}
             <Link href="/" className="flex min-h-11 items-center group">
-              <NexoLogo size="md" variant={scrolled ? "light" : "dark"} showSubtitle={true} />
+              <NexoLogo size="md" variant={isDark ? "dark" : (scrolled ? "light" : "dark")} showSubtitle={true} />
             </Link>
 
             {/* Desktop Nav Links */}
@@ -264,7 +269,7 @@ export default function Home() {
               <Link
                 href="#inicio"
                 className={`text-xs uppercase tracking-widest font-semibold transition-colors duration-200 py-1.5 ${
-                  scrolled ? "text-[#17211f] hover:text-[#00A9A3]" : "text-white/90 hover:text-[#38DFD8]"
+                  isDark || !scrolled ? "text-white/90 hover:text-[#38DFD8]" : "text-[#17211f] hover:text-[#00A9A3]"
                 }`}
               >
                 Inicio
@@ -272,7 +277,7 @@ export default function Home() {
               <Link
                 href="/nosotros"
                 className={`text-xs uppercase tracking-widest font-semibold transition-colors duration-200 py-1.5 ${
-                  scrolled ? "text-[#17211f] hover:text-[#00A9A3]" : "text-white/90 hover:text-[#38DFD8]"
+                  isDark || !scrolled ? "text-white/90 hover:text-[#38DFD8]" : "text-[#17211f] hover:text-[#00A9A3]"
                 }`}
               >
                 Nosotros
@@ -286,7 +291,7 @@ export default function Home() {
               >
                 <button
                   className={`flex items-center gap-1.5 text-xs uppercase tracking-widest font-semibold transition-colors duration-200 py-1.5 cursor-pointer focus:outline-none ${
-                    scrolled ? "text-[#17211f] hover:text-[#00A9A3]" : "text-white/80 hover:text-[#38DFD8]"
+                    isDark || !scrolled ? "text-white/90 hover:text-[#38DFD8]" : "text-[#17211f] hover:text-[#00A9A3]"
                   }`}
                   onClick={() => setServicesDropdown(!servicesDropdown)}
                 >
@@ -296,15 +301,17 @@ export default function Home() {
 
                 {servicesDropdown && (
                   <div className={`absolute top-full left-0 w-64 rounded-2xl shadow-2xl p-2.5 flex flex-col gap-1 z-50 animate-fade-in ${
-                    scrolled
-                      ? "bg-white border border-[#e6e0d6] text-[#17211f]"
-                      : "bg-[#05162E]/95 backdrop-blur-xl border border-[#00A9A3]/30 text-white"
+                    isDark
+                      ? "bg-[#05162E]/98 backdrop-blur-xl border border-[#00A9A3]/30 text-white"
+                      : (scrolled
+                          ? "bg-white border border-[#e6e0d6] text-[#17211f]"
+                          : "bg-[#05162E]/95 backdrop-blur-xl border border-[#00A9A3]/30 text-white")
                   }`}>
                     <Link
                       href="#servicios"
                       onClick={() => setServicesDropdown(false)}
                       className={`flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs transition-all ${
-                        scrolled ? "text-[#17211f] hover:bg-stone-100" : "text-white/90 hover:bg-[#00A9A3]/15 hover:text-[#38DFD8]"
+                        isDark || !scrolled ? "text-white/90 hover:bg-[#00A9A3]/15 hover:text-[#38DFD8]" : "text-[#17211f] hover:bg-stone-100"
                       }`}
                     >
                       <Gavel className="w-4 h-4 text-[#00A9A3]" />
@@ -314,7 +321,7 @@ export default function Home() {
                       href="#servicios"
                       onClick={() => setServicesDropdown(false)}
                       className={`flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs transition-all ${
-                        scrolled ? "text-[#17211f] hover:bg-stone-100" : "text-white/90 hover:bg-[#00A9A3]/15 hover:text-[#38DFD8]"
+                        isDark || !scrolled ? "text-white/90 hover:bg-[#00A9A3]/15 hover:text-[#38DFD8]" : "text-[#17211f] hover:bg-stone-100"
                       }`}
                     >
                       <Briefcase className="w-4 h-4 text-[#00A9A3]" />
@@ -324,7 +331,7 @@ export default function Home() {
                       href="#servicios"
                       onClick={() => setServicesDropdown(false)}
                       className={`flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs transition-all ${
-                        scrolled ? "text-[#17211f] hover:bg-stone-100" : "text-white/90 hover:bg-[#00A9A3]/15 hover:text-[#38DFD8]"
+                        isDark || !scrolled ? "text-white/90 hover:bg-[#00A9A3]/15 hover:text-[#38DFD8]" : "text-[#17211f] hover:bg-stone-100"
                       }`}
                     >
                       <Scale className="w-4 h-4 text-[#00A9A3]" />
@@ -334,7 +341,7 @@ export default function Home() {
                       href="#servicios"
                       onClick={() => setServicesDropdown(false)}
                       className={`flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs transition-all ${
-                        scrolled ? "text-[#17211f] hover:bg-stone-100" : "text-white/90 hover:bg-[#00A9A3]/15 hover:text-[#38DFD8]"
+                        isDark || !scrolled ? "text-white/90 hover:bg-[#00A9A3]/15 hover:text-[#38DFD8]" : "text-[#17211f] hover:bg-stone-100"
                       }`}
                     >
                       <Building2 className="w-4 h-4 text-[#00A9A3]" />
@@ -347,7 +354,7 @@ export default function Home() {
               <Link
                 href="/blog"
                 className={`text-xs uppercase tracking-widest font-semibold transition-colors duration-200 py-1.5 ${
-                  scrolled ? "text-[#17211f] hover:text-[#00A9A3]" : "text-white/90 hover:text-[#38DFD8]"
+                  isDark || !scrolled ? "text-white/90 hover:text-[#38DFD8]" : "text-[#17211f] hover:text-[#00A9A3]"
                 }`}
               >
                 Blog
@@ -356,7 +363,7 @@ export default function Home() {
               <Link
                 href="#metodo"
                 className={`text-xs uppercase tracking-widest font-semibold transition-colors duration-200 py-1.5 whitespace-nowrap ${
-                  scrolled ? "text-[#17211f] hover:text-[#00A9A3]" : "text-white/80 hover:text-[#38DFD8]"
+                  isDark || !scrolled ? "text-white/80 hover:text-[#38DFD8]" : "text-[#17211f] hover:text-[#00A9A3]"
                 }`}
               >
                 Método
@@ -364,7 +371,7 @@ export default function Home() {
               <Link
                 href="#contacto"
                 className={`text-xs uppercase tracking-widest font-semibold transition-colors duration-200 py-1.5 whitespace-nowrap ${
-                  scrolled ? "text-[#17211f] hover:text-[#00A9A3]" : "text-white/80 hover:text-[#38DFD8]"
+                  isDark || !scrolled ? "text-white/80 hover:text-[#38DFD8]" : "text-[#17211f] hover:text-[#00A9A3]"
                 }`}
               >
                 Contacto
@@ -378,12 +385,12 @@ export default function Home() {
               <Link
                 href="#contacto"
                 className={`hidden md:flex px-4 py-2 rounded-xl border text-xs font-semibold transition-all active:scale-95 items-center gap-1.5 whitespace-nowrap ${
-                  scrolled
-                    ? "border-[#00A9A3] text-[#082041] hover:bg-[#00A9A3]/10"
-                    : "border-[#00A9A3]/60 text-white hover:bg-[#00A9A3]/20"
+                  isDark || !scrolled
+                    ? "border-[#00A9A3]/60 text-white hover:bg-[#00A9A3]/20"
+                    : "border-[#00A9A3] text-[#082041] hover:bg-[#00A9A3]/10"
                 }`}
               >
-                <Mail className={`w-3.5 h-3.5 ${scrolled ? "text-[#00A9A3]" : "text-[#38DFD8]"}`} />
+                <Mail className={`w-3.5 h-3.5 ${isDark || !scrolled ? "text-[#38DFD8]" : "text-[#00A9A3]"}`} />
                 <span>Consulta</span>
               </Link>
 
@@ -508,34 +515,19 @@ export default function Home() {
       {/* ────────────────────────────────────────────────────────────────────────
           2. HERO CAROUSEL INTERACTIVO ESTILO HOASESOR
           ──────────────────────────────────────────────────────────────────────── */}
-      <section id="inicio" className="relative min-h-[720px] md:min-h-[700px] lg:min-h-[760px] flex items-center overflow-hidden bg-[#05162E]">
-        {/* Background Image / Texture Layer (Alejada y sin película sobre el abogado) */}
-        <div className="absolute inset-0 z-0 overflow-hidden">
-          {/* Desktop & Tablet: Imagen sin zoom (scale-100), encuadre con aire para ver la oficina completa */}
+      <section id="inicio" className="relative min-h-[720px] md:min-h-[700px] lg:min-h-[760px] flex items-center overflow-hidden bg-slate-950">
+        {/* Background Image / Architecture Nexo Talento (Nítida sin película azul) */}
+        <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
           <Image
-            src="/nexolegal-hero.webp"
-            alt="Firma Jurídica NexoLegal Ecuador - Litigio y Asesoría Legal"
+            src="/hero-corporate-architecture.jpg"
+            alt="Firma Jurídica NexoLegal Ecuador"
             fill
             priority
             sizes="100vw"
-            className="hidden sm:block object-cover object-[75%_center] lg:object-[78%_center] opacity-100 scale-100 transition-transform duration-1000 ease-out"
+            className="w-full h-full object-cover object-center opacity-85"
           />
-          {/* Mobile Image */}
-          <Image
-            src="/nexolegal-hero-mobile.webp"
-            alt="Abogado de NexoLegal en Quito"
-            fill
-            priority
-            sizes="100vw"
-            className="block sm:hidden object-cover object-center opacity-90 scale-100"
-          />
-
-          {/* Máscara Lateral de Legibilidad Inteligente:
-              Sombra suave a la izquierda para contraste tipográfico, preservando la luz y riqueza fotográfica */}
-          <div className="hidden sm:block absolute inset-0 bg-gradient-to-r from-[#070b12]/85 via-[#070b12]/50 30% via-[#070b12]/15 45% to-transparent 55% pointer-events-none" />
-
-          {/* Máscara móvil vertical limpia */}
-          <div className="sm:hidden absolute inset-0 bg-gradient-to-b from-[#070b12]/85 via-[#070b12]/45 45% to-transparent 65% pointer-events-none" />
+          {/* Sombreado neutro para legibilidad de textos blancos, cero película azul */}
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-black/25 to-black/45" />
         </div>
 
         {/* Carousel Slides Container */}
