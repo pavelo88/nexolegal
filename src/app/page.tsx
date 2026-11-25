@@ -515,7 +515,7 @@ export default function Home() {
       {/* ────────────────────────────────────────────────────────────────────────
           2. HERO CAROUSEL INTERACTIVO ESTILO HOASESOR
           ──────────────────────────────────────────────────────────────────────── */}
-      <section id="inicio" className="relative min-h-[720px] md:min-h-[700px] lg:min-h-[760px] flex items-center overflow-hidden bg-slate-950">
+      <section id="inicio" className="relative min-h-[860px] sm:min-h-[820px] lg:min-h-[800px] flex items-center overflow-hidden bg-slate-950">
         {/* Background Image / Architecture Nexo Talento (Nítida sin película azul) */}
         <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
           <Image
@@ -530,21 +530,15 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-black/25 to-black/45" />
         </div>
 
-        {/* Carousel Slides Container */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-left pt-28 pb-24">
-          <div className="relative min-h-[390px] sm:min-h-[380px] max-w-3xl">
+        {/* Carousel Slides Container con espaciado amplio bajo el navbar */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-left pt-36 sm:pt-44 lg:pt-48 pb-28 sm:pb-32">
+          <div className="relative min-h-[420px] sm:min-h-[380px] max-w-3xl">
           {slides.map((slide, index) => {
-            const isActive = index === activeSlide;
-            const Heading = isActive ? "h1" : "h2";
+            if (index !== activeSlide) return null;
             return (
               <div
                 key={slide.title}
-                aria-hidden={!isActive}
-                className={`transition-all duration-700 ease-out ${
-                  isActive
-                    ? "opacity-100 translate-y-0 scale-100 relative"
-                    : "opacity-0 translate-y-4 scale-95 absolute inset-0 pointer-events-none"
-                }`}
+                className="animate-fade-in relative"
               >
                 {/* Eyebrow Tag */}
                 <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-[#00A9A3]/40 backdrop-blur-md mb-6">
@@ -555,12 +549,12 @@ export default function Home() {
                 </div>
 
                 {/* Main Heading */}
-                <Heading className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-serif text-white tracking-tight leading-[1.08] mb-4 sm:mb-6 max-w-3xl break-words">
+                <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-serif text-white tracking-tight leading-[1.08] mb-4 sm:mb-6 max-w-3xl break-words">
                   {slide.title}
-                </Heading>
+                </h1>
 
                 {/* Subtitle */}
-                <p className="text-base sm:text-lg md:text-xl text-[#f4f5f1]/90 max-w-2xl leading-relaxed mb-10 font-normal">
+                <p className="text-base sm:text-lg md:text-xl text-[#f4f5f1]/90 max-w-2xl leading-relaxed mb-8 sm:mb-10 font-normal">
                   {slide.subtitle}
                 </p>
 
@@ -595,7 +589,7 @@ export default function Home() {
           })}
 
           {/* Slider Navigation Controls */}
-          <div className="mt-14 flex items-center justify-start gap-4">
+          <div className="mt-10 sm:mt-12 flex items-center justify-start gap-4">
             <button
               onClick={handlePrevSlide}
               aria-label="Diapositiva anterior"

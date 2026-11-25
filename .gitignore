@@ -12,3 +12,5 @@ tsconfig.tsbuildinfo
 # Media and video render outputs
 brag-output/
 scratch/
+.vercel
+.env*

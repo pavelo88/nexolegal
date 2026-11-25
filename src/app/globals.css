@@ -532,49 +532,6 @@ body, aside, header, nav, main, div[class*="bg-"] {
   box-shadow: 0 20px 40px -15px rgba(27, 58, 53, 0.12);
 }
 
-/* Dark mode public theme adjustments */
-.dark #historia {
-  background-color: #071933 !important;
-  border-color: #1e293b !important;
-}
-.dark #servicios {
-  background-color: #05162E !important;
-}
-.dark .vis-card-luxury {
-  background: #082041 !important;
-  border-color: rgba(0, 169, 163, 0.25) !important;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4) !important;
-}
-.dark .vis-card-luxury:hover {
-  border-color: #00A9A3 !important;
-  box-shadow: 0 20px 40px -15px rgba(0, 169, 163, 0.3) !important;
-}
-.dark .vis-card-luxury h3,
-.dark #historia h2,
-.dark #servicios h2 {
-  color: #ffffff !important;
-}
-.dark .vis-card-luxury p,
-.dark #historia p,
-.dark #servicios p {
-  color: #cbd5e1 !important;
-}
-.dark .vis-card-luxury ul {
-  border-color: rgba(255, 255, 255, 0.1) !important;
-}
-.dark .vis-card-luxury li {
-  color: #94a3b8 !important;
-}
-.dark .vis-card-luxury a {
-  background-color: rgba(255, 255, 255, 0.08) !important;
-  color: #38DFD8 !important;
-  border-color: rgba(0, 169, 163, 0.3) !important;
-}
-.dark .vis-card-luxury a:hover {
-  background-color: #00A9A3 !important;
-  color: #05162E !important;
-}
-
 /* Micro-interactions */
 .vis-interactive-btn {
   transition: transform 0.16s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.16s ease, background-color 0.16s ease;
