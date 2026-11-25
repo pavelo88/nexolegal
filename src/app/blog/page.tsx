@@ -70,7 +70,7 @@ export default function BlogPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#faf8f5] text-[#17211f] font-sans selection:bg-[#00A9A3]/30 pb-16 md:pb-0">
+    <div className="min-h-screen bg-[#faf8f5] text-[#17211f] font-sans selection:bg-[#00A9A3]/30 pb-0">
       {/* Inyección JSON-LD Schema.org */}
       <script
         type="application/ld+json"
@@ -78,13 +78,13 @@ export default function BlogPage() {
       />
 
       {/* ─── 1. NAVBAR DE LA PÁGINA BLOG ─────────────────────────────── */}
-      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-xl border-b border-[#e6e0d6] shadow-sm py-3.5 px-4 sm:px-6 lg:px-8">
+      <header className="sticky top-0 z-50 bg-white/95 dark:bg-[#05162E]/95 backdrop-blur-xl border-b border-[#e6e0d6] dark:border-slate-800 shadow-sm py-3.5 px-4 sm:px-6 lg:px-8 transition-colors duration-200">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <Link href="/" className="flex min-h-11 items-center group">
             <NexoLogo size="md" variant="light" showSubtitle={true} />
           </Link>
 
-          <nav className="hidden md:flex items-center gap-6 text-xs uppercase tracking-widest font-semibold text-[#17211f]">
+          <nav className="hidden md:flex items-center gap-6 text-xs uppercase tracking-widest font-semibold text-[#17211f] dark:text-white/90">
             <Link href="/" className="hover:text-[#00A9A3] transition-colors inline-flex min-h-11 items-center">
               Inicio
             </Link>
@@ -106,7 +106,7 @@ export default function BlogPage() {
             <ThemeToggle />
             <Link
               href="/#contacto"
-              className="hidden sm:flex items-center gap-1.5 px-4 py-2 rounded-xl border border-[#00A9A3] text-xs font-semibold text-[#17211f] hover:bg-[#00A9A3]/10 active:scale-95 transition-all"
+              className="hidden sm:flex items-center gap-1.5 px-4 py-2 rounded-xl border border-[#00A9A3] text-xs font-semibold text-[#17211f] dark:text-white hover:bg-[#00A9A3]/10 active:scale-95 transition-all"
             >
               <Mail className="w-3.5 h-3.5 text-[#00A9A3]" />
               <span>Consulta</span>

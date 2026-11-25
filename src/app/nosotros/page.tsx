@@ -25,23 +25,28 @@ import {
   Clock3,
 } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
+import { useTheme } from "@/components/ThemeProvider";
 import NosotrosOrbit from "@/components/NosotrosOrbit";
 import Footer from "@/components/Footer";
 import NexoLogo from "@/components/NexoLogo";
 
 export default function NosotrosPage() {
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-[#faf8f5] text-[#17211f] font-sans selection:bg-[#00A9A3]/30 pb-16 md:pb-0">
+    <div className="min-h-screen bg-[#faf8f5] text-[#17211f] font-sans selection:bg-[#00A9A3]/30 pb-0">
       {/* ─── 1. NAVBAR DE LA PÁGINA NOSOTROS ───────────────────────────── */}
-      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-xl border-b border-[#e6e0d6] shadow-sm py-3.5 px-4 sm:px-6 lg:px-8">
+      <header className={`sticky top-0 z-50 backdrop-blur-xl border-b shadow-sm py-3.5 px-4 sm:px-6 lg:px-8 transition-colors duration-200 ${
+        isDark ? "bg-[#05162E]/95 border-slate-800 text-white" : "bg-white/95 border-[#e6e0d6] text-[#17211f]"
+      }`}>
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <Link href="/" className="flex min-h-11 items-center group">
-            <NexoLogo size="md" variant="light" showSubtitle={true} />
+            <NexoLogo size="md" variant={isDark ? "dark" : "light"} showSubtitle={true} />
           </Link>
 
-          <nav className="hidden md:flex items-center gap-6 text-xs uppercase tracking-widest font-semibold text-[#17211f]">
+          <nav className={`hidden md:flex items-center gap-6 text-xs uppercase tracking-widest font-semibold ${isDark ? "text-white/90" : "text-[#17211f]"}`}>
             <Link href="/" className="hover:text-[#00A9A3] transition-colors inline-flex min-h-11 items-center">
               Inicio
             </Link>
@@ -63,7 +68,9 @@ export default function NosotrosPage() {
             <ThemeToggle />
             <Link
               href="/#contacto"
-              className="hidden sm:flex items-center gap-1.5 px-4 py-2 rounded-xl border border-[#00A9A3] text-xs font-semibold text-[#17211f] hover:bg-[#00A9A3]/10 active:scale-95 transition-all"
+              className={`hidden sm:flex items-center gap-1.5 px-4 py-2 rounded-xl border border-[#00A9A3] text-xs font-semibold hover:bg-[#00A9A3]/10 active:scale-95 transition-all ${
+                isDark ? "text-white" : "text-[#17211f]"
+              }`}
             >
               <Mail className="w-3.5 h-3.5 text-[#00A9A3]" />
               <span>Consulta</span>

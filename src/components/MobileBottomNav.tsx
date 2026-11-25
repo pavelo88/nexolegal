@@ -88,22 +88,22 @@ export default function MobileBottomNav({ onOpenAssistant }: MobileBottomNavProp
             </button>
           </li>
 
-          {/* Center Column: Notch Floating Tu app Button */}
+          {/* Center Column: Notch Floating WhatsApp Button (Principal) */}
           <li className="relative flex h-14 justify-center">
-            <Link
-              href="/app"
-              onClick={() => triggerHaptic(25)}
-              aria-label="Acceder a Tu app NexoLegal"
-              className="group absolute -top-[28px] bottom-0 flex flex-col items-center justify-between pb-1"
+            <button
+              type="button"
+              onClick={handleWhatsApp}
+              aria-label="Consultar por WhatsApp 24/7"
+              className="group absolute -top-[28px] bottom-0 flex flex-col items-center justify-between pb-1 cursor-pointer"
             >
-              <span className="relative grid h-[58px] w-[58px] place-items-center rounded-full bg-gradient-to-br from-cyan-400 via-[#00A9A3] to-blue-600 text-slate-950 shadow-[0_4px_20px_rgba(0,169,163,0.5)] ring-2 ring-white/30 transition-transform duration-150 group-active:scale-90">
-                <span className="absolute inset-0 rounded-full animate-ping bg-[#00A9A3]/30 pointer-events-none" />
-                <Lock className="h-6 w-6 text-slate-950" aria-hidden />
+              <span className="relative grid h-[58px] w-[58px] place-items-center rounded-full bg-gradient-to-br from-emerald-400 via-[#25D366] to-[#00A9A3] text-slate-950 shadow-[0_4px_20px_rgba(37,211,102,0.5)] ring-2 ring-white/30 transition-transform duration-150 group-active:scale-90">
+                <span className="absolute inset-0 rounded-full animate-ping bg-[#25D366]/30 pointer-events-none" />
+                <MessageCircle className="h-6 w-6 text-slate-950 fill-slate-950/15" aria-hidden />
               </span>
-              <span className="whitespace-nowrap text-[10px] font-black leading-none tracking-wider text-cyan-400 uppercase drop-shadow">
-                Tu app
+              <span className="whitespace-nowrap text-[10px] font-black leading-none tracking-wider text-emerald-400 uppercase drop-shadow">
+                WhatsApp
               </span>
-            </Link>
+            </button>
           </li>
 
           {/* Item 4: Blog */}
@@ -120,22 +120,18 @@ export default function MobileBottomNav({ onOpenAssistant }: MobileBottomNavProp
             </Link>
           </li>
 
-          {/* Item 5: WhatsApp */}
+          {/* Item 5: Tu app */}
           <li className="flex h-14 items-end justify-center">
-            <button
-              type="button"
-              onClick={handleWhatsApp}
-              className="flex min-h-12 min-w-11 flex-col items-center justify-end gap-1 rounded-xl px-1 pb-1 transition-all duration-150 active:scale-90 text-slate-300 hover:text-white cursor-pointer"
+            <Link
+              href="/app"
+              onClick={() => triggerHaptic(12)}
+              className={`flex min-h-12 min-w-11 flex-col items-center justify-end gap-1 rounded-xl px-1 pb-1 transition-all duration-150 active:scale-90 ${
+                pathname === "/app" ? "text-cyan-400 font-bold" : "text-slate-300 hover:text-white"
+              }`}
             >
-              <div className="relative">
-                <MessageCircle className="h-5 w-5 text-[#25D366] fill-[#25D366]" />
-                <span className="absolute -top-1 -right-1 flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-                </span>
-              </div>
-              <span className="text-[10px] font-semibold leading-none tracking-tight text-emerald-400">WhatsApp</span>
-            </button>
+              <Lock className={`h-5 w-5 ${pathname === "/app" ? "text-cyan-400" : "text-[#38DFD8]"}`} />
+              <span className="text-[10px] font-semibold leading-none tracking-tight text-white/95">Tu app</span>
+            </Link>
           </li>
         </ul>
       </div>
