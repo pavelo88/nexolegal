@@ -493,14 +493,16 @@ export default function UserPortalPage() {
         onDownload={(name) => showToast(`Descargando documento: ${name}`)}
       />
 
-      <UserInvoiceModal
-        subscription={subscription}
-        onClose={() => setShowInvoiceModal(false)}
-        onDownload={() => {
-          setShowInvoiceModal(false);
-          showToast("Descargando factura electrónica autorizada por el SRI.");
-        }}
-      />
+      {showInvoiceModal && (
+        <UserInvoiceModal
+          subscription={subscription}
+          onClose={() => setShowInvoiceModal(false)}
+          onDownload={() => {
+            setShowInvoiceModal(false);
+            showToast("Descargando factura electrónica autorizada por el SRI.");
+          }}
+        />
+      )}
 
       <UserVideoModal video={activeVideo} onClose={() => setActiveVideo(null)} />
     </PortalAppShell>

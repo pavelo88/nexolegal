@@ -103,3 +103,17 @@
 **Skills usadas/modificadas:** reglas-seguridad, modularidad-archivos, registrar-avance.
 **Próximos pasos:** Verificar en Vercel el dominio personalizado y probar autenticación, leads y consultas contra Supabase en producción.
 **Archivos modificados:** C:/dev/proyectos/ecualegal/src; C:/dev/proyectos/ecualegal/public; C:/dev/proyectos/ecualegal/AVANCE.md
+
+## [2026-11-25] - NexoLegal - Codex
+**Qué se hizo:** Revisión visual del localhost y corrección del portal `/user`.
+**Resultado:** Se detectó y corrigió un error de renderizado: el modal de factura SRI aparecía abierto automáticamente al entrar porque no estaba condicionado por `showInvoiceModal`. El portal ahora abre limpio y la factura solo aparece al pulsar “Ver Factura SRI”.
+**Skills usadas/modificadas:** reglas-seguridad, modularidad-archivos, registrar-avance, computer-use.
+**Próximos pasos:** Revisar las demás rutas privadas en localhost y hacer un nuevo commit cuando Pablo confirme que la interfaz quedó aprobada.
+**Archivos modificados:** C:/dev/proyectos/ecualegal/src/app/user/page.tsx; C:/dev/proyectos/ecualegal/AVANCE.md
+
+## [2026-11-25] - NexoLegal - Codex
+**Qué se hizo:** Se comparó el localhost con `ecualegal.vercel.app` y se inspeccionó el estado de deployments de Vercel.
+**Resultado:** El dominio real sirve un deployment antiguo de producción, creado aproximadamente 18 horas antes, mientras `origin/master` contiene el commit posterior `9be4ec1`. La producción conserva contenido y estilos anteriores; no existe deployment posterior al push.
+**Skills usadas/modificadas:** reglas-seguridad, registrar-avance, computer-use.
+**Próximos pasos:** Revisar la conexión Git/branch del proyecto Vercel `ecualegal`; después lanzar un deployment de producción explícito y verificar visualmente el dominio canónico.
+**Archivos modificados:** C:/dev/proyectos/ecualegal/AVANCE.md
