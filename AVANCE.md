@@ -98,6 +98,13 @@
 **Archivos modificados:** C:/dev/proyectos/ecualegal/AVANCE.md
 
 ## [2026-11-25] - NexoLegal - Codex
+**Qué se hizo:** Se publicó manualmente en Vercel el commit `b56fa42` y se verificó el dominio real `ecualegal.vercel.app`.
+**Resultado:** Deployment `ecualegal-dztyufuzd-sinerg-ia2.vercel.app` quedó en estado Ready y tomó el alias principal. La producción ya no contiene el correo anterior, reconoce las URLs nuevas y la sección “La Firma” aparece correctamente en modo oscuro.
+**Skills usadas/modificadas:** reglas-seguridad, registrar-avance, computer-use.
+**Próximos pasos:** Verificar el dominio personalizado `ecualegal.nexotalentos.com` y ejecutar pruebas funcionales de leads/autenticación en producción.
+**Archivos modificados:** C:/dev/proyectos/ecualegal/AVANCE.md
+
+## [2026-11-25] - NexoLegal - Codex
 **Qué se hizo:** Se eliminaron todas las referencias al abogado identificado como Alarcón, incluido el correo y el enlace `mailto`; se actualizó la identidad pública al dominio `ecualegal.nexotalentos.com`.
 **Resultado:** Las búsquedas no encuentran referencias a Alarcón, Firebase ni al dominio Vercel anterior. La aplicación compila correctamente con 30 rutas. El código confirma integración con Supabase mediante SSR, Auth y PostgreSQL.
 **Skills usadas/modificadas:** reglas-seguridad, modularidad-archivos, registrar-avance.
