@@ -44,7 +44,7 @@ export default function PromoMarquee({ scrolled = false }: PromoMarqueeProps) {
       `Hola NexoLegal, deseo solicitar información sobre una consulta de diagnóstico legal. Requerimiento: ${badge}`
     );
     trackEvent("whatsapp_click", { placement: "promo_marquee", badge });
-    window.open(`https://wa.me/593991786275?text=${text}`, "_blank");
+    window.open(`https://wa.me/593997224453?text=${text}`, "_blank");
   };
 
   return (

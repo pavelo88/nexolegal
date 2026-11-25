@@ -45,7 +45,7 @@ export const initialCases: AppCase[] = [
       name: "Dra. Valeria Santamaría",
       role: "Socia Litigante Civil & Mercantil",
       avatar: "VS",
-      phone: "+593 99 876 5432",
+      phone: "+593 99 722 4453",
     },
     status: "En trámite",
     stage: "Término de Prueba (Fase Pericial)",

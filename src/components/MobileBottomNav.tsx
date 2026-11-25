@@ -26,7 +26,7 @@ export default function MobileBottomNav({ onOpenAssistant }: MobileBottomNavProp
       "Hola NexoLegal, me contacto desde la app móvil para consultar con un abogado."
     );
     trackEvent("whatsapp_click", { placement: "mobile_bottom_nav" });
-    window.open(`https://wa.me/593991786275?text=${text}`, "_blank");
+    window.open(`https://wa.me/593997224453?text=${text}`, "_blank");
   };
 
   return (

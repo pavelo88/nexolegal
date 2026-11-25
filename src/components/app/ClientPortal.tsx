@@ -229,7 +229,7 @@ export default function ClientPortal({
         {/* 3 Botones Táctiles de Contacto Rápido */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
           <a
-            href="https://wa.me/593998765432?text=Estimada%20Dra.%20Valeria%20Santamaria,%20le%20escribo%20desde%20mi%20portal%20VIS%20Legal%20sobre%20el%20expediente%2017230-2026-00891."
+            href="https://wa.me/593997224453?text=Estimada%20Dra.%20Valeria%20Santamaria,%20le%20escribo%20desde%20mi%20portal%20VIS%20Legal%20sobre%20el%20expediente%2017230-2026-00891."
             target="_blank"
             rel="noopener noreferrer"
             className="p-3 rounded-2xl bg-emerald-600/15 hover:bg-emerald-600/25 border border-[#00A9A3]/40 text-emerald-300 font-bold text-xs flex items-center justify-center space-x-2 transition-all active:scale-95 shadow-sm min-h-[44px]"
@@ -239,7 +239,7 @@ export default function ClientPortal({
           </a>
 
           <a
-            href="tel:+593998765432"
+            href="tel:+593997224453"
             className="p-3 rounded-2xl bg-blue-600/15 hover:bg-blue-600/25 border border-blue-500/40 text-blue-300 font-bold text-xs flex items-center justify-center space-x-2 transition-all active:scale-95 shadow-sm min-h-[44px]"
           >
             <Phone className="w-4 h-4 text-blue-400" />

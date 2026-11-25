@@ -20,6 +20,8 @@ import {
 } from "lucide-react";
 import { blogPosts, BlogPost } from "@/data/blogPosts";
 import MobileBottomNav from "@/components/MobileBottomNav";
+import Footer from "@/components/Footer";
+import NexoLogo from "@/components/NexoLogo";
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -120,25 +122,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       {/* ─── 1. NAVBAR DE NAVEGACIÓN ───────────────────────────────────── */}
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-xl border-b border-[#e6e0d6] shadow-sm py-3.5 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <Link href="/" className="flex min-h-11 items-center gap-3 group">
-            <div className="relative w-10 h-10 rounded-full overflow-hidden border border-[#00A9A3]/50 shadow-md bg-[#05162E] flex items-center justify-center group-hover:border-[#00A9A3] transition-all">
-              <Image
-                src="/logo.png"
-                alt="NexoLegal"
-                width={40}
-                height={40}
-                className="w-full h-full object-cover"
-                priority
-              />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-xl font-bold tracking-wider text-[#17211f] font-sans">
-                Nexo<span className="text-[#00A9A3] font-serif italic">Legal</span>
-              </span>
-              <span className="text-[9px] uppercase tracking-widest text-[#6e7771] -mt-0.5">
-                Abogados &amp; LegalTech
-              </span>
-            </div>
+          <Link href="/" className="flex min-h-11 items-center group">
+            <NexoLogo size="md" variant="light" showSubtitle={true} />
           </Link>
 
           <nav className="hidden md:flex items-center gap-6 text-xs uppercase tracking-widest font-semibold text-[#17211f]">
@@ -324,7 +309,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </p>
           <div className="pt-2 flex flex-wrap items-center justify-center gap-4">
             <a
-              href="https://wa.me/593991786275?text=Hola,%20le%C3%AD%20el%20art%C3%ADculo%20sobre%20"
+              href="https://wa.me/593997224453?text=Hola,%20le%C3%AD%20el%20art%C3%ADculo%20sobre%20"
               target="_blank"
               rel="noopener noreferrer"
               className="px-6 py-3 rounded-xl bg-gradient-to-r from-[#00A9A3] to-[#00A9A3] text-white text-xs font-bold uppercase tracking-wider shadow-md hover:brightness-110 active:scale-95 transition-all flex items-center gap-2"
@@ -388,22 +373,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         )}
       </main>
 
-      {/* ─── 5. FOOTER ─────────────────────────────────────────────────── */}
-      <footer className="border-t border-[#e6e0d6] bg-white py-10 text-xs text-[#6e7771]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-          <div>
-            <strong className="text-[#17211f]">NexoLegal (NexoLegal)</strong>
-            <p className="text-[11px] mt-0.5">Sede Central: Quito, Pichincha, Ecuador · Cobertura Jurídica Nacional</p>
-          </div>
-          <div className="flex flex-wrap items-center justify-center gap-4">
-            <Link href="/" className="hover:text-[#00A9A3]">Inicio</Link>
-            <Link href="/nosotros" className="hover:text-[#00A9A3]">Nosotros</Link>
-            <Link href="/blog" className="text-[#00A9A3] font-semibold">Blog</Link>
-            <Link href="/privacidad" className="hover:text-[#00A9A3]">Privacidad (LOPDP)</Link>
-            <Link href="/terminos" className="hover:text-[#00A9A3]">Términos</Link>
-          </div>
-        </div>
-      </footer>
+      {/* ─── 5. FOOTER CORPORATIVO UNIFICADO ───────────────────────────── */}
+      <Footer />
 
       {/* Barra de navegación móvil inferior estilo app */}
       <MobileBottomNav />

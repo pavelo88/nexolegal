@@ -26,6 +26,8 @@ import {
 } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
 import NosotrosOrbit from "@/components/NosotrosOrbit";
+import Footer from "@/components/Footer";
+import NexoLogo from "@/components/NexoLogo";
 
 export default function NosotrosPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -35,25 +37,8 @@ export default function NosotrosPage() {
       {/* ─── 1. NAVBAR DE LA PÁGINA NOSOTROS ───────────────────────────── */}
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-xl border-b border-[#e6e0d6] shadow-sm py-3.5 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <Link href="/" className="flex min-h-11 items-center gap-3 group">
-            <div className="relative w-10 h-10 rounded-full overflow-hidden border border-[#00A9A3]/50 shadow-md bg-[#05162E] flex items-center justify-center group-hover:border-[#00A9A3] transition-all">
-              <Image
-                src="/logo.png"
-                alt="NexoLegal"
-                width={40}
-                height={40}
-                className="w-full h-full object-cover"
-                priority
-              />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-xl font-bold tracking-wider text-[#17211f] font-sans">
-                Nexo<span className="text-[#00A9A3] font-serif italic">Legal</span>
-              </span>
-              <span className="text-[9px] uppercase tracking-widest text-[#6e7771] -mt-0.5">
-                Abogados &amp; LegalTech
-              </span>
-            </div>
+          <Link href="/" className="flex min-h-11 items-center group">
+            <NexoLogo size="md" variant="light" showSubtitle={true} />
           </Link>
 
           <nav className="hidden md:flex items-center gap-6 text-xs uppercase tracking-widest font-semibold text-[#17211f]">
@@ -204,10 +189,10 @@ export default function NosotrosPage() {
             sizes="100vw"
             className="block sm:hidden object-cover object-center opacity-90 scale-100"
           />
-          {/* Máscara Lateral de Legibilidad Inteligente: SOLO a la izquierda */}
-          <div className="hidden sm:block absolute inset-0 bg-gradient-to-r from-[#05162E] via-[#05162E]/90 35% via-[#05162E]/30 50% to-transparent 60% pointer-events-none" />
+          {/* Máscara Lateral de Legibilidad Inteligente: Sombra suave a la izquierda */}
+          <div className="hidden sm:block absolute inset-0 bg-gradient-to-r from-[#070b12]/85 via-[#070b12]/50 30% via-[#070b12]/15 45% to-transparent 55% pointer-events-none" />
           {/* Máscara móvil vertical limpia */}
-          <div className="sm:hidden absolute inset-0 bg-gradient-to-b from-[#05162E]/95 via-[#05162E]/75 55% to-[#05162E]/25 pointer-events-none" />
+          <div className="sm:hidden absolute inset-0 bg-gradient-to-b from-[#070b12]/85 via-[#070b12]/45 45% to-transparent 65% pointer-events-none" />
         </div>
 
         {/* Hero Copy */}
@@ -311,7 +296,7 @@ export default function NosotrosPage() {
                   </div>
 
                   <a
-                    href="https://wa.me/593991786275?text=Deseo%20solicitar%20una%20reunion%20con%20el%20Ab.%20Jose%20Aimacana"
+                    href="https://wa.me/593997224453?text=Deseo%20solicitar%20una%20reunion%20con%20el%20Ab.%20Jose%20Aimacana"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full py-3 rounded-xl bg-gradient-to-r from-[#00A9A3] to-[#00A9A3] text-white text-xs font-bold uppercase tracking-wider shadow-md hover:brightness-110 active:scale-95 transition-all text-center mt-2"
@@ -448,22 +433,8 @@ export default function NosotrosPage() {
         </div>
       </section>
 
-      {/* ─── 6. FOOTER ─────────────────────────────────────────────────── */}
-      <footer className="border-t border-[#e6e0d6] bg-white py-10 text-xs text-[#6e7771]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-          <div>
-            <strong className="text-[#17211f]">NexoLegal (NexoLegal)</strong>
-            <p className="text-[11px] mt-0.5">Sede Central: Quito, Pichincha, Ecuador · Cobertura Jurídica Nacional</p>
-          </div>
-          <div className="flex flex-wrap items-center justify-center gap-4">
-            <Link href="/" className="hover:text-[#00A9A3]">Inicio</Link>
-            <Link href="/nosotros" className="text-[#00A9A3] font-semibold">Nosotros</Link>
-            <Link href="/blog" className="hover:text-[#00A9A3]">Blog</Link>
-            <Link href="/privacidad" className="hover:text-[#00A9A3]">Privacidad (LOPDP)</Link>
-            <Link href="/terminos" className="hover:text-[#00A9A3]">Términos</Link>
-          </div>
-        </div>
-      </footer>
+      {/* ─── 6. FOOTER CORPORATIVO UNIFICADO ───────────────────────────── */}
+      <Footer />
     </div>
   );
 }

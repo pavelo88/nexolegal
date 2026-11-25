@@ -12,6 +12,7 @@ import {
   Zap,
   Pause,
   Play,
+  Globe2,
   Link as LinkIcon,
 } from "lucide-react";
 
@@ -31,7 +32,7 @@ const principlesData: PrincipleItem[] = [
     title: "Misión",
     category: "PROPÓSITO NACIONAL",
     content:
-      "Priorizamos los intereses de nuestros clientes mediante un servicio legal riguroso y una defensa técnica orientada a proteger sus derechos vulnerados, con capacidad de actuación judicial a escala nacional.",
+      "Priorizamos los intereses de nuestros clientes mediante un servicio legal riguroso y una defensa técnica implacable orientada a proteger sus derechos vulnerados, con capacidad de actuación judicial a escala nacional.",
     energy: 98,
     icon: Target,
     relatedIds: [2, 4],
@@ -41,7 +42,7 @@ const principlesData: PrincipleItem[] = [
     title: "Visión",
     category: "HORIZONTE JURÍDICO",
     content:
-      "Forjamos un camino que proteja sus intereses, adaptándose a las continuas exigencias de la realidad. Aspiramos a ser el despacho de referencia para empresas y ciudadanos en todas las jurisdicciones del Ecuador.",
+      "Forjamos un camino que proteja sus intereses, adaptándose a las continuas exigencias de la realidad. Encaminados a ser el despacho de referencia para empresas y ciudadanos en todas las jurisdicciones del Ecuador.",
     energy: 95,
     icon: Eye,
     relatedIds: [1, 3],
@@ -51,7 +52,7 @@ const principlesData: PrincipleItem[] = [
     title: "Talento",
     category: "INNOVACIÓN & LEGALTECH",
     content:
-      "Tomamos cada asunto como si fuera el único: lo abordamos desde la formación especializada, la argumentación jurídica de alto nivel y el uso de plataformas LegalTech con seguimiento transparente en tiempo real.",
+      "Tomamos cada asunto como si fuera el único: lo abordamos desde la formación especializada de élite, la argumentación jurídica de alto nivel y el uso de plataformas LegalTech con seguimiento transparente en tiempo real.",
     energy: 96,
     icon: Sparkles,
     relatedIds: [2, 5],
@@ -61,7 +62,7 @@ const principlesData: PrincipleItem[] = [
     title: "Ética",
     category: "DEONTOLOGÍA INQUEBRANTABLE",
     content:
-      "La firma tiene como credo la deontología en nuestras acciones y el ejercicio leal del derecho. Consideramos sagrado el secreto profesional y la reserva absoluta de la información de cada cliente.",
+      "La firma tiene como credo la deontología en nuestras acciones y el ejercicio leal del derecho. Consideramos sagrado e inviolable el secreto profesional (Art. 335 COFJ) y la reserva absoluta de la información.",
     energy: 100,
     icon: ShieldCheck,
     relatedIds: [1, 3],
@@ -74,7 +75,17 @@ const principlesData: PrincipleItem[] = [
       "Ningún asunto es imposible. Todo puede y debe lucharse con rigor jurídico cuando se trata de la defensa de derechos vulnerados. Sostenemos cada causa con disciplina procesal hasta la última instancia.",
     energy: 99,
     icon: Flame,
-    relatedIds: [4, 1],
+    relatedIds: [4, 6],
+  },
+  {
+    id: 6,
+    title: "Cobertura",
+    category: "ALCANCE NACIONAL & LATAM",
+    content:
+      "Sede central en el centro financiero y judicial de Quito, con asociados en Guayaquil, Cuenca, Manta y las 24 provincias. Respaldo del ecosistema corporativo de Nexo Talento con proyección en España y Latinoamérica.",
+    energy: 97,
+    icon: Globe2,
+    relatedIds: [1, 5],
   },
 ];
 
@@ -85,6 +96,7 @@ export default function FirmOrbit() {
   const [rotationAngle, setRotationAngle] = useState(0);
   const [autoRotate, setAutoRotate] = useState(true);
   const [isMounted, setIsMounted] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const orbitRef = useRef<HTMLDivElement>(null);
@@ -95,18 +107,24 @@ export default function FirmOrbit() {
   const resumeRef = useRef<number | null>(null);
   autoRotateRef.current = autoRotate;
 
-  // El nodo elegido se acomoda a la 1 en punto (-60 grados) frente a la tarjeta informativa
-  const radius = 200;
+  const radius = isMobile ? 125 : 185;
   const angleStep = 360 / principlesData.length;
 
   useEffect(() => {
     setIsMounted(true);
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reducedMotion) {
       setAutoRotate(false);
       autoRotateRef.current = false;
-      return;
+      return () => window.removeEventListener("resize", checkMobile);
     }
+
     let frame: number;
     let last = performance.now();
 
@@ -118,19 +136,17 @@ export default function FirmOrbit() {
       const target = targetRef.current;
 
       if (target !== null) {
-        // Rotación animada con momentum hacia el nodo seleccionado
         const delta = ((target - previous + 540) % 360) - 180;
-        if (Math.abs(delta) < 0.15) {
+        if (Math.abs(delta) < 0.2) {
           next = ((target % 360) + 360) % 360;
           targetRef.current = null;
           if (resumeRef.current) window.clearTimeout(resumeRef.current);
-          resumeRef.current = window.setTimeout(() => setAutoRotate(true), 2500);
+          resumeRef.current = window.setTimeout(() => setAutoRotate(true), 3000);
         } else {
-          next = (((previous + delta * (1 - Math.exp(-dt / 140))) % 360) + 360) % 360;
+          next = (((previous + delta * (1 - Math.exp(-dt / 130))) % 360) + 360) % 360;
         }
       } else if (autoRotateRef.current) {
-        // Giro continuo en el sentido de las agujas del reloj (sentido horario)
-        next = (previous + (12.5 * dt) / 1000) % 360;
+        next = (previous + (10 * dt) / 1000) % 360;
       }
 
       if (next !== previous) {
@@ -143,11 +159,12 @@ export default function FirmOrbit() {
     frame = window.requestAnimationFrame(animate);
     return () => {
       window.cancelAnimationFrame(frame);
+      window.removeEventListener("resize", checkMobile);
       if (resumeRef.current) window.clearTimeout(resumeRef.current);
     };
   }, []);
 
-  // Actualizar la tarjeta derecha al nodo más cercano al ángulo activo durante la rotación automática
+  // Sincronizar tarjeta con el nodo que apunta al ángulo activo durante rotación
   useEffect(() => {
     if (!autoRotate || targetRef.current !== null) return;
 
@@ -177,7 +194,7 @@ export default function FirmOrbit() {
     if (resumeRef.current) window.clearTimeout(resumeRef.current);
 
     if (window.innerWidth < 1024 && cardRef.current) {
-      cardRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+      cardRef.current.scrollIntoView({ behavior: "smooth", block: "nearest" });
     }
   };
 
@@ -189,7 +206,7 @@ export default function FirmOrbit() {
     const y = Math.round(radius * Math.sin(radian) * 10) / 10;
 
     const zIndex = Math.round(100 + 50 * Math.cos(radian));
-    const opacity = Math.round(Math.max(0.4, Math.min(1, 0.45 + 0.55 * ((1 + Math.sin(radian)) / 2))) * 100) / 100;
+    const opacity = Math.round(Math.max(0.65, Math.min(1, 0.6 + 0.4 * ((1 + Math.sin(radian)) / 2))) * 100) / 100;
 
     return { x, y, angle, zIndex, opacity };
   };
@@ -200,55 +217,62 @@ export default function FirmOrbit() {
   return (
     <div
       ref={containerRef}
-      className="w-full flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-14 py-6 select-none"
+      className="w-full flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-14 py-4 select-none"
     >
-      {/* ─── 1. COLUMNA IZQUIERDA: ÓRBITA RADIAL CON GIRO HORARIO ─────── */}
-      <div className="relative w-full lg:w-1/2 flex items-center justify-center h-[360px] sm:h-[440px] lg:h-[540px]">
+      {/* ─── 1. COLUMNA IZQUIERDA: RELOJ / ÓRBITA RADIAL CON GIRO HORARIO ── */}
+      <div className="relative w-full lg:w-1/2 flex items-center justify-center min-h-[360px] sm:min-h-[440px] lg:min-h-[500px]">
+        {/* Botón Pausa / Reanudar */}
         <button
           type="button"
           onClick={() => setAutoRotate((current) => !current)}
-          className="absolute right-1 top-1 z-[210] inline-flex items-center gap-1.5 rounded-full border border-[#00A9A3]/40 bg-[#05162E]/90 px-3 py-2 text-[10px] font-bold uppercase tracking-wider text-[#38DFD8] shadow-md backdrop-blur"
+          className="absolute right-2 top-0 z-[210] inline-flex items-center gap-1.5 rounded-full border border-[#00A9A3]/50 bg-[#05162E] px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-wider text-[#38DFD8] shadow-lg backdrop-blur hover:bg-[#082041] active:scale-95 transition-all cursor-pointer"
           aria-pressed={!autoRotate}
-          aria-label={autoRotate ? "Pausar animación de principios" : "Reanudar animación de principios"}
+          aria-label={autoRotate ? "Pausar animación del reloj de principios" : "Reanudar animación del reloj de principios"}
         >
-          {autoRotate ? <Pause size={13} /> : <Play size={13} />}
-          {autoRotate ? "Pausar" : "Reanudar"}
+          {autoRotate ? <Pause size={12} /> : <Play size={12} />}
+          <span>{autoRotate ? "Pausar Giro" : "Reanudar Giro"}</span>
         </button>
+
+        {/* Halo resplandor sutil */}
+        <div className="absolute w-64 h-64 sm:w-80 sm:h-80 rounded-full bg-[#00A9A3]/10 blur-3xl pointer-events-none" />
+
+        {/* Anillos concéntricos del reloj */}
         <div
           ref={orbitRef}
-          className="absolute flex items-center justify-center w-full h-full scale-[.72] sm:scale-90 lg:scale-100"
-          style={{ perspective: "1000px" }}
+          className="relative flex items-center justify-center"
+          style={{ width: radius * 2 + 80, height: radius * 2 + 80 }}
         >
-          {/* Anillos orbitales decorativos con brillo dorado */}
+          {/* Anillo exterior punteado */}
           <div
             className="absolute rounded-full border border-[#00A9A3]/25 border-dashed pointer-events-none"
-            style={{ width: radius * 2.5, height: radius * 2.5 }}
+            style={{ width: radius * 2 + 40, height: radius * 2 + 40 }}
           />
+          {/* Anillo principal de trayectoria */}
           <div
-            className="absolute rounded-full border-2 border-[#00A9A3]/40 shadow-[0_0_40px_rgba(0,169,163,0.12)] pointer-events-none"
+            className="absolute rounded-full border-2 border-[#00A9A3]/40 shadow-[0_0_30px_rgba(0,169,163,0.15)] pointer-events-none"
             style={{ width: radius * 2, height: radius * 2 }}
           />
+          {/* Anillo interior */}
           <div
             className="absolute rounded-full border border-[#00A9A3]/20 pointer-events-none"
-            style={{ width: radius * 1.4, height: radius * 1.4 }}
+            style={{ width: radius * 1.3, height: radius * 1.3 }}
           />
 
-          {/* Núcleo Central: Balanza de la Justicia con Resplandor Ámbar */}
-          <div className="absolute w-24 h-24 lg:w-28 lg:h-28 rounded-full bg-gradient-to-br from-[#05162E] via-[#082041] to-[#05162E] flex items-center justify-center z-10 shadow-[0_0_50px_rgba(0,169,163,0.35)] border-2 border-[#00A9A3]/60">
-            <div className="absolute w-[125%] h-[125%] rounded-full border border-[#00A9A3]/30 animate-ping opacity-60 pointer-events-none" />
-            <div
-              className="absolute w-[150%] h-[150%] rounded-full border border-[#00A9A3]/20 animate-ping opacity-40 pointer-events-none"
-              style={{ animationDelay: "0.6s" }}
-            />
-            <div className="w-14 h-14 rounded-full bg-[#05162E] shadow-inner flex flex-col items-center justify-center border border-[#00A9A3]/40 text-[#38DFD8]">
-              <Scale size={24} className="animate-pulse" />
-              <span className="text-[8px] font-mono font-bold tracking-widest uppercase text-[#00A9A3] -mt-0.5">
-                Nexo
+          {/* Núcleo Central: Sello de Autoridad NexoLegal */}
+          <div className="absolute w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-gradient-to-br from-[#05162E] via-[#082041] to-[#030D1C] flex items-center justify-center z-10 shadow-[0_0_40px_rgba(0,169,163,0.35)] border-2 border-[#00A9A3]/70">
+            <div className="absolute w-[120%] h-[120%] rounded-full border border-[#00A9A3]/30 animate-ping opacity-50 pointer-events-none" />
+            <div className="w-16 h-16 sm:w-18 sm:h-18 rounded-full bg-[#05162E] shadow-inner flex flex-col items-center justify-center border border-[#00A9A3]/40 text-[#38DFD8]">
+              <Scale size={22} className="animate-pulse" />
+              <span className="text-[9px] font-sans font-black tracking-wider uppercase text-white mt-0.5">
+                NEXO<span className="text-[#00A9A3]">LEGAL</span>
+              </span>
+              <span className="text-[7px] font-mono tracking-widest uppercase text-[#38DFD8]">
+                ECUADOR
               </span>
             </div>
           </div>
 
-          {/* Nodos Orbitales Giratorios */}
+          {/* Nodos Orbitales Giratorios (Sentido Horario de Reloj) */}
           {principlesData.map((item, index) => {
             const position = calculateNodePosition(index, principlesData.length);
             const isActive = activeNodeId === item.id;
@@ -261,7 +285,7 @@ export default function FirmOrbit() {
                 suppressHydrationWarning
                 className="absolute transition-transform duration-200 cursor-pointer group focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#38DFD8]/70 rounded-full"
                 style={{
-                  transform: `translate(${position.x}px, ${position.y}px) scale(${isActive ? 1.25 : 1})`,
+                  transform: `translate(${position.x}px, ${position.y}px) scale(${isActive ? (isMobile ? 1.15 : 1.25) : 1})`,
                   zIndex: isActive ? 200 : position.zIndex,
                   opacity: isActive ? 1 : position.opacity,
                 }}
@@ -272,42 +296,34 @@ export default function FirmOrbit() {
                 aria-label={`Seleccionar principio: ${item.title}`}
                 aria-pressed={isActive}
               >
-                {/* Resplandor radial del nodo */}
-                <div
-                  className={`absolute rounded-full -inset-4 transition-opacity duration-500 ${
-                    isActive ? "opacity-100 animate-pulse" : "opacity-0 group-hover:opacity-100"
-                  }`}
-                  style={{
-                    background: `radial-gradient(circle, rgba(0,169,163,0.35) 0%, rgba(0,0,0,0) 70%)`,
-                    width: `${item.energy * 0.7 + 60}px`,
-                    height: `${item.energy * 0.7 + 60}px`,
-                    left: "50%",
-                    top: "50%",
-                    transform: "translate(-50%, -50%)",
-                  }}
-                />
+                {/* Resplandor activo */}
+                {isActive && (
+                  <div
+                    className="absolute rounded-full -inset-3 bg-[#00A9A3]/35 animate-pulse blur-sm pointer-events-none"
+                  />
+                )}
 
                 {/* Esfera / Contenedor del Icono */}
                 <div
-                  className={`relative w-14 h-14 lg:w-16 lg:h-16 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg ${
+                  className={`relative w-12 h-12 sm:w-15 sm:h-15 rounded-full flex items-center justify-center transition-all duration-300 shadow-md ${
                     isActive
-                      ? "bg-gradient-to-tr from-[#00A9A3] via-[#38DFD8] to-[#00A9A3] text-[#05162E] border-2 border-white ring-4 ring-[#00A9A3]/40 shadow-[0_0_30px_rgba(0,169,163,0.5)]"
-                      : "bg-[#05162E] text-[#38DFD8] border-2 border-[#00A9A3]/40 hover:border-[#00A9A3] hover:bg-[#082041]"
+                      ? "bg-gradient-to-tr from-[#00A9A3] via-[#38DFD8] to-[#00A9A3] text-[#05162E] border-2 border-white ring-4 ring-[#00A9A3]/40 shadow-[0_0_25px_rgba(0,169,163,0.6)]"
+                      : "bg-[#05162E] text-[#38DFD8] border-2 border-[#00A9A3]/50 hover:border-[#00A9A3] hover:bg-[#082041]"
                   }`}
                 >
                   <Icon
-                    size={isActive ? 26 : 20}
-                    strokeWidth={isActive ? 2.2 : 1.7}
+                    size={isActive ? 22 : 18}
+                    strokeWidth={isActive ? 2.3 : 1.8}
                     className="transition-transform group-hover:scale-110"
                   />
                 </div>
 
-                {/* Etiqueta del nodo */}
+                {/* Etiqueta del nodo: Altísima Legibilidad en Modo Claro y Oscuro */}
                 <div
-                  className={`absolute top-[calc(100%+8px)] left-1/2 -translate-x-1/2 whitespace-nowrap text-xs font-bold tracking-widest uppercase transition-all duration-300 ${
+                  className={`absolute top-[calc(100%+6px)] left-1/2 -translate-x-1/2 whitespace-nowrap text-[10px] sm:text-xs font-black tracking-wider uppercase transition-all duration-300 px-2 py-0.5 rounded-md ${
                     isActive
-                      ? "text-[#00A9A3] font-serif drop-shadow-md scale-110"
-                      : "text-slate-300/80 group-hover:text-white"
+                      ? "text-white bg-[#00A9A3] shadow-md scale-105"
+                      : "text-[#082041] dark:text-slate-200 bg-white/90 dark:bg-[#05162E]/90 border border-slate-300 dark:border-slate-700 shadow-xs group-hover:text-[#00A9A3]"
                   }`}
                 >
                   {item.title}
@@ -318,45 +334,48 @@ export default function FirmOrbit() {
         </div>
       </div>
 
-      {/* ─── 2. COLUMNA DERECHA: PANEL INFORMATIVO INTERACTIVO (APPLE LUXURY) ─ */}
+      {/* ─── 2. COLUMNA DERECHA: PANEL INFORMATIVO DETALLADO (APPLE LUXURY) ── */}
       <div className="w-full lg:w-1/2 flex flex-col justify-center items-center lg:items-start max-w-xl">
         <div
           ref={cardRef}
           key={activeItem.id}
-          className="w-full min-h-[340px] flex flex-col justify-between bg-gradient-to-br from-[#05162E] via-[#05162E] to-[#05162E] rounded-3xl p-7 lg:p-9 shadow-2xl border-2 border-[#00A9A3]/40 relative overflow-hidden text-white transition-all duration-300"
+          className="w-full min-h-[350px] flex flex-col justify-between bg-gradient-to-br from-[#05162E] via-[#082041] to-[#030D1C] rounded-3xl p-7 sm:p-9 shadow-2xl border-2 border-[#00A9A3]/40 relative overflow-hidden text-white transition-all duration-300"
         >
-          {/* Brillo ambiental de fondo */}
-          <div className="absolute top-0 right-0 -mr-16 -mt-16 w-60 h-60 bg-[#00A9A3]/15 rounded-full blur-3xl pointer-events-none" />
+          {/* Brillo ambiental */}
+          <div className="absolute top-0 right-0 -mr-16 -mt-16 w-60 h-60 bg-[#00A9A3]/20 rounded-full blur-3xl pointer-events-none" />
 
           <div className="relative z-10 space-y-5">
             {/* Cabecera del Principio Activo */}
             <div className="flex items-center gap-4">
-              <div className="w-13 h-13 rounded-2xl bg-gradient-to-tr from-[#00A9A3] to-[#00A9A3] text-white flex items-center justify-center border border-white/20 shadow-md shrink-0 p-3">
-                <ActiveIcon size={26} strokeWidth={2} />
+              <div className="w-13 h-13 rounded-2xl bg-gradient-to-tr from-[#00A9A3] to-[#38DFD8] text-[#05162E] flex items-center justify-center border border-white/30 shadow-lg shrink-0 p-3">
+                <ActiveIcon size={26} strokeWidth={2.2} />
               </div>
               <div>
-                <span className="inline-block px-2.5 py-0.5 text-[10px] font-mono font-bold tracking-widest uppercase rounded-full bg-[#00A9A3]/20 text-[#38DFD8] border border-[#00A9A3]/40 mb-1">
+                <span className="inline-block px-3 py-0.5 text-[10px] font-mono font-bold tracking-widest uppercase rounded-full bg-[#00A9A3]/20 text-[#38DFD8] border border-[#00A9A3]/40 mb-1">
                   {activeItem.category}
                 </span>
-                <h3 className="text-2xl lg:text-3xl font-serif font-bold text-white tracking-tight">
+                <h3 className="text-2xl sm:text-3xl font-serif font-bold text-white tracking-tight">
                   {activeItem.title}
                 </h3>
               </div>
             </div>
 
             {/* Párrafo descriptivo del principio */}
-            <p className="text-sm lg:text-base text-cyan-100/90 leading-relaxed font-light">
+            <p className="text-sm sm:text-base text-cyan-100/90 leading-relaxed font-light">
               {activeItem.content}
             </p>
 
-            <div className="bg-black/30 backdrop-blur-md rounded-2xl p-4 border border-white/10">
+            <div className="bg-black/35 backdrop-blur-md rounded-2xl p-4 border border-white/10 flex items-center justify-between">
               <span className="flex items-center font-bold text-[#38DFD8] uppercase tracking-wider text-[11px]">
                 <Zap size={14} className="mr-1.5 text-[#00A9A3]" />
                 Principio rector del servicio profesional
               </span>
+              <span className="text-[10px] font-mono font-bold text-[#00A9A3]">
+                Calidad A+
+              </span>
             </div>
 
-            {/* Principios Conectados (Clickables que mueven la órbita) */}
+            {/* Principios Conectados (Clickables que mueven la órbita de reloj) */}
             {activeItem.relatedIds.length > 0 && (
               <div className="pt-2">
                 <div className="flex items-center gap-1.5 mb-2 text-slate-300 text-xs font-semibold">
@@ -377,7 +396,7 @@ export default function FirmOrbit() {
                         className="px-3.5 py-1.5 rounded-xl border border-[#00A9A3]/40 bg-white/5 hover:bg-[#00A9A3]/20 hover:border-[#00A9A3] text-white text-xs font-semibold transition-all active:scale-95 flex items-center gap-1.5 group cursor-pointer shadow-sm"
                       >
                         <span>{related.title}</span>
-                        <ArrowRight size={12} className="text-[#00A9A3] group-hover:translate-x-1 transition-transform" />
+                        <ArrowRight size={12} className="text-[#38DFD8] group-hover:translate-x-1 transition-transform" />
                       </button>
                     );
                   })}

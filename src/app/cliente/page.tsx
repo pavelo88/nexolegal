@@ -180,7 +180,7 @@ export default function ClientePortalPage() {
           </nav>
 
           <a
-            href="https://wa.me/593991786275?text=Hola%20NexoLegal,%20deseo%20consultar%20sobre%20mi%20expediente"
+            href="https://wa.me/593997224453?text=Hola%20NexoLegal,%20deseo%20consultar%20sobre%20mi%20expediente"
             target="_blank"
             rel="noopener noreferrer"
             className="px-3.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold flex items-center gap-1.5 shadow-sm shrink-0 active:scale-95 transition-all"
@@ -310,7 +310,7 @@ export default function ClientePortalPage() {
                     <span>Consultar a la IA sobre esta Causa</span>
                   </button>
                   <a
-                    href="https://wa.me/593991786275"
+                    href="https://wa.me/593997224453"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full py-2 rounded-xl border border-[#d6cfc5] hover:border-[#00A9A3] text-xs font-semibold text-[#17211f] text-center transition-all"
@@ -357,7 +357,7 @@ export default function ClientePortalPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
               <a
-                href="https://wa.me/593991786275"
+                href="https://wa.me/593997224453"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-4 rounded-2xl border border-emerald-300 bg-emerald-50/50 hover:bg-emerald-50 flex items-center gap-3 transition-colors text-emerald-900 font-bold"

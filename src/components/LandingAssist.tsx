@@ -40,7 +40,7 @@ export default function LandingAssist() {
 
   return <>
     <div className="landing-float-actions hidden md:flex" aria-label="Contacto NexoLegal">
-      <a className="whatsapp-float" href="https://wa.me/593991786275?text=Hola%20NexoLegal,%20quiero%20una%20orientación" target="_blank" rel="noreferrer" aria-label="Escribir por WhatsApp"><MessageCircle size={22}/><span>WhatsApp</span></a>
+      <a className="whatsapp-float" href="https://wa.me/593997224453?text=Hola%20NexoLegal,%20quiero%20una%20orientación" target="_blank" rel="noreferrer" aria-label="Escribir por WhatsApp"><MessageCircle size={22}/><span>WhatsApp</span></a>
       <button className="ai-float" onClick={() => setOpen(true)} aria-label="Abrir asistente jurídico" aria-expanded={open} aria-haspopup="dialog"><Bot size={20}/><span>Asistente IA</span></button>
     </div>
     {open && <div className="assistant-panel !bottom-20 md:!bottom-[7rem]" role="dialog" aria-label="Asistente informativo NexoLegal">

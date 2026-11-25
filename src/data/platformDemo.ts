@@ -108,7 +108,7 @@ export const demoLeads: DemoLead[] = [
   {
     id: "lead-01",
     name: "Dra. Patricia Cevallos",
-    phone: "+593 99 876 5432",
+    phone: "+593 99 722 4453",
     email: "patricia.c***@gmail.com",
     area: "Derecho Corporativo & SAS",
     urgency: "Alta",

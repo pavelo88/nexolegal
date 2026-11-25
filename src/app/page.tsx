@@ -37,6 +37,8 @@ import AnimatedCounter from "@/components/AnimatedCounter";
 import PromoMarquee from "@/components/PromoMarquee";
 import MobileBottomNav from "@/components/MobileBottomNav";
 import ThemeToggle from "@/components/ThemeToggle";
+import Footer from "@/components/Footer";
+import NexoLogo from "@/components/NexoLogo";
 import { getAttribution, trackEvent } from "@/lib/analytics";
 
 // ─── SLIDES DATA (ESTILO HOASESOR CON ESTÉTICA LUXURY NexoLegal) ─────────────
@@ -225,7 +227,7 @@ export default function Home() {
       });
       const result = await response.json().catch(() => null);
       if (!response.ok || !result?.reference) throw new Error(result?.error || "No se pudo registrar la consulta.");
-      const whatsappUrl = `https://wa.me/593991786275?text=${text}%0A%0A*Referencia:*%20${encodeURIComponent(result.reference)}`;
+      const whatsappUrl = `https://wa.me/593997224453?text=${text}%0A%0A*Referencia:*%20${encodeURIComponent(result.reference)}`;
       setContactResult({ reference: result.reference, whatsappUrl });
       trackEvent("lead_form_submit_success", { form_name: "home_contact", reference: result.reference });
       form.reset();
@@ -253,29 +255,8 @@ export default function Home() {
         >
           <div className="max-w-7xl mx-auto flex items-center justify-between">
             {/* Logo Brand Oficial */}
-            <Link href="/" className="flex min-h-11 items-center gap-2.5 sm:gap-3 group">
-              <div className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-full overflow-hidden border border-[#00A9A3]/50 shadow-md bg-[#05162E] flex items-center justify-center group-hover:border-[#00A9A3] transition-all duration-200 shrink-0">
-                <Image
-                  src="/logo.png"
-                  alt="NexoLegal"
-                  width={40}
-                  height={40}
-                  className="w-full h-full object-cover"
-                  priority
-                />
-              </div>
-              <div className="flex flex-col">
-                <span className={`text-lg sm:text-xl font-bold tracking-wider font-sans drop-shadow-sm transition-colors duration-200 ${
-                  scrolled ? "text-[#17211f]" : "text-white"
-                }`}>
-                  Nexo<span className="text-[#00A9A3] font-serif italic">Legal</span>
-                </span>
-                <span className={`text-[9px] uppercase tracking-widest -mt-0.5 transition-colors duration-200 ${
-                  scrolled ? "text-[#6e7771]" : "text-cyan-100/80"
-                }`}>
-                  Asesoría Legal · Nexo Talento
-                </span>
-              </div>
+            <Link href="/" className="flex min-h-11 items-center group">
+              <NexoLogo size="md" variant={scrolled ? "light" : "dark"} showSubtitle={true} />
             </Link>
 
             {/* Desktop Nav Links */}
@@ -550,13 +531,11 @@ export default function Home() {
           />
 
           {/* Máscara Lateral de Legibilidad Inteligente:
-              SOLO a la izquierda donde está el texto (0% al 45%),
-              y a la derecha CERO película (completamente transparente de 55% a 100%)
-              para que el abogado, los libros de cuero y la ventana de Quito se vean nítidos y luminosos. */}
-          <div className="hidden sm:block absolute inset-0 bg-gradient-to-r from-[#05162E] via-[#05162E]/90 35% via-[#05162E]/30 50% to-transparent 60% pointer-events-none" />
+              Sombra suave a la izquierda para contraste tipográfico, preservando la luz y riqueza fotográfica */}
+          <div className="hidden sm:block absolute inset-0 bg-gradient-to-r from-[#070b12]/85 via-[#070b12]/50 30% via-[#070b12]/15 45% to-transparent 55% pointer-events-none" />
 
           {/* Máscara móvil vertical limpia */}
-          <div className="sm:hidden absolute inset-0 bg-gradient-to-b from-[#05162E]/95 via-[#05162E]/75 55% to-[#05162E]/25 pointer-events-none" />
+          <div className="sm:hidden absolute inset-0 bg-gradient-to-b from-[#070b12]/85 via-[#070b12]/45 45% to-transparent 65% pointer-events-none" />
         </div>
 
         {/* Carousel Slides Container */}
@@ -718,7 +697,7 @@ export default function Home() {
                   <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
                 <a
-                  href="https://wa.me/593991786275?text=Deseo%20solicitar%20asesoria%20con%20el%20despacho%20de%20VIS%20Legal"
+                  href="https://wa.me/593997224453?text=Deseo%20solicitar%20asesoria%20con%20el%20despacho%20de%20NexoLegal"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-5 py-3 rounded-xl border border-[#00A9A3] text-[#17211f] hover:bg-[#00A9A3]/10 text-xs font-semibold active:scale-95 transition-all"
@@ -838,7 +817,7 @@ export default function Home() {
                   </div>
 
                   <a
-                    href={`https://wa.me/593991786275?text=Hola%20NexoLegal,%20deseo%20consultar%20sobre%20el%20%C3%A1rea%20de%20${encodeURIComponent(srv.title)}`}
+                    href={`https://wa.me/593997224453?text=Hola%20NexoLegal,%20deseo%20consultar%20sobre%20el%20%C3%A1rea%20de%20${encodeURIComponent(srv.title)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full min-h-11 py-2.5 rounded-xl bg-[#faf8f5] group-hover:bg-[#082041] text-[#082041] group-hover:text-[#38DFD8] border border-[#e6e0d6] group-hover:border-[#082041] text-xs font-bold uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2 shadow-xs active:scale-95 text-center mt-4"
@@ -914,7 +893,7 @@ export default function Home() {
           {/* CTA directo al método */}
           <div className="mt-10 text-center">
             <a
-              href="https://wa.me/593991786275?text=Hola%20NexoLegal,%20deseo%20iniciar%20el%20Paso%201%20de%20diagnostico%20para%20mi%20caso"
+              href="https://wa.me/593997224453?text=Hola%20NexoLegal,%20deseo%20iniciar%20el%20Paso%201%20de%20diagnostico%20para%20mi%20caso"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-[#00A9A3] to-[#00A9A3] text-white font-bold text-xs uppercase tracking-wider shadow-xl shadow-[#00A9A3]/30 hover:brightness-110 active:scale-95 transition-all"
@@ -1007,7 +986,7 @@ export default function Home() {
             </p>
             <div className="pt-2 flex flex-wrap items-center justify-center gap-3">
               <a
-                href="https://wa.me/593991786275?text=Hola%20NexoLegal,%20tengo%20una%20urgencia%20procesal%20y%20deseo%20atencion%20inmediata"
+                href="https://wa.me/593997224453?text=Hola%20NexoLegal,%20tengo%20una%20urgencia%20procesal%20y%20deseo%20atencion%20inmediata"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-6 py-3.5 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white text-xs font-bold uppercase tracking-wider shadow-md hover:brightness-110 active:scale-95 transition-all flex items-center gap-2"
@@ -1053,8 +1032,8 @@ export default function Home() {
                   </div>
                   <div>
                     <span className="text-[11px] uppercase tracking-wider text-cyan-100/60 block">Teléfono / WhatsApp</span>
-                    <a href="tel:+593991786275" className="inline-flex min-h-11 items-center text-sm font-bold text-white hover:text-[#38DFD8]">
-                      +593 99 178 6275
+                    <a href="tel:+593997224453" className="inline-flex min-h-11 items-center text-sm font-bold text-white hover:text-[#38DFD8]">
+                      +593 99 722 4453
                     </a>
                   </div>
                 </div>
@@ -1203,77 +1182,9 @@ export default function Home() {
       </section>
 
       {/* ────────────────────────────────────────────────────────────────────────
-          8. FOOTER COMPLETO (DATOS LEGALES, LINKS & COPYRIGHT)
+          8. FOOTER CORPORATIVO UNIFICADO (NEXO TALENTO PALETTE & WHATSAPP)
           ──────────────────────────────────────────────────────────────────────── */}
-      <footer className="bg-[#081715] text-[#bdc9c0] border-t border-[#1b3a35] py-14">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pb-12 border-b border-white/10">
-            {/* Col 1: Brand */}
-            <div className="space-y-4">
-              <Link href="/" className="flex items-center gap-3">
-                <div className="relative w-9 h-9 rounded-full overflow-hidden border border-[#00A9A3]/40 bg-[#082041] flex items-center justify-center">
-                  <Image
-                    src="/logo.png"
-                    alt="NexoLegal"
-                    width={36}
-                    height={36}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <span className="text-lg font-bold tracking-wider text-white font-sans">
-                  Nexo<span className="text-[#00A9A3] font-serif italic">Legal</span>
-                </span>
-              </Link>
-              <p className="text-xs text-[#8d9b93] leading-relaxed">
-                División jurídica y plataforma LegalTech complementaria de{" "}
-                <a href="https://www.nexotalento.com" target="_blank" rel="noopener noreferrer" className="text-[#38DFD8] hover:underline font-semibold">
-                  Nexo Talento
-                </a>
-                . Estrategia legal, prevención laboral y corporativa en Ecuador y LATAM.
-              </p>
-            </div>
-
-            {/* Col 2: Enlaces Rápidos */}
-            <div className="space-y-3">
-              <span className="text-xs font-bold uppercase tracking-wider text-white">Navegación</span>
-              <ul className="space-y-2 text-xs">
-                <li><Link href="/" className="inline-flex min-h-11 items-center hover:text-[#00A9A3] transition-colors">Inicio</Link></li>
-                <li><Link href="/nosotros" className="inline-flex min-h-11 items-center hover:text-[#00A9A3] transition-colors">Nosotros</Link></li>
-                <li><Link href="/blog" className="inline-flex min-h-11 items-center hover:text-[#00A9A3] transition-colors">Blog Jurídico</Link></li>
-                <li><a href="#servicios" className="inline-flex min-h-11 items-center hover:text-[#00A9A3] transition-colors">Áreas de Práctica</a></li>
-                <li><a href="#metodo" className="inline-flex min-h-11 items-center hover:text-[#00A9A3] transition-colors">Cómo Trabajamos</a></li>
-                <li><a href="#faqs" className="inline-flex min-h-11 items-center hover:text-[#00A9A3] transition-colors">Preguntas Frecuentes</a></li>
-              </ul>
-            </div>
-
-            {/* Col 3: Legal & Portal */}
-            <div className="space-y-3">
-              <span className="text-xs font-bold uppercase tracking-wider text-white">Legal & Clientes</span>
-              <ul className="space-y-2 text-xs">
-                <li><Link href="/privacidad" className="inline-flex min-h-11 items-center hover:text-[#00A9A3] transition-colors">Política de Privacidad</Link></li>
-                <li><Link href="/terminos" className="inline-flex min-h-11 items-center hover:text-[#00A9A3] transition-colors">Términos y Condiciones</Link></li>
-                <li><Link href="/app" className="inline-flex min-h-11 items-center hover:text-[#00A9A3] transition-colors">Portal de Clientes</Link></li>
-                <li><Link href="/ingresar" className="inline-flex min-h-11 items-center hover:text-[#00A9A3] transition-colors">Acceso Profesionales</Link></li>
-              </ul>
-            </div>
-
-            {/* Col 4: Contacto */}
-            <div className="space-y-3">
-              <span className="text-xs font-bold uppercase tracking-wider text-white">Contacto Directo</span>
-              <div className="space-y-2 text-xs text-[#8d9b93]">
-                <p>Quito, Pichincha, Ecuador</p>
-                <p>+593 99 178 6275</p>
-                <p>legal@nexotalentos.com</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#6e7771]">
-            <p>© <CopyrightYear /> NexoLegal. Todos los derechos reservados.</p>
-            <p>Excelencia Jurídica & LegalTech · Ecuador</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
 
       {/* Floating Assist / WhatsApp para Desktop */}
       <LandingAssist />
