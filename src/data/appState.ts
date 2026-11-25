@@ -97,7 +97,7 @@ export const initialCases: AppCase[] = [
     court: "Sala de lo Penal y Tránsito de la Corte Provincial",
     clientName: "Farmacias del Sol Cía. Ltda.",
     assignedLawyer: {
-      name: "Abg. Diego Alarcón",
+      name: "Abogado patrocinador",
       role: "Especialista en Litigio Constitucional",
       avatar: "DA",
       phone: "+593 98 111 2233",
@@ -214,7 +214,7 @@ export const premiumTrainings: PremiumTraining[] = [
     date: "28 de Septiembre, 2026",
     duration: "50 min",
     category: "Patrimonio",
-    instructor: "Abg. Diego Alarcón",
+    instructor: "Equipo jurídico NexoLegal",
     status: "Grabada",
     checklistUrl: "Modelos_Testamento_y_Capitulaciones.pdf",
   },

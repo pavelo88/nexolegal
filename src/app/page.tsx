@@ -246,7 +246,7 @@ export default function Home() {
       {/* ────────────────────────────────────────────────────────────────────────
           0 & 1. BARRA FLOTANTE CON SMART HIDE AL BAJAR Y REVEAL AL SUBIR
           ──────────────────────────────────────────────────────────────────────── */}
-      <div className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+      <div className="fixed top-0 left-0 right-0 z-[500] transition-all duration-300">
         <PromoMarquee scrolled={scrolled} />
 
         <header
@@ -430,7 +430,6 @@ export default function Home() {
                   { href: "/blog", label: "Blog Jurídico Doctrinal", icon: BookOpen },
                   { href: "#metodo", label: "Método en 3 Pasos", icon: Clock3 },
                   { href: "#contacto", label: "Contacto & Sedes", icon: Mail },
-                  { href: "/privacidad", label: "Privacidad & LOPDP Ecuador", icon: ShieldCheck },
                 ].map((item, idx) => {
                   const Icon = item.icon;
                   return (
@@ -534,11 +533,16 @@ export default function Home() {
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-left pt-36 sm:pt-44 lg:pt-48 pb-28 sm:pb-32">
           <div className="relative min-h-[420px] sm:min-h-[380px] max-w-3xl">
           {slides.map((slide, index) => {
-            if (index !== activeSlide) return null;
+            const isActive = index === activeSlide;
             return (
               <div
                 key={slide.title}
-                className="animate-fade-in relative"
+                aria-hidden={!isActive}
+                className={`transition-all duration-500 ease-out ${
+                  isActive
+                    ? "visible opacity-100 translate-y-0 relative"
+                    : "invisible opacity-0 translate-y-3 absolute inset-0 pointer-events-none"
+                }`}
               >
                 {/* Eyebrow Tag */}
                 <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-[#00A9A3]/40 backdrop-blur-md mb-6">
@@ -1032,8 +1036,8 @@ export default function Home() {
                   </div>
                   <div>
                     <span className="text-[11px] uppercase tracking-wider text-cyan-100/60 block">Correo Electrónico</span>
-                    <a href="mailto:legal@nexotalentos.com" className="inline-flex min-h-11 items-center text-sm font-bold text-white hover:text-[#38DFD8]">
-                      legal@nexotalentos.com
+                    <a href="#contacto" className="inline-flex min-h-11 items-center text-sm font-bold text-white hover:text-[#38DFD8]">
+                      <span>Contactar</span>
                     </a>
                   </div>
                 </div>
@@ -1173,9 +1177,6 @@ export default function Home() {
           8. FOOTER CORPORATIVO UNIFICADO (NEXO TALENTO PALETTE & WHATSAPP)
           ──────────────────────────────────────────────────────────────────────── */}
       <Footer />
-
-      {/* Floating Assist / WhatsApp para Desktop */}
-      <LandingAssist />
     </div>
   );
 }

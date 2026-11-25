@@ -111,7 +111,7 @@ export default function AbogadoDespachoPage() {
     <PortalAppShell
       portalTitle="NexoLegal Abogado"
       portalBadge="LETRADO"
-      userName="Abg. Diego Alarcón V."
+      userName="Abogado patrocinador"
       userRole="Letrado Patrocinador & Especialista"
       userAvatar="DA"
       navItems={navItems}
@@ -319,7 +319,7 @@ export default function AbogadoDespachoPage() {
             </div>
             <textarea
               rows={8}
-              defaultValue={`SEÑOR JUEZ DE LA UNIDAD JUDICIAL DE TRABAJO CON SEDE EN EL DISTRITO METROPOLITANO DE QUITO, PROVINCIA DE PICHINCHA.\n\nAbg. Diego Alarcón Vintimilla, por los derechos que represento del Ing. Esteban Morales, dentro del juicio laboral No. 17203-2026-03191, comparezco respetuosamente y contesto la infundada demanda en los siguientes términos...`}
+              defaultValue={`SEÑOR JUEZ DE LA UNIDAD JUDICIAL DE TRABAJO CON SEDE EN EL DISTRITO METROPOLITANO DE QUITO, PROVINCIA DE PICHINCHA.\n\nEl abogado patrocinador, por los derechos que represento del Ing. Esteban Morales, dentro del juicio laboral No. 17203-2026-03191, comparezco respetuosamente y contesto la infundada demanda en los siguientes términos...`}
               className="w-full p-4 rounded-2xl bg-[#080D15] border border-[#1E293B] text-xs font-mono text-slate-200 focus:outline-none focus:border-blue-500 leading-relaxed"
             />
             <div className="flex justify-end gap-2">

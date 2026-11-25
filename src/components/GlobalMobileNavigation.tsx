@@ -3,6 +3,7 @@
 import React from "react";
 import { usePathname } from "next/navigation";
 import MobileBottomNav from "@/components/MobileBottomNav";
+import LandingAssist from "@/components/LandingAssist";
 
 const PORTAL_PREFIXES = ["/user", "/abogado", "/admin", "/empresas", "/app"];
 
@@ -14,10 +15,15 @@ export default function GlobalMobileNavigation() {
   );
 
   // En portales (/app, /user, /abogado, /empresas, /admin), se utiliza AppExperienceNavigation.
-  // En todas las demás páginas públicas, se renderiza MobileBottomNav.
+  // En todas las demás páginas públicas, se renderiza MobileBottomNav y LandingAssist.
   if (isPortal) {
     return null;
   }
 
-  return <MobileBottomNav />;
+  return (
+    <>
+      <MobileBottomNav />
+      <LandingAssist />
+    </>
+  );
 }

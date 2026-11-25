@@ -300,7 +300,7 @@ export default function AppShowcase() {
                           Acción de Protección Constitucional
                         </p>
                         <p className="text-[10px] text-slate-400">
-                          Abogado: Abg. Diego Alarcón
+                          Abogado patrocinador
                         </p>
                         <div className="pt-2 border-t border-navy-800 flex items-center justify-between text-[10px]">
                           <span className="text-slate-300 flex items-center space-x-1">

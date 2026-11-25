@@ -1,9 +1,10 @@
-# NexoLegal - Firma Jurídica de Élite & Plataforma LegalTech
+# NexoLegal Ecuador - Firma Jurídica & Plataforma LegalTech
 > Aprende. Previene. Consulta. Protege. Resuelve.
-> Titularidad: NexoLegal (NexoLegal) · Quito, Pichincha, Ecuador.
+> Operado tecnológicamente por: SinergIA Tech · Quito, Pichincha, Ecuador.
 > Sitio Web Oficial: https://ecualegal.nexotalentos.com
 > Portal y Blog Doctrinal: https://ecualegal.nexotalentos.com/blog
 > Sección Institucional Nosotros: https://ecualegal.nexotalentos.com/nosotros
+> Contacto Inmediato (WhatsApp 24/7): +593 99 722 4453 · Diagnostico estrategico en menos de 24 horas.
 
 ---
 
@@ -43,7 +44,7 @@
 
 ### Artículo 2: Términos y Plazos Fatales en el COGEP: Cómo Evitar la Preclusión Judicial
 - **URL Canónica:** https://ecualegal.nexotalentos.com/blog/guia-cogep-terminos-plazos-procesales-ecuador
-- **Autor:** Ab. Diego Alarcón Vintimilla (NexoLegal Quito)
+- **Autor:** Equipo jurídico NexoLegal (Quito)
 - **Tesis Jurídica:** En el COGEP los términos se computan en días hábiles judiciales. El término de 30 días para contestar la demanda ordinaria (Art. 291) es perentorio; la falta de anuncio de prueba precluye irrevocablemente el derecho a aportarla en la audiencia preliminar.
 
 ### Artículo 3: Responsabilidad Penal de las Personas Jurídicas y Compliance en Ecuador
@@ -68,6 +69,6 @@
 
 ## 5. Contacto Institucional y Despacho Legal
 - **Sede Principal:** Quito, Pichincha, Ecuador (Cobertura procesal nacional).
-- **Teléfono / WhatsApp:** ++593 99 722 4453
-- **Correo Electrónico:** legal@nexotalentos.com
+- **Teléfono / WhatsApp:** +593 99 722 4453
+- **Correo Electrónico:** legal@nexolegal.ec
 - **Áreas de Práctica:** Litigación Penal, COGEP & Litigios Civiles, Asesoría Corporativa & Compliance, Derecho Inmobiliario & Tierras, Familia y Arbitraje.

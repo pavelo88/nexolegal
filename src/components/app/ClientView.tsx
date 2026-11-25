@@ -123,7 +123,7 @@ export default function ClientView({ onOpenConsultation }: ClientViewProps) {
                 </p>
                 <div className="pt-2 flex items-center space-x-2 text-[11px] text-[#38DFD8] font-semibold">
                   <CheckCircle2 className="w-4 h-4" />
-                  <span>Abogado patrocinador: Abg. Diego Alarcón preparado para alegato oral.</span>
+                  <span>Abogado patrocinador preparado para alegato oral.</span>
                 </div>
               </div>
 

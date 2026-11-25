@@ -36,7 +36,7 @@ export const demoCases: DemoCase[] = [
     title: "Acción de Protección Constitucional por Clausura Indebida",
     area: "Derecho Constitucional / Administrativo",
     client: "Farmacias del Sol Cía. Ltda.",
-    assignedLawyer: "Abg. Diego Alarcón - Especialista Contencioso",
+    assignedLawyer: "Especialista contencioso",
     stage: "Audiencia Oral de Sustanciación",
     status: "Audiencia programada",
     nextEventDate: "2026-10-29 09:00 AM",

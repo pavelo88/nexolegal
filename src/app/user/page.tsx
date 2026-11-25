@@ -33,7 +33,7 @@ const userCases: JudicialCase[] = [
     type: "Juicio Ordinario",
     title: "Prescripción Adquisitiva de Dominio de Inmueble Familiar",
     court: "Unidad Judicial Civil de Quitumbe - Quito",
-    lawyer: "Abg. Diego Alarcón Vintimilla",
+    lawyer: "Abogado patrocinador",
     hearingDate: "29 de Octubre, 2026 · 09:30 AM",
     status: "Audiencia Convocada",
     milestones: [
@@ -406,7 +406,7 @@ export default function UserPortalPage() {
                   DA
                 </div>
                 <div>
-                  <h3 className="font-bold text-white text-base">Abg. Diego Alarcón Vintimilla</h3>
+                  <h3 className="font-bold text-white text-base">Abogado patrocinador</h3>
                   <p className="text-xs text-blue-400 font-semibold">Socio Litigante / Especialista COGEP</p>
                   <p className="text-[10px] text-slate-400">Casillero Judicial No. 172910 SATJE Quito</p>
                 </div>
@@ -419,12 +419,11 @@ export default function UserPortalPage() {
                 </div>
                 <div className="flex items-center gap-2 text-slate-300">
                   <Mail size={14} className="text-blue-400" />
-                  <span>diego.alarcon@nexotalentos.com</span>
                 </div>
               </div>
 
               <a
-                href="https://wa.me/593997224453?text=Hola%20Abg.%20Diego%20Alarc%C3%B3n,%20le%20escribo%20desde%20el%20Portal%20Cliente%20de%20NexoLegal."
+                href="https://wa.me/593997224453?text=Hola,%20le%20escribo%20desde%20el%20Portal%20Cliente%20de%20NexoLegal."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full py-2.5 rounded-xl bg-[#00A9A3] hover:bg-[#008f8a] text-[#070C14] font-bold text-xs flex items-center justify-center gap-2 transition-all active:scale-95 shadow-md"

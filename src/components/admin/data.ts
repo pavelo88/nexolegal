@@ -23,7 +23,7 @@ export const mockB2BClients: B2BClient[] = [
     activeCases: 2,
     plan: "Retainer Legal",
     status: "Al día",
-    assignedLawyer: "Abg. Diego Alarcón",
+    assignedLawyer: "Abogado patrocinador",
   },
   {
     id: "cl-03",
@@ -65,7 +65,7 @@ export const mockLawyers: Lawyer[] = [
   },
   {
     id: "law-02",
-    name: "Abg. Diego Alarcón",
+    name: "Abogado patrocinador",
     role: "Socio / Especialista Contencioso",
     specialty: "Constitucional & Administrativo",
     activeCasesCount: 14,

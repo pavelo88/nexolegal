@@ -111,7 +111,7 @@ export default function LawyerFieldPanel({
         court: "Unidad Judicial de Trabajo de Pichincha",
         clientName: "Sra. Carmen Salazar",
         assignedLawyer: {
-          name: "Abg. Diego Alarcón",
+          name: "Abogado patrocinador",
           role: "Especialista Litigio",
           avatar: "DA",
           phone: "+593 98 765 4321",

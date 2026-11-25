@@ -157,7 +157,7 @@ JUICIO No: 17203-2026-00891
 ACTOR: ROBERTO ANDRADE SALAZAR
 DEMANDADO: INMOBILIARIA ANDINA CIA. LTDA.
 
-Abg. Diego Alarcón, dentro del término perentorio concedido en providencia de fecha 22 de octubre de 2026, comparezco y expongo:
+El abogado patrocinador, dentro del término perentorio concedido en providencia de fecha 22 de octubre de 2026, comparezco y expongo:
 
 1. Dando estricto cumplimiento a lo ordenado por su señoría, adjunto copia certificada del Certificado de Gravámenes conferido por el Registrador de la Propiedad del Cantón Quito, con lo cual se subsana la observación documental.
 2. Sírvase tener por cumplido el requerimiento y señalar día y hora para la Audiencia Preliminar prevista en el Art. 294 del Código Orgánico General de Procesos.
@@ -165,7 +165,7 @@ Abg. Diego Alarcón, dentro del término perentorio concedido en providencia de 
 Notificaciones que me correspondan las seguiré recibiendo en la casilla judicial electrónica No. 17182910-CJ.
 
 FIRMO CONJUNTO A MI PATROCINADO,
-Abg. Diego Alarcón - Mat. 17-2018-912 FA`}
+Abogado patrocinador - Mat. profesional`}
             </pre>
           </div>
         )}

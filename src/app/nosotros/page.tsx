@@ -24,155 +24,15 @@ import {
   X,
   Clock3,
 } from "lucide-react";
-import ThemeToggle from "@/components/ThemeToggle";
-import { useTheme } from "@/components/ThemeProvider";
+import PublicNavbar from "@/components/PublicNavbar";
 import NosotrosOrbit from "@/components/NosotrosOrbit";
 import Footer from "@/components/Footer";
 import NexoLogo from "@/components/NexoLogo";
 
 export default function NosotrosPage() {
-  const { theme } = useTheme();
-  const isDark = theme === "dark";
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
   return (
-    <div className="min-h-screen bg-[#faf8f5] text-[#17211f] font-sans selection:bg-[#00A9A3]/30 pb-0">
-      {/* ─── 1. NAVBAR DE LA PÁGINA NOSOTROS ───────────────────────────── */}
-      <header className={`sticky top-0 z-50 backdrop-blur-xl border-b shadow-sm py-3.5 px-4 sm:px-6 lg:px-8 transition-colors duration-200 ${
-        isDark ? "bg-[#05162E]/95 border-slate-800 text-white" : "bg-white/95 border-[#e6e0d6] text-[#17211f]"
-      }`}>
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <Link href="/" className="flex min-h-11 items-center group">
-            <NexoLogo size="md" variant={isDark ? "dark" : "light"} showSubtitle={true} />
-          </Link>
-
-          <nav className={`hidden md:flex items-center gap-6 text-xs uppercase tracking-widest font-semibold ${isDark ? "text-white/90" : "text-[#17211f]"}`}>
-            <Link href="/" className="hover:text-[#00A9A3] transition-colors inline-flex min-h-11 items-center">
-              Inicio
-            </Link>
-            <Link href="/nosotros" className="text-[#00A9A3] border-b-2 border-[#00A9A3] py-1">
-              Nosotros
-            </Link>
-            <Link href="/#servicios" className="hover:text-[#00A9A3] transition-colors inline-flex min-h-11 items-center">
-              Servicios
-            </Link>
-            <Link href="/blog" className="hover:text-[#00A9A3] transition-colors inline-flex min-h-11 items-center">
-              Blog Jurídico
-            </Link>
-            <Link href="/#contacto" className="hover:text-[#00A9A3] transition-colors inline-flex min-h-11 items-center">
-              Contacto
-            </Link>
-          </nav>
-
-          <div className="flex items-center gap-2.5">
-            <ThemeToggle />
-            <Link
-              href="/#contacto"
-              className={`hidden sm:flex items-center gap-1.5 px-4 py-2 rounded-xl border border-[#00A9A3] text-xs font-semibold hover:bg-[#00A9A3]/10 active:scale-95 transition-all ${
-                isDark ? "text-white" : "text-[#17211f]"
-              }`}
-            >
-              <Mail className="w-3.5 h-3.5 text-[#00A9A3]" />
-              <span>Consulta</span>
-            </Link>
-            <Link
-              href="/ingresar"
-              className="hidden sm:flex px-4 py-2 rounded-xl bg-gradient-to-r from-[#00A9A3] to-[#00A9A3] text-white text-xs font-bold shadow-md shadow-[#00A9A3]/25 hover:brightness-110 active:scale-95 transition-all items-center gap-1.5"
-            >
-              <Lock className="w-3.5 h-3.5 text-white/90" />
-              <span>Tu app</span>
-            </Link>
-
-            {/* Mobile Hamburger Toggle */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 text-[#00A9A3] hover:text-[#38DFD8] active:scale-90 transition-all cursor-pointer"
-              aria-label="Abrir menú de navegación"
-            >
-              {mobileMenuOpen ? <X className="w-6 h-6 text-[#00A9A3]" /> : <Menu className="w-6 h-6 text-[#00A9A3]" />}
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Dropdown Menu (Diseño Apple Luxury Ultra Legible) */}
-        {mobileMenuOpen && (
-          <div className="md:hidden bg-[#05162E] backdrop-blur-3xl border-t border-[#00A9A3]/40 px-5 py-6 flex flex-col gap-4 animate-fade-in shadow-2xl text-white mt-3">
-            <nav className="flex flex-col gap-1 text-left">
-              {[
-                { href: "/", label: "Inicio", icon: Scale },
-                { href: "/nosotros", label: "Nosotros & Socio Fundador", icon: Users2 },
-                { href: "/#servicios", label: "Servicios Jurídicos", icon: Gavel },
-                { href: "/blog", label: "Blog Jurídico Doctrinal", icon: BookOpen },
-                { href: "/#contacto", label: "Contacto & Sedes", icon: Mail },
-                { href: "/privacidad", label: "Privacidad & LOPDP", icon: ShieldCheck },
-              ].map((item, idx) => {
-                const Icon = item.icon;
-                return (
-                  <Link
-                    key={idx}
-                    href={item.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold text-white/95 hover:text-[#38DFD8] hover:bg-white/10 active:scale-95 transition-all"
-                  >
-                    <Icon className="w-4 h-4 text-[#00A9A3]" />
-                    <span>{item.label}</span>
-                  </Link>
-                );
-              })}
-            </nav>
-
-            {/* Accesos a las 4 WebApps desde el celular */}
-            <div className="p-4 rounded-2xl bg-white/5 border border-[#00A9A3]/30 space-y-2 text-left">
-              <span className="text-[10px] uppercase font-mono font-bold tracking-widest text-[#38DFD8] block">
-                Accesos a la Plataforma Web:
-              </span>
-              <div className="grid grid-cols-2 gap-2 text-xs">
-                <Link
-                  href="/user"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-semibold flex items-center gap-1.5 active:scale-95 transition-all"
-                >
-                  <span className="w-2 h-2 rounded-full bg-blue-400" />
-                  <span>Clientes</span>
-                </Link>
-                <Link
-                  href="/empresas"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-semibold flex items-center gap-1.5 active:scale-95 transition-all"
-                >
-                  <span className="w-2 h-2 rounded-full bg-emerald-400" />
-                  <span>Empresas</span>
-                </Link>
-                <Link
-                  href="/abogado"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-semibold flex items-center gap-1.5 active:scale-95 transition-all"
-                >
-                  <span className="w-2 h-2 rounded-full bg-amber-400" />
-                  <span>Letrados</span>
-                </Link>
-                <Link
-                  href="/admin"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-semibold flex items-center gap-1.5 active:scale-95 transition-all"
-                >
-                  <span className="w-2 h-2 rounded-full bg-purple-400" />
-                  <span>Dirección</span>
-                </Link>
-              </div>
-            </div>
-
-            <Link
-              href="/app"
-              onClick={() => setMobileMenuOpen(false)}
-              className="w-full py-3 rounded-xl bg-gradient-to-r from-[#00A9A3] to-[#00A9A3] text-white text-xs font-bold uppercase tracking-wider text-center shadow-lg shadow-[#00A9A3]/25 active:scale-95 transition-all flex items-center justify-center gap-2"
-            >
-              <Lock className="w-4 h-4 text-white" />
-              <span>Entrar al Ecosistema App Legal (4 Portales)</span>
-            </Link>
-          </div>
-        )}
-      </header>
+    <div className="min-h-screen bg-[#faf8f5] dark:bg-[#05162E] text-[#17211f] dark:text-slate-100 font-sans selection:bg-[#00A9A3]/30 pb-0">
+      <PublicNavbar />
 
       {/* ─── 2. HERO SECTION NOSOTROS (DESKTOP & CELULARES) ─────────────── */}
       <section className="relative min-h-[520px] sm:min-h-[580px] lg:min-h-[640px] flex items-center overflow-hidden bg-[#05162E] text-white">
@@ -203,7 +63,7 @@ export default function NosotrosPage() {
         </div>
 
         {/* Hero Copy */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 sm:pt-44 pb-20 sm:pb-28">
           <div className="max-w-2xl space-y-6">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-[#00A9A3]/40 backdrop-blur-md">
               <span className="w-2 h-2 rounded-full bg-[#00A9A3] animate-pulse" />

@@ -90,9 +90,14 @@ export default function MobileBottomNav({ onOpenAssistant }: MobileBottomNavProp
 
           {/* Center Column: Notch Floating WhatsApp Button (Principal) */}
           <li className="relative flex h-14 justify-center">
-            <button
-              type="button"
-              onClick={handleWhatsApp}
+            <a
+              href="https://wa.me/593997224453?text=Hola%20NexoLegal%2C%20me%20contacto%20desde%20la%20web%20m%C3%B3vil%20para%20consultar%20con%20un%20abogado."
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => {
+                triggerHaptic(25);
+                trackEvent("whatsapp_click", { placement: "mobile_bottom_nav" });
+              }}
               aria-label="Consultar por WhatsApp 24/7"
               className="group absolute -top-[28px] bottom-0 flex flex-col items-center justify-between pb-1 cursor-pointer"
             >
@@ -103,7 +108,7 @@ export default function MobileBottomNav({ onOpenAssistant }: MobileBottomNavProp
               <span className="whitespace-nowrap text-[10px] font-black leading-none tracking-wider text-emerald-400 uppercase drop-shadow">
                 WhatsApp
               </span>
-            </button>
+            </a>
           </li>
 
           {/* Item 4: Blog */}

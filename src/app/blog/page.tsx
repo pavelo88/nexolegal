@@ -6,7 +6,7 @@ import { Scale, Lock, Mail, ArrowRight, BookOpen, ShieldCheck } from "lucide-rea
 import { blogPosts } from "@/data/blogPosts";
 import BlogListClient from "@/components/BlogListClient";
 import MobileBottomNav from "@/components/MobileBottomNav";
-import ThemeToggle from "@/components/ThemeToggle";
+import PublicNavbar from "@/components/PublicNavbar";
 import Footer from "@/components/Footer";
 import NexoLogo from "@/components/NexoLogo";
 
@@ -48,7 +48,7 @@ export default function BlogPage() {
     url: "https://ecualegal.nexotalentos.com/blog",
     provider: {
       "@type": "LegalService",
-      name: "NexoLegal S.A.S.",
+      name: "NexoLegal · SinergIA Tech",
       url: "https://ecualegal.nexotalentos.com",
       address: {
         "@type": "PostalAddress",
@@ -70,7 +70,7 @@ export default function BlogPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#faf8f5] text-[#17211f] font-sans selection:bg-[#00A9A3]/30 pb-0">
+    <div className="min-h-screen bg-[#faf8f5] dark:bg-[#05162E] text-[#17211f] dark:text-slate-100 font-sans selection:bg-[#00A9A3]/30 pb-0">
       {/* Inyección JSON-LD Schema.org */}
       <script
         type="application/ld+json"
@@ -78,49 +78,7 @@ export default function BlogPage() {
       />
 
       {/* ─── 1. NAVBAR DE LA PÁGINA BLOG ─────────────────────────────── */}
-      <header className="sticky top-0 z-50 bg-white/95 dark:bg-[#05162E]/95 backdrop-blur-xl border-b border-[#e6e0d6] dark:border-slate-800 shadow-sm py-3.5 px-4 sm:px-6 lg:px-8 transition-colors duration-200">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <Link href="/" className="flex min-h-11 items-center group">
-            <NexoLogo size="md" variant="light" showSubtitle={true} />
-          </Link>
-
-          <nav className="hidden md:flex items-center gap-6 text-xs uppercase tracking-widest font-semibold text-[#17211f] dark:text-white/90">
-            <Link href="/" className="hover:text-[#00A9A3] transition-colors inline-flex min-h-11 items-center">
-              Inicio
-            </Link>
-            <Link href="/nosotros" className="hover:text-[#00A9A3] transition-colors inline-flex min-h-11 items-center">
-              Nosotros
-            </Link>
-            <Link href="/#servicios" className="hover:text-[#00A9A3] transition-colors inline-flex min-h-11 items-center">
-              Servicios
-            </Link>
-            <Link href="/blog" className="text-[#00A9A3] border-b-2 border-[#00A9A3] py-1">
-              Blog Jurídico
-            </Link>
-            <Link href="/#contacto" className="hover:text-[#00A9A3] transition-colors inline-flex min-h-11 items-center">
-              Contacto
-            </Link>
-          </nav>
-
-          <div className="flex items-center gap-2.5">
-            <ThemeToggle />
-            <Link
-              href="/#contacto"
-              className="hidden sm:flex items-center gap-1.5 px-4 py-2 rounded-xl border border-[#00A9A3] text-xs font-semibold text-[#17211f] dark:text-white hover:bg-[#00A9A3]/10 active:scale-95 transition-all"
-            >
-              <Mail className="w-3.5 h-3.5 text-[#00A9A3]" />
-              <span>Consulta</span>
-            </Link>
-            <Link
-              href="/ingresar"
-              className="px-4 py-2 rounded-xl bg-gradient-to-r from-[#00A9A3] to-[#00A9A3] text-white text-xs font-bold shadow-md shadow-[#00A9A3]/25 hover:brightness-110 active:scale-95 transition-all flex items-center gap-1.5"
-            >
-              <Lock className="w-3.5 h-3.5 text-white/90" />
-              <span>Tu app</span>
-            </Link>
-          </div>
-        </div>
-      </header>
+      <PublicNavbar />
 
       {/* ─── 2. CÁPSULA GEO PARA MOTORES DE IA (BYTE-0 ASIDE) ─────────── */}
       <aside className="sr-only">
@@ -131,7 +89,7 @@ export default function BlogPage() {
       </aside>
 
       {/* ─── 3. HERO DEL BLOG ─────────────────────────────────────────── */}
-      <section className="relative bg-gradient-to-br from-[#05162E] via-[#082041] to-[#082041] text-white py-16 sm:py-24 border-b border-[#00A9A3]/30">
+      <section className="relative bg-gradient-to-br from-[#05162E] via-[#082041] to-[#082041] text-white pt-36 sm:pt-44 pb-16 sm:pb-24 border-b border-[#00A9A3]/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-6">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-[#00A9A3]/40 backdrop-blur-md">
             <span className="w-2 h-2 rounded-full bg-[#00A9A3] animate-pulse" />
@@ -161,7 +119,7 @@ export default function BlogPage() {
       </main>
 
       {/* ─── 5. CTA CONSULTA LEGAL ───────────────────────────────────── */}
-      <section className="py-16 bg-white border-t border-[#e6e0d6]">
+      <section className="py-16 bg-white dark:bg-[#05162E] border-t border-[#e6e0d6] dark:border-[#00A9A3]/20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-[#082041] to-[#05162E] text-white border border-[#00A9A3]/40 shadow-xl flex flex-col sm:flex-row items-center justify-between gap-6">
             <div className="space-y-2 text-center sm:text-left">

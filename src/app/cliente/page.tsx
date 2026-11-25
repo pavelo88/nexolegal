@@ -48,7 +48,7 @@ const clientCases: JudicialCase[] = [
     type: "Civil & Tierras",
     court: "Unidad Judicial Civil de Quitumbe - Quito",
     status: "Audiencia convocada",
-    lawyer: "Abg. Diego Alarcón Vintimilla",
+    lawyer: "Abogado patrocinador",
     nextEvent: "Audiencia Preliminar de Conciliación",
     nextEventDate: "29 de Octubre, 2026 · 09:30 AM",
     unreadDocs: 2,
@@ -335,7 +335,7 @@ export default function ClientePortalPage() {
                   Abogado Principal Asignado
                 </span>
                 <h2 className="text-2xl font-bold font-serif text-[#17211f]">
-                  Abg. Diego Alarcón Vintimilla
+                  Abogado patrocinador
                 </h2>
                 <p className="text-sm text-[#55605a]">
                   Matrícula Foro de Abogados Pichincha Nº 17-2012-482 · Especialista en Litigación Oral
@@ -366,11 +366,11 @@ export default function ClientePortalPage() {
                 <span>Mensaje Directo al Abogado</span>
               </a>
               <a
-                href="mailto:dalarcon@nexotalentos.com"
+                href="mailto:legal@nexotalento.com"
                 className="p-4 rounded-2xl border border-[#e6e0d6] bg-[#faf8f5] hover:bg-white flex items-center gap-3 transition-colors text-[#17211f] font-semibold"
               >
                 <Mail size={18} className="text-[#00A9A3]" />
-                <span>dalarcon@nexotalentos.com</span>
+                <span>legal</span><span className="text-[#38DFD8]">&#64;</span><span>nexotalento.com</span>
               </a>
             </div>
           </div>

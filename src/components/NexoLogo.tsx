@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 
 interface NexoLogoProps {
   className?: string;
@@ -35,31 +34,28 @@ export default function NexoLogo({
       {/* Official NT Monogram / Isotipo Mark - Free without bubble wrapper */}
       <div className={`relative ${iconSizes[size]} flex items-center justify-center shrink-0`}>
         {isDark ? (
-          <Image
+          <img
             src="/icon-dark.png"
-            alt="Nexo Talento Logo"
+            alt="NexoLegal Logo"
             width={48}
             height={48}
             className="w-full h-full object-contain"
-            priority
           />
         ) : (
           <>
-            <Image
+            <img
               src="/icon-light.png"
-              alt="Nexo Talento Logo"
+              alt="NexoLegal Logo"
               width={48}
               height={48}
               className="w-full h-full object-contain dark:hidden"
-              priority
             />
-            <Image
+            <img
               src="/icon-dark.png"
-              alt="Nexo Talento Logo"
+              alt="NexoLegal Logo"
               width={48}
               height={48}
               className="w-full h-full object-contain hidden dark:block"
-              priority
             />
           </>
         )}
@@ -92,7 +88,7 @@ export default function NexoLogo({
               isDark ? "text-slate-400" : "text-slate-500 dark:text-slate-400"
             }`}
           >
-            Asesoría Jurídica · Nexo Talento
+            Asesoría Jurídica
           </span>
         )}
       </div>

@@ -19,9 +19,8 @@ import {
   Shield,
 } from "lucide-react";
 import { blogPosts, BlogPost } from "@/data/blogPosts";
-import MobileBottomNav from "@/components/MobileBottomNav";
+import PublicNavbar from "@/components/PublicNavbar";
 import Footer from "@/components/Footer";
-import NexoLogo from "@/components/NexoLogo";
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -94,12 +93,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       description: post.author.credentials,
       worksFor: {
         "@type": "Organization",
-        name: "NexoLegal S.A.S.",
+        name: "NexoLegal · SinergIA Tech",
       },
     },
     publisher: {
       "@type": "Organization",
-      name: "NexoLegal S.A.S.",
+      name: "NexoLegal · SinergIA Tech",
       logo: {
         "@type": "ImageObject",
         url: "https://ecualegal.nexotalentos.com/logo.png",
@@ -112,56 +111,15 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const otherPosts = blogPosts.filter((p) => p.slug !== post.slug).slice(0, 2);
 
   return (
-    <div className="min-h-screen bg-[#faf8f5] text-[#17211f] font-sans selection:bg-[#00A9A3]/30 pb-16 md:pb-0">
+    <div className="min-h-screen bg-[#faf8f5] dark:bg-[#05162E] text-[#17211f] dark:text-slate-100 font-sans selection:bg-[#00A9A3]/30 pb-0">
       {/* Inyección JSON-LD Schema.org */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* ─── 1. NAVBAR DE NAVEGACIÓN ───────────────────────────────────── */}
-      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-xl border-b border-[#e6e0d6] shadow-sm py-3.5 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <Link href="/" className="flex min-h-11 items-center group">
-            <NexoLogo size="md" variant="light" showSubtitle={true} />
-          </Link>
-
-          <nav className="hidden md:flex items-center gap-6 text-xs uppercase tracking-widest font-semibold text-[#17211f]">
-            <Link href="/" className="hover:text-[#00A9A3] transition-colors inline-flex min-h-11 items-center">
-              Inicio
-            </Link>
-            <Link href="/nosotros" className="hover:text-[#00A9A3] transition-colors inline-flex min-h-11 items-center">
-              Nosotros
-            </Link>
-            <Link href="/#servicios" className="hover:text-[#00A9A3] transition-colors inline-flex min-h-11 items-center">
-              Servicios
-            </Link>
-            <Link href="/blog" className="text-[#00A9A3] border-b-2 border-[#00A9A3] py-1">
-              Blog Jurídico
-            </Link>
-            <Link href="/#contacto" className="hover:text-[#00A9A3] transition-colors inline-flex min-h-11 items-center">
-              Contacto
-            </Link>
-          </nav>
-
-          <div className="flex items-center gap-3">
-            <Link
-              href="/#contacto"
-              className="hidden sm:flex items-center gap-1.5 px-4 py-2 rounded-xl border border-[#00A9A3] text-xs font-semibold text-[#17211f] hover:bg-[#00A9A3]/10 active:scale-95 transition-all"
-            >
-              <Mail className="w-3.5 h-3.5 text-[#00A9A3]" />
-              <span>Consulta</span>
-            </Link>
-            <Link
-              href="/ingresar"
-              className="px-4 py-2 rounded-xl bg-gradient-to-r from-[#00A9A3] to-[#00A9A3] text-white text-xs font-bold shadow-md shadow-[#00A9A3]/25 hover:brightness-110 active:scale-95 transition-all flex items-center gap-1.5"
-            >
-              <Lock className="w-3.5 h-3.5 text-white/90" />
-              <span>Tu app</span>
-            </Link>
-          </div>
-        </div>
-      </header>
+      {/* ─── 1. NAVBAR DE NAVEGACIÓN UNIFICADO ────────────────────────── */}
+      <PublicNavbar />
 
       {/* ─── 2. CÁPSULA GEO PARA MOTORES DE IA (BYTE-0 ASIDE) ─────────── */}
       <aside className="sr-only">
@@ -176,7 +134,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
       {/* ─── 3. HEADER EDITORIAL DEL ARTÍCULO ─────────────────────────── */}
       <div className="bg-[#05162E] text-white border-b border-[#00A9A3]/30 relative overflow-hidden">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 relative z-10 space-y-6">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 sm:pt-44 pb-16 sm:pb-20 relative z-10 space-y-6">
           {/* Breadcrumb de Retorno */}
           <Link
             href="/blog"
@@ -231,10 +189,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       {/* ─── 4. CUERPO DEL ARTÍCULO & SIDEBAR ─────────────────────────── */}
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16 space-y-10">
         {/* Caja Destacada: Puntos Clave y Tesis Jurídica (GEO & Citación IA) */}
-        <div className="p-6 sm:p-8 rounded-3xl bg-white border-2 border-[#00A9A3]/40 shadow-md space-y-4">
-          <div className="flex items-center gap-2.5 text-[#00A9A3]">
-            <CheckCircle2 className="w-5 h-5 text-[#00A9A3]" />
-            <h2 className="font-serif text-lg sm:text-xl font-bold text-[#17211f]">
+        <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#082041] border-2 border-[#00A9A3]/40 shadow-md space-y-4">
+          <div className="flex items-center gap-2.5 text-[#00A9A3] dark:text-[#38DFD8]">
+            <CheckCircle2 className="w-5 h-5 text-[#00A9A3] dark:text-[#38DFD8]" />
+            <h2 className="font-serif text-lg sm:text-xl font-bold text-[#17211f] dark:text-white">
               Tesis Doctrinal &amp; Puntos Clave (Key Takeaways)
             </h2>
           </div>
@@ -242,9 +200,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             {post.keyTakeaways.map((point, idx) => (
               <li
                 key={idx}
-                className="flex items-start gap-3 text-xs sm:text-sm text-[#17211f] leading-relaxed"
+                className="flex items-start gap-3 text-xs sm:text-sm text-[#17211f] dark:text-slate-200 leading-relaxed"
               >
-                <span className="w-1.5 h-1.5 rounded-full bg-[#00A9A3] mt-2 shrink-0" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#00A9A3] dark:bg-[#38DFD8] mt-2 shrink-0" />
                 <span>{point}</span>
               </li>
             ))}
@@ -252,42 +210,42 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </div>
 
         {/* Contenido Editorial Párrafo a Párrafo */}
-        <article className="prose prose-emerald max-w-none space-y-6 text-sm sm:text-base text-[#17211f] leading-relaxed">
+        <article className="prose prose-emerald dark:prose-invert max-w-none space-y-6 text-sm sm:text-base text-[#17211f] dark:text-slate-200 leading-relaxed">
           {post.content.map((paragraph, index) => (
-            <p key={index} className="text-[#2c3835] font-normal leading-relaxed text-justify">
+            <p key={index} className="text-[#2c3835] dark:text-slate-200 font-normal leading-relaxed text-justify">
               {paragraph}
             </p>
           ))}
         </article>
 
         {/* Cita Doctrinal de Cierre */}
-        <div className="p-6 rounded-2xl bg-[#faf8f5] border-l-4 border-[#00A9A3] shadow-sm text-xs sm:text-sm italic text-[#55605a]">
+        <div className="p-6 rounded-2xl bg-[#faf8f5] dark:bg-[#082041] border-l-4 border-[#00A9A3] shadow-sm text-xs sm:text-sm italic text-[#55605a] dark:text-slate-300">
           &quot;La excelencia procesal no tolera improvisaciones. En cada causa, la tutela efectiva de los derechos exige rigor conceptual y conocimiento profundo de la doctrina constitucional.&quot;
-          <span className="block font-semibold not-italic text-[#17211f] mt-2">
+          <span className="block font-semibold not-italic text-[#17211f] dark:text-white mt-2">
             — Ab. José Aimacaña Mgtr. · NexoLegal
           </span>
         </div>
 
         {/* Tarjeta de Autor Ampliada E-E-A-T */}
-        <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#e6e0d6] shadow-sm flex flex-col sm:flex-row items-center sm:items-start gap-6">
+        <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-[#082041] border border-[#e6e0d6] dark:border-[#00A9A3]/30 shadow-sm flex flex-col sm:flex-row items-center sm:items-start gap-6">
           <div className="w-16 h-16 rounded-2xl bg-[#05162E] text-[#38DFD8] flex items-center justify-center border-2 border-[#00A9A3] shadow-md shrink-0">
-            <Scale className="w-8 h-8 text-[#00A9A3]" />
+            <Scale className="w-8 h-8 text-[#00A9A3] dark:text-[#38DFD8]" />
           </div>
           <div className="space-y-2 text-center sm:text-left">
-            <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#00A9A3]">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[#00A9A3] dark:text-[#38DFD8]">
               AUTOR DEL ESTUDIO
             </span>
-            <h3 className="font-serif text-xl font-bold text-[#17211f]">
+            <h3 className="font-serif text-xl font-bold text-[#17211f] dark:text-white">
               {post.author.name}
             </h3>
-            <p className="text-xs text-[#00A9A3] font-semibold">{post.author.role}</p>
-            <p className="text-xs text-[#55605a] leading-relaxed">
+            <p className="text-xs text-[#00A9A3] dark:text-[#38DFD8] font-semibold">{post.author.role}</p>
+            <p className="text-xs text-[#55605a] dark:text-slate-300 leading-relaxed">
               {post.author.credentials}. Abogado litigante con amplia trayectoria en defensa técnica procesal, conferencista nacional e internacional y director de la práctica litigiosa en NexoLegal.
             </p>
             <div className="pt-2">
               <Link
                 href="/nosotros#fundador"
-                className="inline-flex min-h-11 items-center gap-1.5 text-xs font-bold text-[#082041] hover:text-[#00A9A3] transition-colors"
+                className="inline-flex min-h-11 items-center gap-1.5 text-xs font-bold text-[#082041] dark:text-[#38DFD8] hover:text-[#00A9A3] transition-colors"
               >
                 <span>Ver perfil académico completo</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -329,13 +287,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         {/* Otros Artículos Relacionados */}
         {otherPosts.length > 0 && (
           <div className="pt-8 space-y-6">
-            <div className="flex items-center justify-between border-b border-[#e6e0d6] pb-4">
-              <h3 className="font-serif text-xl font-bold text-[#17211f]">
+            <div className="flex items-center justify-between border-b border-[#e6e0d6] dark:border-[#00A9A3]/25 pb-4">
+              <h3 className="font-serif text-xl font-bold text-[#17211f] dark:text-white">
                 Otros Artículos Doctrinales
               </h3>
               <Link
                 href="/blog"
-                className="text-xs font-bold text-[#00A9A3] hover:underline"
+                className="text-xs font-bold text-[#00A9A3] dark:text-[#38DFD8] hover:underline"
               >
                 Ver todos
               </Link>
@@ -344,24 +302,24 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               {otherPosts.map((other) => (
                 <div
                   key={other.slug}
-                  className="p-6 rounded-2xl bg-white border border-[#e6e0d6] hover:border-[#00A9A3]/50 hover:shadow-md transition-all space-y-2 flex flex-col justify-between"
+                  className="p-6 rounded-2xl bg-white dark:bg-[#082041] border border-[#e6e0d6] dark:border-[#00A9A3]/25 hover:border-[#00A9A3]/50 hover:shadow-md transition-all space-y-2 flex flex-col justify-between"
                 >
                   <div className="space-y-2">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#00A9A3]">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#00A9A3] dark:text-[#38DFD8]">
                       {other.category}
                     </span>
-                    <h4 className="font-serif text-base font-bold text-[#17211f] line-clamp-2">
-                      <Link href={`/blog/${other.slug}`} className="hover:text-[#00A9A3]">
+                    <h4 className="font-serif text-base font-bold text-[#17211f] dark:text-white line-clamp-2">
+                      <Link href={`/blog/${other.slug}`} className="hover:text-[#00A9A3] dark:hover:text-[#38DFD8]">
                         {other.title}
                       </Link>
                     </h4>
-                    <p className="text-xs text-[#6e7771] line-clamp-2">
+                    <p className="text-xs text-[#6e7771] dark:text-slate-300 line-clamp-2">
                       {other.excerpt}
                     </p>
                   </div>
                   <Link
                     href={`/blog/${other.slug}`}
-                    className="inline-flex items-center gap-1 text-xs font-bold text-[#082041] hover:text-[#00A9A3] pt-2"
+                    className="inline-flex items-center gap-1 text-xs font-bold text-[#082041] dark:text-[#38DFD8] hover:text-[#00A9A3] pt-2"
                   >
                     <span>Leer</span>
                     <ArrowRight className="w-3 h-3" />
@@ -375,9 +333,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
       {/* ─── 5. FOOTER CORPORATIVO UNIFICADO ───────────────────────────── */}
       <Footer />
-
-      {/* Barra de navegación móvil inferior estilo app */}
-      <MobileBottomNav />
     </div>
   );
 }

@@ -54,7 +54,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "Guía técnica para abogados y empresas sobre el régimen de términos fatales en el COGEP. Evite el rechazo de pruebas o la preclusión de derechos procesales.",
     category: "COGEP & Litigios",
     author: {
-      name: "Ab. Diego Alarcón Vintimilla",
+      name: "Equipo jurídico NexoLegal",
       role: "Especialista en Litigación Oral",
       credentials: "Magíster en Derecho Procesal · Sede Quito",
     },

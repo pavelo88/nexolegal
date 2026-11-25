@@ -89,3 +89,17 @@
 **Skills usadas/modificadas:** reglas-seguridad, registrar-avance, pdf-profesional-verificado, 01_architecture_quality_agent, 02_development_agent.
 **Próximos pasos:** Presentar las opciones de slogan al usuario para su selección final.
 **Archivos modificados:** `C:/Users/pablo/Documents/Judicial/scripts/generar_propuesta_sinergia.py`, `C:/Users/pablo/Documents/Judicial/scripts/generar_propuesta_sinergia.php`, `C:/Users/pablo/Documents/Judicial/entrega_sinergia/marca/sinergia-s-cropped.png`, `C:/Users/pablo/Documents/Judicial/entrega_sinergia/Propuesta_Valoracion_Inversion_VIS_Legal_SinergIA_Tech.pdf`, `C:/Users/pablo/Documents/Judicial/AVANCE.md`.
+
+## [2026-11-25] - NexoLegal - Codex
+**Qué se hizo:** Auditoría de preparación para publicación sobre el checkout vivo de `C:/dev/proyectos/ecualegal`, incluyendo estado Git, referencias de dominio/correo, configuración, límites de modularidad, lint y build.
+**Resultado:** Build y lint exitosos; se generaron 30 rutas. Quedan bloqueos de calidad antes de declarar publicación perfecta: cambios locales amplios sin commit, cuatro archivos de código sobre 500 líneas, tres advertencias de `<img>`, validación real de Supabase/Vercel pendiente y el correo `mailto` de portal no está funcionalmente verificado.
+**Skills usadas/modificadas:** reglas-seguridad, modularidad-archivos, registrar-avance.
+**Próximos pasos:** Confirmar el correo operativo real, separar los archivos monolíticos, revisar visualmente rutas públicas y probar leads/autenticación contra el despliegue antes de publicar.
+**Archivos modificados:** C:/dev/proyectos/ecualegal/AVANCE.md
+
+## [2026-11-25] - NexoLegal - Codex
+**Qué se hizo:** Se eliminaron todas las referencias al abogado identificado como Alarcón, incluido el correo y el enlace `mailto`; se actualizó la identidad pública al dominio `ecualegal.nexotalentos.com`.
+**Resultado:** Las búsquedas no encuentran referencias a Alarcón, Firebase ni al dominio Vercel anterior. La aplicación compila correctamente con 30 rutas. El código confirma integración con Supabase mediante SSR, Auth y PostgreSQL.
+**Skills usadas/modificadas:** reglas-seguridad, modularidad-archivos, registrar-avance.
+**Próximos pasos:** Verificar en Vercel el dominio personalizado y probar autenticación, leads y consultas contra Supabase en producción.
+**Archivos modificados:** C:/dev/proyectos/ecualegal/src; C:/dev/proyectos/ecualegal/public; C:/dev/proyectos/ecualegal/AVANCE.md

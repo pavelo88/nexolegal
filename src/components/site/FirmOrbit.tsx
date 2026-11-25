@@ -107,7 +107,7 @@ export default function FirmOrbit() {
   const resumeRef = useRef<number | null>(null);
   autoRotateRef.current = autoRotate;
 
-  const radius = isMobile ? 125 : 185;
+  const radius = isMobile ? 108 : 185;
   const angleStep = 360 / principlesData.length;
 
   useEffect(() => {
@@ -205,7 +205,7 @@ export default function FirmOrbit() {
     const x = Math.round(radius * Math.cos(radian) * 10) / 10;
     const y = Math.round(radius * Math.sin(radian) * 10) / 10;
 
-    const zIndex = Math.round(100 + 50 * Math.cos(radian));
+    const zIndex = Math.round(15 + 10 * Math.cos(radian));
     const opacity = Math.round(Math.max(0.65, Math.min(1, 0.6 + 0.4 * ((1 + Math.sin(radian)) / 2))) * 100) / 100;
 
     return { x, y, angle, zIndex, opacity };
@@ -225,7 +225,7 @@ export default function FirmOrbit() {
         <button
           type="button"
           onClick={() => setAutoRotate((current) => !current)}
-          className="absolute right-2 top-0 z-[210] inline-flex items-center gap-1.5 rounded-full border border-[#00A9A3]/50 bg-[#05162E] px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-wider text-[#38DFD8] shadow-lg backdrop-blur hover:bg-[#082041] active:scale-95 transition-all cursor-pointer"
+          className="absolute right-2 top-0 z-20 inline-flex items-center gap-1.5 rounded-full border border-[#00A9A3]/50 bg-[#05162E] px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-wider text-[#38DFD8] shadow-lg backdrop-blur hover:bg-[#082041] active:scale-95 transition-all cursor-pointer"
           aria-pressed={!autoRotate}
           aria-label={autoRotate ? "Pausar animación del reloj de principios" : "Reanudar animación del reloj de principios"}
         >
@@ -259,7 +259,7 @@ export default function FirmOrbit() {
           />
 
           {/* Núcleo Central: Sello de Autoridad NexoLegal */}
-          <div className="absolute w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-gradient-to-br from-[#05162E] via-[#082041] to-[#030D1C] flex items-center justify-center z-10 shadow-[0_0_40px_rgba(0,169,163,0.35)] border-2 border-[#00A9A3]/70">
+          <div className="absolute w-20 h-20 sm:w-28 sm:h-28 rounded-full bg-gradient-to-br from-[#05162E] via-[#082041] to-[#030D1C] flex items-center justify-center z-10 shadow-[0_0_40px_rgba(0,169,163,0.35)] border-2 border-[#00A9A3]/70">
             <div className="absolute w-[120%] h-[120%] rounded-full border border-[#00A9A3]/30 animate-ping opacity-50 pointer-events-none" />
             <div className="w-16 h-16 sm:w-18 sm:h-18 rounded-full bg-[#05162E] shadow-inner flex flex-col items-center justify-center border border-[#00A9A3]/40 text-[#38DFD8]">
               <Scale size={22} className="animate-pulse" />
@@ -286,7 +286,7 @@ export default function FirmOrbit() {
                 className="absolute transition-transform duration-200 cursor-pointer group focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#38DFD8]/70 rounded-full"
                 style={{
                   transform: `translate(${position.x}px, ${position.y}px) scale(${isActive ? (isMobile ? 1.15 : 1.25) : 1})`,
-                  zIndex: isActive ? 200 : position.zIndex,
+                  zIndex: isActive ? 35 : position.zIndex,
                   opacity: isActive ? 1 : position.opacity,
                 }}
                 onClick={(e) => {
@@ -305,14 +305,14 @@ export default function FirmOrbit() {
 
                 {/* Esfera / Contenedor del Icono */}
                 <div
-                  className={`relative w-12 h-12 sm:w-15 sm:h-15 rounded-full flex items-center justify-center transition-all duration-300 shadow-md ${
+                  className={`relative w-10 h-10 sm:w-14 sm:h-14 rounded-full flex items-center justify-center transition-all duration-300 shadow-md ${
                     isActive
                       ? "bg-gradient-to-tr from-[#00A9A3] via-[#38DFD8] to-[#00A9A3] text-[#05162E] border-2 border-white ring-4 ring-[#00A9A3]/40 shadow-[0_0_25px_rgba(0,169,163,0.6)]"
                       : "bg-[#05162E] text-[#38DFD8] border-2 border-[#00A9A3]/50 hover:border-[#00A9A3] hover:bg-[#082041]"
                   }`}
                 >
                   <Icon
-                    size={isActive ? 22 : 18}
+                    size={isActive ? 20 : 16}
                     strokeWidth={isActive ? 2.3 : 1.8}
                     className="transition-transform group-hover:scale-110"
                   />
@@ -320,7 +320,7 @@ export default function FirmOrbit() {
 
                 {/* Etiqueta del nodo: Altísima Legibilidad en Modo Claro y Oscuro */}
                 <div
-                  className={`absolute top-[calc(100%+6px)] left-1/2 -translate-x-1/2 whitespace-nowrap text-[10px] sm:text-xs font-black tracking-wider uppercase transition-all duration-300 px-2 py-0.5 rounded-md ${
+                  className={`absolute top-[calc(100%+4px)] left-1/2 -translate-x-1/2 whitespace-nowrap text-[9px] sm:text-xs font-black tracking-wider uppercase transition-all duration-300 px-1.5 sm:px-2 py-0.5 rounded-md ${
                     isActive
                       ? "text-white bg-[#00A9A3] shadow-md scale-105"
                       : "text-[#082041] dark:text-slate-200 bg-white/90 dark:bg-[#05162E]/90 border border-slate-300 dark:border-slate-700 shadow-xs group-hover:text-[#00A9A3]"

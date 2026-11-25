@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import "../styles/public-theme.css";
+import "../styles/app-private.css";
 import SchemaMarkup from "@/components/SchemaMarkup";
 import ThemeProvider from "@/components/ThemeProvider";
 import CookieBanner from "@/components/CookieBanner";
@@ -24,32 +26,33 @@ export const metadata: Metadata = {
     "Firma jurídica y plataforma LegalTech con app móvil 24/7. Gestión transparente de casos, prevención ciudadana y membresía premium en Ecuador.",
   keywords: [
     "NexoLegal",
-    "NexoTalentos Legal",
+    "SinergIA Tech Legal",
     "LegalTech Ecuador",
-    "App judicial",
-    "Membresía jurídica",
     "Abogados Quito",
     "Abogados Guayaquil",
-    "Buzón judicial IA",
+    "Abogados Penalistas Ecuador",
+    "Abogados Corporativos Quito",
+    "Defensa Penal COIP",
+    "Litigios COGEP",
     "Prevención legal",
   ],
   authors: [{ name: "NexoLegal" }],
   creator: "NexoLegal",
   publisher: "NexoLegal",
-  metadataBase: new URL("https://ecualegal.vercel.app"),
+  metadataBase: new URL("https://ecualegal.nexotalentos.com"),
   alternates: { canonical: "/" },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-snippet": -1, "max-image-preview": "large", "max-video-preview": -1 } },
   openGraph: {
     type: "website",
     locale: "es_EC",
-    url: "https://ecualegal.vercel.app",
+    url: "https://ecualegal.nexotalentos.com",
     siteName: "NexoLegal",
     title: "NexoLegal | Plataforma LegalTech & Abogados Ecuador",
     description:
       "Firma jurídica y plataforma LegalTech con app móvil 24/7. Gestión transparente de casos, prevención ciudadana y membresía premium en Ecuador.",
     images: [
       {
-        url: "https://ecualegal.vercel.app/hero-corporate-architecture.jpg",
+        url: "https://ecualegal.nexotalentos.com/hero-corporate-architecture.jpg",
         width: 1200,
         height: 630,
         alt: "NexoLegal | Plataforma LegalTech & Abogados Ecuador",
@@ -61,7 +64,7 @@ export const metadata: Metadata = {
     title: "NexoLegal | Plataforma LegalTech & Abogados Ecuador",
     description:
       "Firma jurídica y plataforma LegalTech con app móvil 24/7. Gestión transparente de casos en Ecuador.",
-    images: ["https://ecualegal.vercel.app/hero-corporate-architecture.jpg"],
+    images: ["https://ecualegal.nexotalentos.com/hero-corporate-architecture.jpg"],
   },
   icons: {
     icon: [
@@ -97,12 +100,12 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/icon-dark.png?v=2" />
         <meta name="theme-color" content="#05162E" media="(prefers-color-scheme: dark)" />
         <meta name="theme-color" content="#F2F2F7" media="(prefers-color-scheme: light)" />
-        <meta property="og:image" content="https://ecualegal.vercel.app/hero-corporate-architecture.jpg" />
-        <meta property="og:image:secure_url" content="https://ecualegal.vercel.app/hero-corporate-architecture.jpg" />
+        <meta property="og:image" content="https://ecualegal.nexotalentos.com/hero-corporate-architecture.jpg" />
+        <meta property="og:image:secure_url" content="https://ecualegal.nexotalentos.com/hero-corporate-architecture.jpg" />
         <meta property="og:image:type" content="image/jpeg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
-        <meta name="twitter:image" content="https://ecualegal.vercel.app/hero-corporate-architecture.jpg" />
+        <meta name="twitter:image" content="https://ecualegal.nexotalentos.com/hero-corporate-architecture.jpg" />
         {/* Inline script to prevent flash of wrong theme */}
         <script dangerouslySetInnerHTML={{
           __html: `(function(){try{var t=localStorage.getItem('theme')||'light';document.documentElement.classList.add(t==='dark'?'dark':'light')}catch(e){document.documentElement.classList.add('light')}})();`

@@ -12,13 +12,12 @@ export default function ThemeToggle({ className = "" }: { className?: string }) 
     setMounted(true);
   }, []);
 
-  const isDark = mounted 
-    ? theme === "dark" 
-    : (typeof document !== "undefined" && document.documentElement.classList.contains("dark"));
+  const isDark = mounted ? theme === "dark" : false;
 
   return (
     <button
       type="button"
+      suppressHydrationWarning
       onClick={toggle}
       aria-label={isDark ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}
       title={isDark ? "Modo Claro" : "Modo Oscuro"}

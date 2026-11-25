@@ -424,7 +424,7 @@ export default function MobileAppShell({ initialRole = "cliente", demoMode = fal
                     {role === "cliente"
                       ? "Roberto Andrade"
                       : role === "abogado"
-                        ? "Abg. Diego Alarcón"
+                        ? "Abogado patrocinador"
                         : role === "b2b"
                           ? "Corp. Favorita S.A."
                           : "Admin NexoLegal"}
@@ -520,7 +520,7 @@ export default function MobileAppShell({ initialRole = "cliente", demoMode = fal
               <div className="pt-4 border-t border-slate-800">
                 <div className={`p-3 rounded-xl ${roleConfig.badgeBg} border ${roleConfig.borderColor}`}>
                   <p className="text-xs font-semibold text-white">
-                    {role === "cliente" ? "Roberto Andrade" : role === "abogado" ? "Abg. Diego Alarcón" : role === "b2b" ? "Corp. Favorita S.A." : "Admin NexoLegal"}
+                    {role === "cliente" ? "Roberto Andrade" : role === "abogado" ? "Abogado patrocinador" : role === "b2b" ? "Corp. Favorita S.A." : "Admin NexoLegal"}
                   </p>
                   <p className="text-[10px] text-slate-400 capitalize mt-0.5">
                     {role === "cliente" ? `Cliente (${subscriptionTier.toUpperCase()})` : roleConfig.label}
