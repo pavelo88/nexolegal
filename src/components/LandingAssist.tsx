@@ -38,6 +38,19 @@ export default function LandingAssist() {
   const [leadPhone, setLeadPhone] = useState("");
   const [leadSubmitting, setLeadSubmitting] = useState(false);
   const [leadSent, setLeadSent] = useState<string | null>(null);
+  const [isFooterVisible, setIsFooterVisible] = useState(false);
+
+  useEffect(() => {
+    const footer = document.getElementById("site-footer");
+    if (!footer) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsFooterVisible(entry.isIntersecting),
+      { threshold: 0.05 }
+    );
+    observer.observe(footer);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const handleOpen = () => setOpen(true);
@@ -113,7 +126,14 @@ export default function LandingAssist() {
 
   return (
     <>
-      <div className="landing-float-actions hidden md:flex" aria-label="Contacto NexoLegal">
+      <div
+        className={`landing-float-actions hidden md:flex transition-all duration-300 ${
+          isFooterVisible
+            ? "opacity-0 pointer-events-none translate-y-3"
+            : "opacity-100 pointer-events-auto translate-y-0"
+        }`}
+        aria-label="Contacto NexoLegal"
+      >
         <a
           className="whatsapp-float"
           href="https://wa.me/593997224453?text=Hola%20NexoLegal,%20quiero%20una%20orientación"

@@ -21,7 +21,7 @@ export default function Footer() {
     "https://wa.me/593997224453?text=Hola%20NexoLegal,%20deseo%20solicitar%20asesoria%20juridica%20especializada";
 
   return (
-    <footer className="border-t border-slate-800 bg-[#05162E] text-slate-300 text-xs relative overflow-hidden transition-colors duration-300">
+    <footer id="site-footer" className="border-t border-slate-800 bg-[#05162E] text-slate-300 text-xs relative overflow-hidden transition-colors duration-300">
       {/* ─── 1. TOP BANNER EJECUTIVO (ESTILO NEXO TALENTO) ─────────────── */}
       <div className="border-b border-slate-800/80 bg-[#030D1C]/90">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
