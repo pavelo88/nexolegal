@@ -55,11 +55,11 @@ export default function Footer() {
       </div>
 
       {/* ─── 2. CUERPO PRINCIPAL DEL FOOTER ────────────────────────────── */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 pb-32 lg:pb-16">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 lg:py-10 pb-32 lg:pb-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-10 lg:gap-7">
           {/* Col 1 (4 cols): Marca, Propuesta & Contacto Oficial */}
           <div className="lg:col-span-4 space-y-4">
-            <Link href="/" className="inline-block group focus:outline-none">
+            <Link href="/" className="inline-block group focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#38DFD8]">
               <NexoLogo size="md" variant="dark" showSubtitle={true} />
             </Link>
 
@@ -222,8 +222,8 @@ export default function Footer() {
         </div>
 
         {/* ─── 3. BARRA INFERIOR DE LEGALES Y COPYRIGHT (2 LÍNEAS CENTRADAS) ─── */}
-        <div className="mt-12 pt-8 border-t border-slate-800 flex flex-col items-center justify-center gap-4 text-center text-[11px] text-slate-400">
-          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+        <div className="mt-12 lg:mt-6 pt-8 lg:pt-5 border-t border-slate-800 flex flex-col items-center justify-center gap-4 lg:flex-row lg:justify-between lg:gap-8 lg:text-left text-center text-[11px] text-slate-400">
+          <div className="flex flex-wrap items-center justify-center lg:justify-end gap-2 sm:gap-3 lg:order-2">
             <Link
               href="/terminos"
               className="px-3.5 py-1.5 rounded-full bg-slate-900/80 border border-slate-700/80 text-slate-200 hover:text-[#38DFD8] hover:border-[#00A9A3]/50 transition-all active:scale-95"
@@ -243,8 +243,8 @@ export default function Footer() {
               Blog Doctrinal
             </Link>
           </div>
-          <p className="text-slate-300 leading-relaxed max-w-2xl">
-            © <CopyrightYear /> SinergIA Tech · NexoLegal Asesoría Jurídica Ecuador. Todos los derechos reservados.
+          <p className="text-slate-300 leading-relaxed max-w-2xl lg:order-1 lg:max-w-none">
+            © <CopyrightYear /> NexoLegal Asesoría Jurídica Ecuador · SinergIA Tech. Todos los derechos reservados.
           </p>
         </div>
       </div>

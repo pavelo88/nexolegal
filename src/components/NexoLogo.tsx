@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 interface NexoLogoProps {
   className?: string;
@@ -34,7 +35,7 @@ export default function NexoLogo({
       {/* Official NT Monogram / Isotipo Mark - Free without bubble wrapper */}
       <div className={`relative ${iconSizes[size]} flex items-center justify-center shrink-0`}>
         {isDark ? (
-          <img
+          <Image
             src="/icon-dark.png"
             alt="NexoLegal Logo"
             width={48}
@@ -43,14 +44,14 @@ export default function NexoLogo({
           />
         ) : (
           <>
-            <img
+            <Image
               src="/icon-light.png"
               alt="NexoLegal Logo"
               width={48}
               height={48}
               className="w-full h-full object-contain dark:hidden"
             />
-            <img
+            <Image
               src="/icon-dark.png"
               alt="NexoLegal Logo"
               width={48}

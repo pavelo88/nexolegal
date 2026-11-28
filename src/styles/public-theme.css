@@ -23,6 +23,29 @@
   transform: scale(0.96);
 }
 
+.hero-image-overlay {
+  background:
+    linear-gradient(90deg, rgba(8, 12, 17, .72) 0%, rgba(8, 12, 17, .48) 43%, rgba(8, 12, 17, .14) 77%, rgba(8, 12, 17, .32) 100%),
+    linear-gradient(180deg, rgba(8, 12, 17, .34) 0%, rgba(8, 12, 17, .08) 48%, rgba(8, 12, 17, .62) 100%);
+}
+
+.hero-cta {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-cta::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 -45%;
+  width: 32%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.45), transparent);
+  transform: skewX(-18deg);
+  transition: transform .7s var(--ease-out);
+}
+
+.hero-cta:hover::after { transform: translateX(430%) skewX(-18deg); }
+
 /* Keyframes */
 @keyframes visFadeIn {
   from { opacity: 0; transform: translateY(12px); }

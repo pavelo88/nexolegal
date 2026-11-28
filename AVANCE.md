@@ -97,6 +97,27 @@
 **Próximos pasos:** Confirmar el correo operativo real, separar los archivos monolíticos, revisar visualmente rutas públicas y probar leads/autenticación contra el despliegue antes de publicar.
 **Archivos modificados:** C:/dev/proyectos/ecualegal/AVANCE.md
 
+## [2026-11-27] - NexoLegal - Codex
+**Qué se hizo:** Se aclaró el overlay del hero para reducir la dominante azul y se mantuvo su carga inmediata. Se implementó reveal reversible con `motion` —aparece al bajar y desaparece al subir— con entrada escalonada para las tarjetas de servicios; el footer de escritorio se compactó y reorganizó con copyright a la izquierda y enlaces a la derecha, sin cambiar el layout móvil.
+**Resultado:** La frase legal quedó como “NexoLegal Asesoría Jurídica Ecuador · SinergIA Tech”. 21st review queda sin errores; lint, build, `git diff --check` y `http://localhost:4040/` con HTTP 200 pasan.
+**Skills usadas/modificadas:** reglas-seguridad, modularidad-archivos, registrar-avance.
+**Próximos pasos:** Revisar visualmente desktop y móvil en `http://localhost:4040/#inicio`; no se hizo push ni despliegue.
+**Archivos modificados:** C:/dev/proyectos/ecualegal/src/styles/public-theme.css; C:/dev/proyectos/ecualegal/src/components/motion/RevealOnScroll.tsx; C:/dev/proyectos/ecualegal/src/components/home/ServicesPracticeGrid.tsx; C:/dev/proyectos/ecualegal/src/components/Footer.tsx; C:/dev/proyectos/ecualegal/AVANCE.md
+
+## [2026-11-27] - NexoLegal - Codex
+**Qué se hizo:** Se reemplazó el reveal genérico por el patrón de NexoTalento: entradas cortas, anticipadas y con easing firme; se aplicó stagger a las tarjetas de servicios y reveal a la sección “La Firma”, sin animar las esferas ni las métricas institucionales.
+**Resultado:** La segunda sección ahora tiene animación real al entrar y salir del viewport. Se confirmó que `fdprocessedid` no existe en el código y proviene de una extensión del navegador; 21st review no reporta errores, lint/build pasan y localhost responde HTTP 200.
+**Skills usadas/modificadas:** reglas-seguridad, modularidad-archivos, registrar-avance.
+**Próximos pasos:** Recargar `http://localhost:4040/#inicio` con las extensiones que modifican formularios desactivadas para revisar el overlay de Next; no se hizo push ni despliegue.
+**Archivos modificados:** C:/dev/proyectos/ecualegal/src/components/motion/RevealOnScroll.tsx; C:/dev/proyectos/ecualegal/src/components/home/FirmSection.tsx; C:/dev/proyectos/ecualegal/src/components/home/ServicesPracticeGrid.tsx; C:/dev/proyectos/ecualegal/src/app/page.tsx; C:/dev/proyectos/ecualegal/AVANCE.md
+
+## [2026-11-27] - NexoLegal - Codex
+**Qué se hizo:** Se convirtió el hero en una sección estática de carga inmediata: se eliminaron el carrusel automático, las flechas, los puntos y las animaciones de entrada. Se añadió un componente de revelado al hacer scroll para Servicios, Metodología, FAQ y Contacto.
+**Resultado:** El hero ya no anima ni muestra controles innecesarios; la órbita, sus esferas y métricas quedaron sin modificar. Lint, build, `git diff --check` y `http://localhost:4040/` con HTTP 200 pasan.
+**Skills usadas/modificadas:** reglas-seguridad, modularidad-archivos, registrar-avance.
+**Próximos pasos:** Revisar visualmente la home en `http://localhost:4040/#inicio`; no se hizo push ni despliegue.
+**Archivos modificados:** C:/dev/proyectos/ecualegal/src/components/home/HomeHero.tsx; C:/dev/proyectos/ecualegal/src/components/motion/RevealOnScroll.tsx; C:/dev/proyectos/ecualegal/src/components/site/FirmOrbit.tsx; C:/dev/proyectos/ecualegal/src/app/page.tsx; C:/dev/proyectos/ecualegal/src/styles/public-theme.css; C:/dev/proyectos/ecualegal/AVANCE.md
+
 ## [2026-11-25] - NexoLegal - Codex
 **Qué se hizo:** Se publicó manualmente en Vercel el commit `b56fa42` y se verificó el dominio real `ecualegal.vercel.app`.
 **Resultado:** Deployment `ecualegal-dztyufuzd-sinerg-ia2.vercel.app` quedó en estado Ready y tomó el alias principal. La producción ya no contiene el correo anterior, reconoce las URLs nuevas y la sección “La Firma” aparece correctamente en modo oscuro.
@@ -123,4 +144,32 @@
 **Resultado:** El dominio real sirve un deployment antiguo de producción, creado aproximadamente 18 horas antes, mientras `origin/master` contiene el commit posterior `9be4ec1`. La producción conserva contenido y estilos anteriores; no existe deployment posterior al push.
 **Skills usadas/modificadas:** reglas-seguridad, registrar-avance, computer-use.
 **Próximos pasos:** Revisar la conexión Git/branch del proyecto Vercel `ecualegal`; después lanzar un deployment de producción explícito y verificar visualmente el dominio canónico.
+**Archivos modificados:** C:/dev/proyectos/ecualegal/AVANCE.md
+
+## [2026-11-27] - NexoLegal - Codex
+**Qué se hizo:** Se revisó la home publicada y la versión local refactorizada; se eliminó el render duplicado de la navegación móvil y del asistente, y se migró el logotipo a `next/image`.
+**Resultado:** La home local conserva el diseño visual, deja un único dock móvil/asistente y `npm run lint` termina sin advertencias; `npm run build` genera correctamente las 30 rutas.
+**Skills usadas/modificadas:** reglas-seguridad, modularidad-archivos, registrar-avance, computer-use.
+**Próximos pasos:** Revisar/aprobar la refactorización local restante y, si Pablo lo solicita, desplegarla; `legal.nexotalento.com` y `ecualegal.nexotalentos.com` no resolvieron DNS durante esta revisión.
+**Archivos modificados:** C:/dev/proyectos/ecualegal/src/app/page.tsx; C:/dev/proyectos/ecualegal/src/components/NexoLogo.tsx; C:/dev/proyectos/ecualegal/AVANCE.md
+
+## [2026-11-27] - NexoLegal - Codex
+**Qué se hizo:** Se redujo el predominio azul del hero y se añadieron animaciones cinematográficas de fondo, entrada escalonada del contenido, barrido de luz y microinteracción en CTAs.
+**Resultado:** La home compila con las animaciones nuevas, respeta `prefers-reduced-motion` y mantiene lint/build correctos; el servidor local queda disponible en el puerto 4040.
+**Skills usadas/modificadas:** reglas-seguridad, modularidad-archivos, registrar-avance.
+**Próximos pasos:** Revisar visualmente en Chrome y, si Pablo aprueba, preparar commit/despliegue.
+**Archivos modificados:** C:/dev/proyectos/ecualegal/src/components/home/HomeHero.tsx; C:/dev/proyectos/ecualegal/src/styles/public-theme.css; C:/dev/proyectos/ecualegal/AVANCE.md
+
+## [2026-11-27] - NexoLegal - Codex
+**Qué se hizo:** Se incorporó `motion` para animar únicamente el panel informativo de FirmOrbit: tarjeta, cabecera, descripción, principio rector y principios conectados entran de forma escalonada al cambiar de esfera.
+**Resultado:** Las esferas, sus posiciones, giro y controles no fueron modificados. Lint, build y `git diff --check` pasan; se respeta `prefers-reduced-motion`.
+**Skills usadas/modificadas:** reglas-seguridad, modularidad-archivos, registrar-avance.
+**Próximos pasos:** Revisar la animación en `http://localhost:4040/#inicio`; no se hizo push ni despliegue.
+**Archivos modificados:** C:/dev/proyectos/ecualegal/package.json; C:/dev/proyectos/ecualegal/package-lock.json; C:/dev/proyectos/ecualegal/src/components/site/FirmOrbit.tsx; C:/dev/proyectos/ecualegal/AVANCE.md
+
+## [2026-11-27] - NexoLegal - Codex
+**Qué se hizo:** Se recuperó el servidor local después de que el caché de desarrollo de Next quedara incompleto y provocara `500` por módulos generados faltantes (`897.js` y `routes-manifest.json`).
+**Resultado:** Se reinició el proceso de desarrollo y `http://localhost:4040/` vuelve a responder `200`; no fue necesario revertir las animaciones.
+**Skills usadas/modificadas:** reglas-seguridad, registrar-avance.
+**Próximos pasos:** Recargar la pestaña local y revisar visualmente el panel animado.
 **Archivos modificados:** C:/dev/proyectos/ecualegal/AVANCE.md
